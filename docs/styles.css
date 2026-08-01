@@ -2656,6 +2656,8 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
   gap: 80px;
   flex-wrap: nowrap;
 }
+/* 登录/注册回到导航栏最右侧（nav-links 绝对居中脱离文档流，auth-panel 需 margin-left:auto 推到右端） */
+.auth-panel { margin-left: auto; flex: 0 0 auto; }
 .nav-dropdown { position: relative; }
 .nav-dropdown::before {
   content: '';
@@ -2791,6 +2793,8 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
   }
   .nav-dropdown.open .nav-dropdown-panel { display: block; transform: none; }
   .nav-dropdown-panel a { min-height: 44px; }
+  /* 移动端由汉堡按钮 margin-left:auto 负责右对齐，auth-panel 复位避免与汉堡争抢空隙 */
+  .auth-panel { margin-left: 8px; }
 }
 
 /* 剧本库搜索结果卡片配色修复 — 追加覆盖 */

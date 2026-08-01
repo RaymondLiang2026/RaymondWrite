@@ -2402,3 +2402,206 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
     height: auto;
   }
 }
+
+/* =====================================================================
+   2026-08-01 移动端体验优化（仅 ≤767px 生效，桌面端完全不受影响）
+   目标：压缩首屏 AI 创作卡片、折叠非核心工具、收紧内容间距、
+        缩小移动端字号行高、优化 Daily Scene Map 单列展示、减少留白。
+   本块追加在文件末尾，依靠源码顺序覆盖同优先级的旧移动端规则。
+   ===================================================================== */
+
+/* 折叠按钮基础样式（默认隐藏，仅移动端 JS 注入后于 ≤767 显示） */
+.mobile-tools-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(143, 45, 63, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--burgundy);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.mobile-tools-toggle .mtt-caret { transition: transform 0.2s ease; font-size: 0.9rem; }
+.mobile-tools-toggle[aria-expanded="true"] .mtt-caret { transform: rotate(180deg); }
+
+@media (max-width: 767px) {
+  /* ---------- 1. 首屏节奏：Hero 不再强制占满整屏，减少留白 ---------- */
+  .home-hero {
+    min-height: auto;
+    padding: 74px 16px 28px;
+  }
+  .home-hero h1 {
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .home-hero .hero-text {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .home-quick-actions {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  /* ---------- 2. AI 创作卡片：压缩默认高度到约半屏 ---------- */
+  .home-chat-card {
+    margin-top: 20px;
+    scroll-margin-top: 92px;
+  }
+  .home-chat-shell {
+    padding: 10px;
+    border-radius: 22px;
+  }
+  /* 关键：把面板最小高度从 520px 压到 ~260px，首屏只露对话区+输入框 */
+  .home-chat-card .chat-panel {
+    min-height: 258px;
+    grid-template-rows: minmax(120px, 26vh) auto;
+  }
+  .home-chat-card .chat-history {
+    min-height: 108px;
+    padding: 14px;
+    gap: 12px;
+  }
+  .chat-empty {
+    max-width: 100%;
+    padding: 14px;
+    gap: 6px;
+    border-radius: 18px;
+  }
+  .chat-empty strong { font-size: 1.05rem; }
+  .chat-empty p { font-size: 0.9rem; line-height: 1.6; }
+  .home-chat-card .chat-composer,
+  .chat-composer {
+    margin: 0 10px 10px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .home-chat-card .chat-composer textarea,
+  .chat-composer textarea {
+    min-height: 52px;
+    line-height: 1.55;
+    padding: 6px 8px 10px;
+  }
+  .message-bubble { line-height: 1.62; padding: 12px 14px; }
+
+  /* ---------- 2b. 折叠非核心工具：模型选择 + 配置 Key ---------- */
+  .mobile-tools-toggle { display: inline-flex; }
+  /* JS 注入折叠态时隐藏模型/Key 行；未注入 JS 时保持可用（渐进增强） */
+  .chat-toolbar-left.mobile-collapsible .model-tools {
+    display: none;
+  }
+  .chat-toolbar-left.mobile-collapsible.tools-open .model-tools {
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+  }
+  .chat-toolbar-left { flex-wrap: wrap; gap: 8px; }
+  .chat-toolbar { gap: 10px; }
+
+  /* ---------- 3. Daily Scene Map：单列 + 防横向溢出 ---------- */
+  .home-daily-preview {
+    min-height: auto;
+    padding: 36px 14px;
+    gap: 18px;
+    overflow-x: hidden;
+  }
+  .home-daily-copy { max-width: 100%; }
+  .home-daily-copy h2 {
+    font-size: clamp(1.65rem, 6.6vw, 2.3rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .home-daily-copy p:not(.eyebrow) {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+  .home-daily-nodes { gap: 8px; margin: 16px 0 20px; }
+  .home-daily-nodes span { padding: 7px 10px; font-size: 0.8rem; }
+  .home-daily-window {
+    padding: 12px;
+    border-radius: 20px;
+  }
+  .home-daily-window .daily-visual {
+    min-height: 220px;
+  }
+  /* 结构图 SVG 自适应，杜绝横向溢出 */
+  .home-daily-window svg,
+  .scene-structure-map svg,
+  .daily-visual svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ---------- 4. 内容卡片间距：整体收紧竖向 padding ---------- */
+  .home-page { padding: 0; }
+  .home-tools { padding: 36px 14px 40px; gap: 16px; }
+  .secondary-page,
+  .route-page {
+    scroll-margin-top: 88px;
+  }
+  .compact-heading { margin-bottom: 10px; }
+  .compact-heading h2 { font-size: clamp(1.5rem, 6vw, 2.1rem); }
+
+  /* ---------- 5. 全局防溢出兜底 ---------- */
+  main { overflow-x: hidden; }
+}
+
+/* 更窄屏（≤380px）微调，避免按钮拥挤 */
+@media (max-width: 380px) {
+  .home-hero h1 { font-size: clamp(1.9rem, 12vw, 2.6rem); }
+  .home-quick-actions .primary-btn,
+  .home-quick-actions .secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .mobile-tools-toggle { font-size: 0.78rem; }
+}
+
+
+/* =====================================================================
+   2026-08-01 剧本库搜索下拉菜单配色修复
+   问题：.author-autocomplete 原为深墨底(rgba(38,35,31,.72))+近白字(#fffaf0)，
+        在暖米色整体风格下对比度失衡（在浅色渲染下呈白字白底），观感不搭。
+   方案：改为暖奶油底 + 深墨字 + 极淡酒红 hover，仅覆盖搜索下拉相关选择器。
+   置于文件末尾，靠源码顺序覆盖上方旧规则。
+   ===================================================================== */
+.author-autocomplete {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 252, 244, 0.98);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 22px 60px rgba(83, 58, 28, 0.16);
+}
+/* 默认选项：透明底 + 深墨字 */
+.author-suggestion {
+  background: transparent;
+  color: var(--ink);
+}
+.author-suggestion strong { color: var(--ink); }
+.author-suggestion span { color: var(--muted); }
+.author-suggestion em { color: var(--muted); }
+/* hover / focus：极淡酒红底 + 酒红字 */
+.author-suggestion:hover,
+.author-suggestion:focus-visible {
+  background: rgba(120, 40, 50, 0.06);
+  color: var(--burgundy);
+}
+.author-suggestion:hover strong,
+.author-suggestion:focus-visible strong,
+.author-suggestion:hover span,
+.author-suggestion:focus-visible span,
+.author-suggestion:hover em,
+.author-suggestion:focus-visible em {
+  color: var(--burgundy);
+}

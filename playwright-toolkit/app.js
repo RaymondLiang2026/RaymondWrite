@@ -1,7 +1,14 @@
 /* global storyTypes, parallelReadings, getAllFrameworks, scriptLibrary, reliabilityLabels, getLibraryStats, dailyVideoSources */
-const SUPABASE_URL = 'https://vxndmttnbjpuawawnwwp.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_ouhKfhUvcgZOaDoAkMNkOA_3V5zbj9I';
+const SUPABASE_URL = 'https://uoshmiqwqhfnkomnjqsa.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_tO7eSddTeedoOd3nlpUqUQ_RGHmhsmK';
 const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/*
+  Supabase 控制台 SQL 说明：
+  1. 请执行本目录 `supabase_schema.sql`，其中包含 profiles/scripts/likes/comments/chat_messages 建表语句。
+  2. 对话记录表 `public.chat_messages` 已启用 RLS；select/insert/update/delete 均使用 `auth.uid() = user_id`，确保每个登录用户只能读写自己的 AI 对话数据。
+  3. DeepSeek 等模型 API Key 不写入数据库，仍只保存在用户本地浏览器 localStorage 的 `spark_api_keys` 中。
+*/
 const frameworkOptions = ['三幕式', '英雄旅程', '起承转合', '悬疑反转', '群像结构', '人物弧光', '史诗剧', '荒诞剧', '成长剧', '社会剧'];
 const modelConfigs = [
   { id: 'deepseek-v4-flash', name: 'DeepSeek V4 Flash', endpoint: 'https://api.deepseek.com/v1/chat/completions', provider: 'openai', group: 'direct', free: true },
@@ -48,7 +55,8 @@ const state = {
   chatMode: '',
   chatMessages: [],
   selectedChatFramework: '',
-  isSending: false
+  isSending: false,
+  dailyVideoPlaying: false
 };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -114,6 +122,7 @@ function bindEvents() {
     setChatFeedback(model?.group === 'vpn' ? '🔒 该模型需要 VPN 环境。' : (model?.context || ''));
   });
   $('#chatSendBtn')?.addEventListener('click', sendChatMessage);
+  document.addEventListener('click', handleDailyVideoAction);
   $('#chatInput')?.addEventListener('keydown', (event) => { if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) sendChatMessage(); });
   $('#frameworkMentionBtn')?.addEventListener('click', toggleFrameworkPicker);
   $('#modeSelectBtn')?.addEventListener('click', toggleModeDropdown);
@@ -298,7 +307,7 @@ function setChatMode(mode) {
     button.setAttribute('aria-selected', String(selected));
   });
   closeModeDropdown();
-  const placeholder = '说说你的故事想法…';
+  const placeholder = state.session ? '说说你的故事想法…' : '登录后才能使用 AI 对话功能…';
   if ($('#chatInput')) $('#chatInput').placeholder = placeholder;
 }
 
@@ -361,12 +370,47 @@ function renderMarkdown(text) {
   return html;
 }
 
+function updateChatAccessState() {
+  const locked = !state.session;
+  $('#chat')?.classList.toggle('chat-locked', locked);
+  if ($('#chatInput')) $('#chatInput').placeholder = locked ? '登录后才能使用 AI 对话功能…' : '说说你的故事想法…';
+}
+
 function renderChatHistory() {
+  updateChatAccessState();
   const box = $('#chatHistory');
   if (!box) return;
+  if (!state.session) {
+    box.innerHTML = '<div class="chat-empty auth-required"><strong>登录后开始 AI 创作</strong><p>请先使用邮箱和密码登录或注册，登录状态由 Supabase Session 管理。API Key 仅存储在您的本地浏览器，不会上传至服务器。</p><button class="primary-btn button-reset" type="button" onclick="window.openSparkAuth()">登录 / 注册</button></div>';
+    return;
+  }
   const visibleMessages = state.chatMessages.filter((message) => message.loading || (message.content && message.content.trim()));
-  box.innerHTML = visibleMessages.length ? visibleMessages.map((message) => `<article class="chat-message ${message.role}"><div class="message-bubble">${message.loading ? '<span class="typing-dots"><i></i><i></i><i></i></span>' : renderMarkdown(message.content)}</div></article>`).join('') : '';
+  box.innerHTML = visibleMessages.length ? visibleMessages.map((message) => `<article class="chat-message ${message.role}"><div class="message-bubble">${message.loading ? '<span class="typing-dots"><i></i><i></i><i></i></span>' : renderMarkdown(message.content)}</div></article>`).join('') : '<div class="chat-empty"><strong>开始一段新的创作讨论</strong><p>对话记录会保存到 Supabase，并仅允许当前登录用户读取。模型 API Key 仍只保存在您的本地浏览器。</p></div>';
   box.scrollTop = box.scrollHeight;
+}
+
+async function loadChatMessages() {
+  state.chatMessages = [];
+  if (!state.session || !supabaseClient) { renderChatHistory(); return; }
+  const { data, error } = await supabaseClient.from('chat_messages').select('role,content,created_at').eq('user_id', state.session.user.id).order('created_at', { ascending: true }).limit(80);
+  if (error) {
+    setChatFeedback(`对话记录读取失败：${error.message}。请确认已执行 supabase_schema.sql。`);
+    renderChatHistory();
+    return;
+  }
+  state.chatMessages = (data || []).map((item) => ({ role: item.role === 'assistant' ? 'assistant' : 'user', content: item.content || '' }));
+  renderChatHistory();
+}
+
+async function saveChatMessage(role, content) {
+  if (!state.session || !supabaseClient || !content?.trim()) return;
+  const { error } = await supabaseClient.from('chat_messages').insert({ user_id: state.session.user.id, role, content });
+  if (error) setChatFeedback(`对话已显示，但保存失败：${error.message}`);
+}
+
+function clearChatForSignedOutUser() {
+  state.chatMessages = [];
+  renderChatHistory();
 }
 
 function appendChatMessage(role, content, loading = false) {
@@ -470,6 +514,12 @@ async function requestModel(model, key, system, history, userMessage, onDelta) {
 
 async function sendChatMessage() {
   if (state.isSending) return;
+  if (!state.session) {
+    renderChatHistory();
+    openModal('authModal');
+    setAuthFeedback('请先登录后使用 AI 对话功能。');
+    return setChatFeedback('登录后才能使用 AI 对话功能。');
+  }
   const input = $('#chatInput');
   const content = input?.value.trim();
   if (!content) return setChatFeedback('请先输入想讨论的故事内容。');
@@ -486,12 +536,14 @@ async function sendChatMessage() {
   setChatFeedback(model.group === 'vpn' ? '🔒 该模型需要 VPN 环境。' : (model.context || ''));
   input.value = '';
   appendChatMessage('user', content);
+  await saveChatMessage('user', content);
   appendChatMessage('assistant', '', true);
   const system = buildChatSystemPrompt();
   const history = state.chatMessages.filter((message) => !message.loading).slice(-12).map((message) => ({ role: message.role === 'assistant' ? 'assistant' : 'user', content: message.content }));
   try {
     const reply = await requestModel(model, key, system, history, content, (partial) => updateLastAssistantMessage(partial));
     updateLastAssistantMessage(reply);
+    await saveChatMessage('assistant', reply);
   } catch (error) {
     const message = error instanceof TypeError ? '网络连接失败，请检查网络或 VPN' : (error.message || '网络连接失败，请检查网络或 VPN');
     updateLastAssistantMessage(`调用失败：${message}`);
@@ -543,11 +595,22 @@ async function initAuth() {
   if (!supabaseClient) { setNotice('Supabase SDK 加载失败，社区功能暂不可用。', 'error'); return; }
   const { data } = await supabaseClient.auth.getSession();
   state.session = data.session;
-  if (state.session) await ensureProfile();
+  if (state.session) {
+    await ensureProfile();
+    await loadChatMessages();
+  } else {
+    clearChatForSignedOutUser();
+  }
   renderAuthNav();
   supabaseClient.auth.onAuthStateChange(async (_event, session) => {
     state.session = session;
-    if (session) await ensureProfile(); else state.profile = null;
+    if (session) {
+      await ensureProfile();
+      await loadChatMessages();
+    } else {
+      state.profile = null;
+      clearChatForSignedOutUser();
+    }
     renderAuthNav();
     if (toAppPath(location.pathname) === '/community') loadCommunity();
   });
@@ -762,6 +825,15 @@ function bindCompactTextareas() {
   });
 }
 function bindDailyAccordions() { $$('.daily-card-toggle').forEach((toggle) => toggle.addEventListener('click', () => { const card = toggle.closest('.daily-card'); const open = !card.classList.contains('open'); card.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); })); }
+function handleDailyVideoAction(event) {
+  const button = event.target.closest('[data-daily-video-action]');
+  if (!button) return;
+  const stage = button.closest('[data-video-stage]');
+  const playing = button.dataset.dailyVideoAction === 'play';
+  state.dailyVideoPlaying = playing;
+  stage?.classList.toggle('is-playing', playing);
+  stage?.querySelector('.scene-video-overlay')?.setAttribute('aria-hidden', String(playing));
+}
 function getSelectedType() { return storyTypes.find((item) => item.id === state.selectedTypeId) || storyTypes[0]; }
 function renderTypes() { const container = $('#typeList'); if (!container) return; const selected = getSelectedType(); $('#selectedTypeTitle').textContent = selected.title; container.innerHTML = storyTypes.map((item) => `<button class="type-button ${item.id === state.selectedTypeId ? 'active' : ''}" data-id="${item.id}"><span>${item.title}</span><small>${item.frameworks.length} 个框架</small></button>`).join(''); container.querySelectorAll('.type-button').forEach((button) => button.addEventListener('click', () => { state.selectedTypeId = button.dataset.id; state.selectedFrameworkIndex = 0; renderTypes(); renderFrameworks(); })); }
 function renderFrameworks() { const selected = getSelectedType(); if (!$('#frameworkList')) return; $('#selectedTypeTitle').textContent = selected.title; $('#selectedTypeMeta').textContent = selected.meta; $('#selectedTypeDescription').textContent = selected.description; $('#frameworkList').innerHTML = selected.frameworks.map((framework, index) => `<button class="framework-card ${index === state.selectedFrameworkIndex ? 'active' : ''}" data-index="${index}"><span class="framework-index">${String(index + 1).padStart(2, '0')}</span><div><h4>${esc(framework.name)}</h4><p>${esc(framework.summary)}</p><small>${esc(framework.source)}</small></div></button>`).join(''); $('#frameworkList').querySelectorAll('.framework-card').forEach((card) => card.addEventListener('click', () => { state.selectedFrameworkIndex = Number(card.dataset.index); renderFrameworks(); })); renderFrameworkDetail(selected.frameworks[state.selectedFrameworkIndex]); }
@@ -836,8 +908,12 @@ function dailyStructureMap(framework, compact = false, source = getDailyVideoSou
 function dailySceneMarkup(framework, compact = false) {
   const source = getDailyVideoSource(framework);
   const analysis = source?.sceneDesc || framework.summary.slice(0, 60);
-  const video = !compact && source?.embedUrl ? `<div class="scene-video-player"><iframe src="${esc(source.embedUrl)}" title="${esc(source.sceneTitle)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>` : '';
-  return `<div class="daily-visual-wrapper ${compact ? 'compact' : ''}">${dailyStructureMap(framework, compact, source)}<div class="scene-description"><p class="scene-film">${esc(source?.sceneTitle || famousWorkFor(framework))}</p><p class="scene-analysis">${esc(analysis)}</p></div>${video}</div>`;
+  if (compact || !source?.embedUrl) {
+    return `<div class="daily-visual-wrapper ${compact ? 'compact' : ''}">${dailyStructureMap(framework, compact, source)}<div class="scene-description"><p class="scene-film">${esc(source?.sceneTitle || famousWorkFor(framework))}</p><p class="scene-analysis">${esc(analysis)}</p></div></div>`;
+  }
+  const playingClass = state.dailyVideoPlaying ? ' is-playing' : '';
+  const video = `<div class="scene-video-stage${playingClass}" data-video-stage><div class="scene-video-player"><iframe src="${esc(source.embedUrl)}" title="${esc(source.sceneTitle)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="scene-video-overlay" aria-hidden="${state.dailyVideoPlaying ? 'true' : 'false'}">${dailyStructureMap(framework, false, source)}</div><div class="scene-video-controls"><button class="primary-btn button-reset scene-video-play" type="button" data-daily-video-action="play">▶ 播放视频</button><button class="secondary-btn button-reset scene-video-collapse" type="button" data-daily-video-action="collapse">收起</button></div></div>`;
+  return `<div class="daily-visual-wrapper">${video}<div class="scene-description"><p class="scene-film">${esc(source?.sceneTitle || famousWorkFor(framework))}</p><p class="scene-analysis">${esc(analysis)}</p></div></div>`;
 }
 function renderDailyFramework() { const framework = getDailyFramework(); state.dailyFramework = framework; if (!framework) return; const source = getDailyVideoSource(); const category = getVideoCategory(source, framework); const preview = `${source?.sceneTitle || famousWorkFor(framework)}：${(source?.sceneDesc || framework.summary).slice(0, 34)}。`; if ($('#dailyTypeLabel')) $('#dailyTypeLabel').textContent = category; if ($('#dailyVisual')) $('#dailyVisual').innerHTML = dailySceneMarkup(framework); if ($('#homeDailyVisual')) $('#homeDailyVisual').innerHTML = dailySceneMarkup(framework, true); if ($('#sceneBreakdown')) $('#sceneBreakdown').innerHTML = `<strong>桥段结构解析</strong><p>${esc(source?.sceneDesc || framework.summary.slice(0, 60))}</p>`; if ($('#dailyFrameName')) $('#dailyFrameName').textContent = framework.name; if ($('#homeDailyFrameName')) $('#homeDailyFrameName').textContent = framework.name; if ($('#dailyFrameDefinition')) $('#dailyFrameDefinition').textContent = framework.summary; if ($('#homeDailyFrameSummary')) $('#homeDailyFrameSummary').textContent = preview; if ($('#dailyFramePreview')) $('#dailyFramePreview').textContent = preview; if ($('#homeDailyNodes')) $('#homeDailyNodes').innerHTML = structureNodesFor(category, framework).map((beat) => `<span>${esc(beat)}</span>`).join(''); if ($('#dailyFamousWork')) $('#dailyFamousWork').textContent = source?.sceneTitle || famousWorkFor(framework); if ($('#dailyQuestion')) $('#dailyQuestion').textContent = framework.conflict; if ($('#challengePrompt')) $('#challengePrompt').textContent = `请用你的故事写出这个冲突：${framework.conflict}`; if ($('#challengePreview')) $('#challengePreview').textContent = `围绕“${framework.conflict.slice(0, 22)}…”写一段。`; renderChallengeHistory(); }
 function favoriteDailyFramework() { const framework = state.dailyFramework; if (!framework) return; const list = JSON.parse(localStorage.getItem('favoriteFrameworks') || '[]'); if (!list.some((item) => item.name === framework.name)) list.push({ name: framework.name, type: framework.typeTitle, date: new Date().toISOString().slice(0, 10) }); localStorage.setItem('favoriteFrameworks', JSON.stringify(list)); if ($('#dailyActionFeedback')) $('#dailyActionFeedback').textContent = '已收藏到本地浏览器。'; }
@@ -846,4 +922,5 @@ function submitChallenge() { const value = $('#challengeInput')?.value.trim(); i
 function renderChallengeHistory() { const box = $('#challengeHistory'); if (!box) return; const list = JSON.parse(localStorage.getItem('frameworkChallengeAnswers') || '[]'); box.innerHTML = list.length ? list.map((item) => `<article><strong>${esc(item.date)}｜${esc(item.framework)}</strong><p>${esc(item.answer)}</p></article>`).join('') : '<p>暂无本地提交记录。</p>'; }
 function formatDate(value) { if (!value) return '待定'; return new Date(value).toLocaleDateString('zh-CN', { month: '2-digit', day: '2-digit' }); }
 window.appNavigate = navigateTo;
+window.openSparkAuth = () => openModal('authModal');
 init();

@@ -39,6 +39,14 @@ create table if not exists public.comments (
   created_at timestamptz default now()
 );
 
+create table if not exists public.chat_messages (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  role text not null check (role in ('user', 'assistant')),
+  content text not null,
+  created_at timestamptz default now()
+);
+
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
@@ -90,6 +98,7 @@ alter table public.profiles enable row level security;
 alter table public.scripts enable row level security;
 alter table public.likes enable row level security;
 alter table public.comments enable row level security;
+alter table public.chat_messages enable row level security;
 
 drop policy if exists "profiles readable by everyone" on public.profiles;
 create policy "profiles readable by everyone"
@@ -174,8 +183,34 @@ on public.comments for delete
 to authenticated
 using (auth.uid() = user_id);
 
+drop policy if exists "chat messages select own" on public.chat_messages;
+create policy "chat messages select own"
+on public.chat_messages for select
+to authenticated
+using (auth.uid() = user_id);
+
+drop policy if exists "chat messages insert own" on public.chat_messages;
+create policy "chat messages insert own"
+on public.chat_messages for insert
+to authenticated
+with check (auth.uid() = user_id);
+
+drop policy if exists "chat messages update own" on public.chat_messages;
+create policy "chat messages update own"
+on public.chat_messages for update
+to authenticated
+using (auth.uid() = user_id)
+with check (auth.uid() = user_id);
+
+drop policy if exists "chat messages delete own" on public.chat_messages;
+create policy "chat messages delete own"
+on public.chat_messages for delete
+to authenticated
+using (auth.uid() = user_id);
+
 create index if not exists scripts_created_at_idx on public.scripts(created_at desc);
 create index if not exists scripts_likes_count_idx on public.scripts(likes_count desc);
 create index if not exists scripts_framework_type_idx on public.scripts(framework_type);
 create index if not exists likes_script_id_idx on public.likes(script_id);
 create index if not exists comments_script_id_idx on public.comments(script_id, created_at desc);
+create index if not exists chat_messages_user_created_idx on public.chat_messages(user_id, created_at asc);

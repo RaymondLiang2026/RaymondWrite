@@ -1,0 +1,5 @@
+# 默认 CODEOWNERS 模板。远程仓库创建后请把 RaymondLiang2026 配置为真实 GitHub Owner。
+* @RaymondLiang2026
+/docs/COPYRIGHT_POLICY.md @RaymondLiang2026
+/docs/DATA_SCHEMA.md @RaymondLiang2026
+/data/ @RaymondLiang2026

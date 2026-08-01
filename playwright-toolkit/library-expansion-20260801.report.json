@@ -1,0 +1,31 @@
+{
+  "target_total": 2000,
+  "actual_generated": 617,
+  "counts": {
+    "A_IMSDB_film_index": 600,
+    "B_Pulitzer_award_index": 17,
+    "C_Project_Gutenberg_public_plays": 0,
+    "D_Contemporary_Chinese_drama": 0
+  },
+  "source_links": {
+    "imsdb_all_scripts": "https://imsdb.com/all-scripts.html",
+    "project_gutenberg_plays": "https://gutenberg.org/ebooks/bookshelf/642",
+    "gutendex_topic_plays": "https://gutendex.com/books/?topic=plays",
+    "pulitzer_drama": "https://www.pulitzer.org/prize-winners-by-category/218"
+  },
+  "not_written": [
+    {
+      "category": "D. 当代华语话剧",
+      "reason": "本轮未找到可批量自动校验的官方/豆瓣书目数据源；为避免编造，暂不写入。"
+    },
+    {
+      "category": "B. 托尼/奥利弗提名完整清单",
+      "reason": "本轮只写入普利策获奖条目；提名与购买页需逐项补充官方出版/购买链接。"
+    },
+    {
+      "category": "汉译链接",
+      "reason": "仅在可确认豆瓣/出版社链接时写入；本轮批量条目未强行补造。"
+    }
+  ],
+  "skipped_pages": []
+}

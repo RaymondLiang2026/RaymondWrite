@@ -1,0 +1,26 @@
+name: 剧本条目纠错
+description: 报告剧本库中的错误、缺链接或版权风险
+title: "[纠错] "
+labels: ["data-correction"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: 剧本标题
+      placeholder: 例如：等待戈多
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: 问题描述
+      placeholder: 请说明错误字段、建议修改和依据。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 可信来源
+      placeholder: 请提供出版社、豆瓣读书、Project Gutenberg、图书馆馆藏等链接或书目信息。
+    validations:
+      required: false

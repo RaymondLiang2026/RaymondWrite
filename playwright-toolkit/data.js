@@ -4204,8 +4204,8 @@ const storyTypes = [
         "conflict": "人物必须行动，但行动结果被情境和悬念持续推迟。",
         "useCase": "戏剧性诊断、舞台剧、现实主义影视场景。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4228,9 +4228,9 @@ const storyTypes = [
         "conflict": "情境不断变化，人物不能用旧关系解决新压力。",
         "useCase": "四段式大纲、场次推进、戏剧单元结构。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
-          "source": "YouTube"
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "source": "B站"
         }
       },
       {
@@ -4253,8 +4253,8 @@ const storyTypes = [
         "conflict": "人物说话不是为了说明，而是为了争夺、掩饰、诱导或改变局面。",
         "useCase": "对白改写、舞台调度、文本排练。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4279,8 +4279,8 @@ const storyTypes = [
         "conflict": "人物面对的不只是对手，也包括处境和自我矛盾。",
         "useCase": "冲突分析、人物关系、社会剧与心理剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4304,9 +4304,9 @@ const storyTypes = [
         "conflict": "观众既需要追问最终结果，也需要在每场戏中持续等待下一步。",
         "useCase": "悬疑剧、社会议题剧、长片节奏设计。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
-          "source": "YouTube"
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "source": "B站"
         }
       },
       {
@@ -4330,8 +4330,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "实验戏剧、当代剧场分析。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4356,8 +4356,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "跨文化剧场、实验戏剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4382,8 +4382,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "戏剧理论史、戏剧审美分析。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4408,8 +4408,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "戏剧接受研究、剧场创作。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4434,8 +4434,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "话剧导演、舞台风格设计。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4460,8 +4460,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "导演案头、演员排练。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4486,8 +4486,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "现实主义话剧、中国现代戏剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4512,8 +4512,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家庭悲剧、封闭空间正剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       },
@@ -4538,8 +4538,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家族戏、生活流正剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
-          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
       }

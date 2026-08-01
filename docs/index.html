@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spark</title>
+    <meta name="description" content="Spark — 为故事创作者而生" />
+    <base href="./" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="paper-grain"></div>
+    <nav class="nav fixed-nav">
+      <a class="brand" href="/RaymondWrite/" data-route><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" role="img" focusable="false"><defs><linearGradient id="sparkGradient" x1="8" y1="2" x2="24" y2="30" gradientUnits="userSpaceOnUse"><stop stop-color="#FB923C"/><stop offset="1" stop-color="#F97316"/></linearGradient></defs><path class="spark-core" d="M16.8 2.8c1.7 4.7-.4 7.2-2.4 9.1-1.5 1.4-2.5 2.8-1.6 5 1.4-1.9 3.4-3.2 5.9-3.7-.3 2.1.5 3.6 1.8 5.1 1.2 1.4 2.1 2.9 2.1 5 0 4-3.1 6.7-7 6.7-4.2 0-7.4-2.8-7.4-7.1 0-3.7 2.1-6.2 4.3-8.5 2.2-2.3 4.3-4.7 4.3-11.6Z"/><path class="spark-flicker" d="M23.9 5.1l.9 2.8 2.8.9-2.8.9-.9 2.8-.9-2.8-2.8-.9 2.8-.9.9-2.8ZM7.3 7.7l.6 1.8 1.8.6-1.8.6-.6 1.8-.6-1.8-1.8-.6 1.8-.6.6-1.8Z"/></svg></span><span>Spark</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="展开导航" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="/RaymondWrite/" data-route>首页</a>
+        <a href="/RaymondWrite/community" data-route>社区</a>
+        <a href="/RaymondWrite/leaderboard" data-route>排行榜</a>
+        <a href="/RaymondWrite/inspiration" data-route>今日灵感</a>
+        <a href="/RaymondWrite/#chat">AI 创作</a>
+        <a href="/RaymondWrite/directory" data-route>框架库</a>
+        <a href="/RaymondWrite/library" data-route>剧本库</a>
+        <a href="/RaymondWrite/parallel" data-route>对照阅读</a>
+      </div>
+      <div class="auth-panel" id="authPanel"><button id="loginOpenBtn" class="secondary-btn button-reset compact-btn">登录/注册</button></div>
+    </nav>
+
+    <div id="globalNotice" class="global-notice" aria-live="polite"></div>
+
+    <main>
+      <section class="home-page route-page active-route" id="home">
+        <div class="home-hero">
+          <h1>Spark the Story</h1>
+          <div class="home-quick-actions">
+            <a class="primary-btn" href="/RaymondWrite/inspiration" data-route><span class="material-symbols-outlined">tips_and_updates</span>今日灵感</a>
+            <a class="secondary-btn" href="/RaymondWrite/community" data-route>去社区看作品</a>
+          </div>
+          <section class="home-chat-card" id="chat" aria-label="Spark AI 创作对话框">
+            <div class="chat-shell home-chat-shell">
+              <section class="chat-panel" aria-label="AI 对话区">
+                <div id="chatHistory" class="chat-history" aria-live="polite"></div>
+                <div class="chat-composer">
+                  <textarea id="chatInput" rows="3" placeholder="说说你的故事想法…"></textarea>
+                  <div class="chat-toolbar">
+                    <div class="chat-toolbar-left">
+                      <div class="mode-select-wrapper" id="modeSelectWrapper" aria-label="工具选择">
+                        <button class="mode-select-btn" id="modeSelectBtn" type="button" aria-haspopup="listbox" aria-expanded="false">工具选择</button>
+                        <div class="mode-dropdown" id="modeDropdown" role="listbox" hidden>
+                          <button class="mode-dropdown-item" data-mode="framework" type="button" role="option" aria-selected="false">框架匹配</button>
+                          <button class="mode-dropdown-item" data-mode="coach" type="button" role="option" aria-selected="false">完善灵感</button>
+                        </div>
+                      </div>
+                      <div class="model-tools">
+                        <select id="modelSelect" class="model-select" aria-label="模型选择"></select>
+                        <button id="keyConfigBtn" class="icon-text-btn button-reset" type="button">⚙️ 配置 Key</button>
+                      </div>
+                    </div>
+                    <div class="chat-toolbar-right">
+                      <button id="frameworkMentionBtn" class="mention-btn button-reset" type="button" aria-expanded="false">@</button>
+                      <button id="chatSendBtn" class="send-btn button-reset" type="button" aria-label="发送"><span class="material-symbols-outlined">arrow_upward</span></button>
+                    </div>
+                  </div>
+                  <div id="frameworkPicker" class="framework-picker" hidden></div>
+                  <p id="chatFeedback" class="tiny-feedback"></p>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+        <section class="home-daily-preview" aria-label="每日桥段结构动图预览">
+          <div class="home-daily-copy">
+            <p class="eyebrow">Daily Scene Map</p>
+            <h2 id="homeDailyFrameName">今日框架</h2>
+            <div id="homeDailyNodes" class="home-daily-nodes"></div>
+            <a class="secondary-btn" href="/RaymondWrite/inspiration" data-route>查看完整动图</a>
+          </div>
+          <div class="home-daily-window">
+            <div id="homeDailyVisual" class="daily-visual" aria-label="首页每日桥段结构图示"></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section generator-redirect-page route-page" id="generatorRedirectPage">
+        <div class="method-card redirect-card">
+          <p class="eyebrow">Tool Upgrade</p>
+          <h2>框架匹配已升级为 AI 对话模式</h2>
+          <a class="primary-btn" href="/RaymondWrite/chat" data-route><span class="material-symbols-outlined">auto_awesome</span>进入 AI 创作</a>
+        </div>
+      </section>
+
+      <section class="section community-page route-page" id="communityPage">
+        <div class="section-heading library-heading">
+          <div><p class="eyebrow">Community</p><h2>用户社区</h2></div>
+          <button id="publishOpenBtn" class="primary-btn button-reset"><span class="material-symbols-outlined">edit_square</span>发布作品</button>
+        </div>
+        <div class="community-toolbar">
+          <div class="search-box"><span class="material-symbols-outlined">search</span><input id="communitySearch" type="search" placeholder="按标题、标签、框架类型搜索" /></div>
+          <select id="communityFrameworkFilter" class="select-control" aria-label="框架类型筛选"></select>
+        </div>
+        <div id="communityList" class="community-grid"></div>
+      </section>
+
+      <section class="section script-detail-page route-page" id="scriptDetailPage">
+        <div class="detail-toolbar"><a class="secondary-btn" href="/RaymondWrite/community" data-route>返回社区</a><button id="detailLikeBtn" class="primary-btn button-reset">点赞</button></div>
+        <div id="scriptDetailBox"></div>
+        <div class="comments-panel">
+          <h3>评论</h3>
+          <textarea id="commentInput" placeholder="登录后写下你的看法、结构建议或继续创作方向。"></textarea>
+          <button id="commentSubmitBtn" class="secondary-btn button-reset">发布评论</button>
+          <div id="commentList" class="comment-list"></div>
+        </div>
+      </section>
+
+      <section class="section profile-page route-page" id="profilePage">
+        <div id="profileBox"></div>
+        <h3 class="profile-subtitle">作品列表</h3>
+        <div id="profileWorks" class="community-grid"></div>
+      </section>
+
+      <section class="section leaderboard-page route-page" id="leaderboardPage">
+        <div class="section-heading library-heading"><div><p class="eyebrow">Leaderboard</p><h2>排行榜</h2></div></div>
+        <div class="community-toolbar">
+          <select id="leaderboardPeriod" class="select-control" aria-label="时间范围">
+            <option value="today">今日</option>
+            <option value="week">本周</option>
+            <option value="month">本月</option>
+            <option value="twoMonths">近两月</option>
+            <option value="quarter">本季度</option>
+            <option value="year">本年</option>
+          </select>
+          <select id="leaderboardFramework" class="select-control" aria-label="框架类型"></select>
+        </div>
+        <div id="leaderboardList" class="leaderboard-list"></div>
+      </section>
+
+      <section class="section inspiration-page route-page" id="inspirationPage">
+        <div class="section-heading"><p class="eyebrow">Daily Inspiration</p><h2>今日灵感</h2></div>
+        <section class="daily-section" id="dailyFramework" aria-label="每日灵感">
+          <article class="daily-card daily-visual-card open">
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="true"><span><span class="eyebrow">Daily Scene Map</span><strong>每日桥段结构图示</strong></span><span class="pill" id="dailyTypeLabel">今日</span></button>
+            <div class="daily-card-content"><div class="scene-module"><div class="scene-map-panel"><div id="dailyVisual" class="daily-visual" aria-label="每日桥段结构图示"></div></div></div><div id="sceneBreakdown" class="scene-breakdown"></div></div>
+          </article>
+          <article class="daily-card daily-insight-card">
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Daily Card</span><strong id="dailyFrameName">今日框架</strong></span><span class="toggle-mark">＋</span></button>
+            <div class="daily-card-content"><p id="dailyFrameDefinition" class="daily-definition"></p><div class="daily-meta"><strong>代表作品</strong><span id="dailyFamousWork"></span></div><div class="daily-meta"><strong>核心创作问题</strong><span id="dailyQuestion"></span></div><div class="daily-actions"><button id="favoriteDailyBtn" class="secondary-btn button-reset">收藏</button><button id="shareDailyBtn" class="secondary-btn button-reset">分享</button></div><p id="dailyActionFeedback" class="tiny-feedback"></p></div>
+          </article>
+          <article class="daily-card daily-challenge-card">
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Prompt Challenge</span><strong>今日框架挑战</strong></span><span class="toggle-mark">＋</span></button>
+            <div class="daily-card-content"><p id="challengePrompt" class="daily-definition"></p><textarea id="challengeInput" placeholder="如果是我，我会怎么写这个冲突……"></textarea><div class="daily-actions"><button id="submitChallengeBtn" class="primary-btn button-reset">提交到本地记录</button><button id="toggleHistoryBtn" class="secondary-btn button-reset">查看历史</button></div><div id="challengeHistory" class="challenge-history hidden"></div></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="section toolkit secondary-page route-page" id="directory">
+        <div class="section-heading"><p class="eyebrow">Library 01</p><h2>框架库</h2></div>
+        <div class="tool-layout"><aside class="type-panel"><div class="panel-title"><span class="material-symbols-outlined">category</span>剧本类型</div><div id="typeList" class="type-list"></div></aside><section class="framework-panel"><div class="panel-topline"><div><p class="eyebrow">Selected Genre</p><h3 id="selectedTypeTitle">悲剧</h3></div><span id="selectedTypeMeta" class="pill">古典 / 现代 / 社会</span></div><p id="selectedTypeDescription" class="type-description"></p><div id="frameworkList" class="framework-list"></div></section><section class="detail-panel"><div id="frameworkDetail"></div></section></div>
+      </section>
+
+      <section class="section library secondary-page route-page" id="library">
+        <div class="section-heading library-heading"><div><p class="eyebrow">Library 02</p><h2>剧本库</h2></div><div class="library-search-wrap"><div class="search-box"><span class="material-symbols-outlined">search</span><input id="scriptSearch" type="search" placeholder="搜索标题、作者、译者、出版社、类型标签…" autocomplete="off" /></div><div class="author-autocomplete" id="authorAutocomplete" hidden></div></div></div>
+        <div class="library-controls"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="public">公版/权威全文</button><button class="filter" data-filter="copyright">版权索引</button><button class="filter" data-filter="cn">中文剧目</button><button class="filter" data-filter="award">获奖/近现代</button><button class="filter" data-filter="zx60">中戏60本</button></div>
+        <div class="bilingual-filters"><label><input type="checkbox" id="filterCn" /> 只看有汉译版</label><label><input type="checkbox" id="filterOriginal" /> 只看有原文版</label><label><input type="checkbox" id="filterBilingual" /> 只看双语齐全</label></div>
+        <div class="library-stats" id="libraryStats"></div><div id="scriptGrid" class="script-grid"></div>
+      </section>
+
+      <section class="section parallel secondary-page route-page" id="parallel">
+        <div class="section-heading parallel-heading"><div><p class="eyebrow">Library 03</p><h2>对照阅读</h2></div><div class="search-box parallel-search-box"><span class="material-symbols-outlined">search</span><input id="parallelSearch" type="search" placeholder="搜索剧名、作者、别名…" autocomplete="off" /></div></div>
+        <div class="parallel-layout"><aside class="parallel-list" id="parallelList"></aside><section class="parallel-reader" id="parallelReader"></section></div>
+      </section>
+
+      <section class="section method secondary-page route-page" id="open-source">
+        <div class="method-card"><p class="eyebrow">Open Source Collaboration</p><h2>GitHub 开源协作架构</h2><div class="method-grid"><div><strong>超级管理员</strong><p>用户本人：拥有物理删除、权限分配、版本回滚和保护规则配置权限。</p></div><div><strong>子管理员</strong><p>2–3 名 Collaborator：审核 PR、回滚版本、锁定条目，不做物理删除。</p></div><div><strong>认证编辑者</strong><p>通过 PR 新增条目、编辑书目信息字段，不能修改版权全文字段。</p></div><div><strong>访客</strong><p>只读访问，可提交 Issue 纠错、补充链接或报告版权风险。</p></div></div><p class="open-source-note">仓库文件已按 GitHub 开源协作准备 README、贡献指南、版权规范、数据 Schema 和 PR 模板；远程仓库创建与管理员配置需等待你提供 GitHub 账号名。</p></div>
+      </section>
+    </main>
+
+    <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-label="登录注册">
+      <div class="modal-card"><button class="modal-close button-reset" id="authCloseBtn">×</button><p class="eyebrow">Account</p><h2>登录 / 注册</h2><input id="authEmail" type="email" placeholder="邮箱" /><input id="authPassword" type="password" placeholder="密码" /><div class="modal-actions"><button id="authLoginBtn" class="primary-btn button-reset">登录</button><button id="authSignupBtn" class="secondary-btn button-reset">注册</button></div><p id="authFeedback" class="tiny-feedback"></p></div>
+    </div>
+
+    <div class="modal" id="publishModal" role="dialog" aria-modal="true" aria-label="发布作品">
+      <div class="modal-card large"><button class="modal-close button-reset" id="publishCloseBtn">×</button><p class="eyebrow">Publish</p><h2>发布作品</h2><input id="publishTitle" type="text" placeholder="标题" /><select id="publishFramework"></select><input id="publishTags" type="text" placeholder="标签，用逗号分隔，如 悬疑,三幕式" /><textarea id="publishContent" placeholder="写下剧本片段、故事点子或结构大纲"></textarea><button id="publishSubmitBtn" class="primary-btn button-reset">提交发布</button><p id="publishFeedback" class="tiny-feedback"></p></div>
+    </div>
+
+    <div class="modal" id="keyModal" role="dialog" aria-modal="true" aria-label="配置模型 API Key">
+      <div class="modal-card large key-modal-card"><button class="modal-close button-reset" id="keyCloseBtn">×</button><p class="eyebrow">Local Keys</p><h2>配置模型 API Key</h2><div id="keyFields" class="key-fields"></div><p class="key-note">API Key 仅存储在您的本地浏览器，不会上传至服务器</p><div class="key-links"><a href="https://platform.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek</a><a href="https://dashscope.console.aliyun.com" target="_blank" rel="noopener noreferrer">通义千问</a><a href="https://platform.moonshot.cn" target="_blank" rel="noopener noreferrer">Kimi</a><a href="https://open.bigmodel.cn" target="_blank" rel="noopener noreferrer">智谱</a><a href="https://console.cloud.tencent.com/hunyuan" target="_blank" rel="noopener noreferrer">混元</a><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Gemini</a><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">OpenAI</a><a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">Claude</a></div><div class="modal-actions"><button id="keySaveBtn" class="primary-btn button-reset key-save-btn">保存配置</button></div><p id="keyFeedback" class="tiny-feedback"></p></div>
+    </div>
+
+    <div class="modal framework-modal" id="frameworkModal" role="dialog" aria-modal="true" aria-label="框架详情视频弹窗">
+      <div class="modal-card framework-modal-card"><button class="modal-close button-reset" id="frameworkModalCloseBtn">×</button><div id="frameworkModalBody" class="framework-modal-body"></div></div>
+    </div>
+
+    <div class="modal parallel-reader-modal" id="parallelModal" role="dialog" aria-modal="true" aria-label="剧本对照阅读弹窗">
+      <div class="modal-card parallel-reader-modal-card"><div class="parallel-modal-head"><h2 id="parallelModalTitle">对照阅读</h2><button class="modal-close button-reset" id="parallelModalCloseBtn">×</button></div><div id="parallelModalBody" class="parallel-modal-body"></div></div>
+    </div>
+
+    <footer class="footer"><p>Spark · 写作工具 · 用户社区 · 排行榜 · 今日灵感</p><a href="/RaymondWrite/" data-route>回到首页</a></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="./data.js"></script>
+    <script src="./extended-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

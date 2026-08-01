@@ -42,7 +42,8 @@ const state = {
   filterCn: false,
   filterOriginal: false,
   filterBilingual: false,
-  selectedParallelId: parallelReadings?.[0]?.id || '',
+  selectedParallelId: '',
+  parallelQuery: '',
   session: null,
   profile: null,
   community: [],
@@ -93,6 +94,7 @@ function bindEvents() {
   $('#scriptSearch')?.addEventListener('input', (event) => { state.scriptQuery = event.target.value.trim().toLowerCase(); renderScripts(); renderAuthorAutocomplete(event.target.value); });
   $('#scriptSearch')?.addEventListener('focus', (event) => renderAuthorAutocomplete(event.target.value));
   $('#scriptSearch')?.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeAuthorAutocomplete(); });
+  $('#parallelSearch')?.addEventListener('input', (event) => { state.parallelQuery = event.target.value.trim().toLowerCase(); renderParallelReadings(); });
   $$('.filter').forEach((button) => button.addEventListener('click', () => { $$('.filter').forEach((item) => item.classList.remove('active')); button.classList.add('active'); state.scriptFilter = button.dataset.filter; renderScripts(); }));
   ['filterCn', 'filterOriginal', 'filterBilingual'].forEach((id) => { const input = $('#' + id); if (input) input.addEventListener('change', () => { state[id] = input.checked; renderScripts(); }); });
   $('#recommendBtn')?.addEventListener('click', () => renderRecommendations($('#ideaInput').value));
@@ -865,7 +867,40 @@ function renderRecommendations(input) { const container = $('#recommendations');
 function buildOutline(framework, idea, index) { const protagonist = extractProtagonist(idea) || '主角'; return { title: `方向 ${index + 1}｜${framework.name}`, type: framework.typeTitle, premise: `用「${framework.name}」处理这个故事：${idea}`, acts: framework.template.map((line) => line.replace(/^起：|^承：|^转：|^合：/, '')), scenes: framework.beats.slice(0, 7).map((beat, i) => `${i + 1}. ${beat}：围绕“${idea.slice(0, 28)}${idea.length > 28 ? '…' : ''}”设置一场可见行动。`), characters: [`${protagonist}：带着明确欲望进入故事，核心盲点与「${framework.conflict}」相连。`, '对手/阻力：不只是阻挠主角，而是代表主角必须面对的价值代价。', '关系角色：负责揭开秘密、制造选择或让主角看到另一种生活可能。'], reason: framework.matchReason || framework.summary }; }
 function extractProtagonist(idea) { const match = idea.match(/一个([^，。；、\s]{1,8})|一位([^，。；、\s]{1,8})|([^，。；、\s]{1,8})(为了|想要|试图)/); return match ? (match[1] || match[2] || match[3]) : ''; }
 function renderOutlines(input) { const idea = input.trim(); const container = $('#outlineResults'); if (!idea) { container.innerHTML = '<div class="empty-state">先输入故事梗概，系统会生成 5 个不同框架的大纲方向。</div>'; return; } const outlines = recommendFrameworks(idea, 5).map((framework, index) => buildOutline(framework, idea, index)); container.innerHTML = outlines.map((outline) => `<article class="outline-card"><div class="script-top"><span class="script-status">${esc(outline.type)}</span><span>可继续深化</span></div><h3>${esc(outline.title)}</h3><p class="script-summary">${esc(outline.premise)}</p><div class="detail-block"><h4>起承转合</h4>${listMarkup(outline.acts)}</div><div class="detail-block"><h4>关键场景</h4>${listMarkup(outline.scenes)}</div><div class="detail-block"><h4>人物设定建议</h4>${listMarkup(outline.characters)}</div><p class="source-line">推荐理由：${esc(outline.reason)}</p></article>`).join(''); }
-function renderParallelReadings() { if (!$('#parallelList') || !parallelReadings?.length) return; $('#parallelList').innerHTML = parallelReadings.map((item) => `<button class="parallel-tab ${item.id === state.selectedParallelId ? 'active' : ''}" data-id="${item.id}"><strong>${esc(item.title)}</strong><span>${esc(item.author)}</span></button>`).join(''); $('#parallelList').querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); })); const item = parallelReadings.find(p => p.id === state.selectedParallelId) || parallelReadings[0]; $('#parallelReader').innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(item.source)}</p></div><span class="pill">逐段对照</span></div><div class="parallel-columns"><div class="parallel-col"><h4>原文</h4>${item.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.original)}</p>`).join('')}</div><div class="parallel-col"><h4>汉译</h4>${item.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.chinese)}</p>`).join('')}</div></div>`; }
+function getParallelItems() {
+  const segmentMap = new Map((parallelReadings || []).map((item) => [item.title, item]));
+  return scriptLibrary.filter((item) => item.chineseLink && item.link).map((item) => ({ ...item, parallelDetail: segmentMap.get(item.title) })).sort((a, b) => `${a.author}${a.title}`.localeCompare(`${b.author}${b.title}`, 'zh-Hans-CN'));
+}
+function matchesParallelQuery(item) {
+  if (!state.parallelQuery) return true;
+  return searchableTextForScript(item).includes(state.parallelQuery);
+}
+function renderParallelReadings() {
+  const listBox = $('#parallelList');
+  const reader = $('#parallelReader');
+  if (!listBox || !reader) return;
+  const items = getParallelItems().filter(matchesParallelQuery);
+  if (!items.length) {
+    listBox.innerHTML = '<div class="empty-state">未找到可对照阅读的剧本。</div>';
+    reader.innerHTML = '<div class="empty-state">请尝试搜索其他剧名或作者。</div>';
+    return;
+  }
+  if (!items.some((item) => parallelKey(item) === state.selectedParallelId)) state.selectedParallelId = parallelKey(items[0]);
+  let currentAuthor = '';
+  listBox.innerHTML = items.map((item) => {
+    const key = parallelKey(item);
+    const group = item.author !== currentAuthor ? `<p class="parallel-author-group">${esc(item.author)}</p>` : '';
+    currentAuthor = item.author;
+    return `${group}<button class="parallel-tab ${key === state.selectedParallelId ? 'active' : ''}" data-id="${esc(key)}"><strong>${esc(item.title)}</strong><span>${esc(item.author)}</span></button>`;
+  }).join('');
+  listBox.querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); }));
+  const item = items.find((entry) => parallelKey(entry) === state.selectedParallelId) || items[0];
+  const detail = item.parallelDetail;
+  const source = detail?.source || `${item.author} · ${item.sourceInstitution || '剧本库'}`;
+  const body = detail?.segments?.length ? `<div class="parallel-columns"><div class="parallel-col"><h4>原文</h4>${detail.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.original)}</p>`).join('')}</div><div class="parallel-col"><h4>汉译</h4>${detail.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.chinese)}</p>`).join('')}</div></div>` : `<div class="parallel-columns parallel-iframe-columns"><div class="parallel-col"><h4>中文译本</h4><iframe src="${esc(item.chineseLink)}" title="${esc(item.title)} 中文译本" loading="lazy"></iframe></div><div class="parallel-col"><h4>原文</h4><iframe src="${esc(item.link)}" title="${esc(item.title)} 原文" loading="lazy"></iframe></div></div>`;
+  reader.innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(source)}</p></div><span class="pill">${detail?.segments?.length ? '逐段对照' : '双栏全文'}</span></div>${body}`;
+}
+function parallelKey(item) { return `${item.title}__${item.author}`; }
 function matchesFilter(item) { return state.scriptFilter === 'all' || (state.scriptFilter === 'public' && item.type === 'public') || (state.scriptFilter === 'copyright' && item.type === 'copyright') || (state.scriptFilter === 'cn' && item.region === 'cn') || (state.scriptFilter === 'zx60' && item.isZhongxi60) || (state.scriptFilter === 'award' && (item.region === 'award' || item.tags.some((tag) => ['普利策', '诺贝尔文学奖', '托尼奖'].includes(tag)))); }
 function matchesBilingual(item) { if (state.filterCn && !item.hasChineseVersion) return false; if (state.filterOriginal && !item.hasOriginalVersion) return false; if (state.filterBilingual && !item.isBilingualReady) return false; return true; }
 function searchableTextForScript(item) { return [item.title, item.author, ...(item.authorAliases || []), item.year, item.summary, item.framework, item.tags.join(' '), item.originalVersion?.title, ...(item.chineseVersions || []).map(v => [v.translator, v.publisher, v.isbn].join(' '))].join(' ').toLowerCase(); }

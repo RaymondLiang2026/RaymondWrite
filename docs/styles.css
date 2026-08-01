@@ -568,6 +568,8 @@ ol { margin: 0; padding-left: 22px; color: var(--muted); line-height: 1.8; }
   .parallel-layout, .parallel-columns { grid-template-columns: 1fr; }
   .parallel-reader-head { flex-direction: column; }
   .version-row { grid-template-columns: 1fr; }
+  /* 移动端单列时，点击剧名滚动到对照面板，预留固定导航高度避免被遮挡 */
+  .parallel-reader { scroll-margin-top: 88px; }
 }
 
 /* Minimal home layout revision */
@@ -2611,7 +2613,7 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 24px;
   padding: 14px 18px;
   border: 1px solid var(--line);
@@ -2647,17 +2649,18 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
   animation: sparkTwinkle 1.35s ease-in-out infinite;
 }
 .nav-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  flex: 1 1 auto;
+  min-width: 0;
+  transform: none;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 80px;
   flex-wrap: nowrap;
 }
-/* 登录/注册回到导航栏最右侧（nav-links 绝对居中脱离文档流，auth-panel 需 margin-left:auto 推到右端） */
-.auth-panel { margin-left: auto; flex: 0 0 auto; }
+/* 登录/注册固定在导航栏最右侧；nav-links 用 flex:1 占据中段并居中，绝不再脱离文档流导致宽度坍缩 */
+.auth-panel { flex: 0 0 auto; margin-left: 0; }
 .nav-dropdown { position: relative; }
 .nav-dropdown::before {
   content: '';
@@ -2697,6 +2700,7 @@ body[data-route="home"] main { min-height: calc(100vh - 78px); }
   font: inherit;
   font-weight: 900;
   cursor: pointer;
+  white-space: nowrap;
   transition: color 200ms ease;
 }
 .nav-parent::before {

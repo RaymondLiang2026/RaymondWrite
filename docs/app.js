@@ -981,13 +981,32 @@ function renderParallelReadings() {
     currentAuthor = item.author;
     return `${group}<button class="parallel-tab ${key === state.selectedParallelId ? 'active' : ''}" data-id="${esc(key)}"><strong>${esc(item.title)}</strong><span>${esc(item.author)}</span></button>`;
   }).join('');
-  listBox.querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); }));
+  listBox.querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); revealParallelReaderOnMobile(); }));
   const item = items.find((entry) => parallelKey(entry) === state.selectedParallelId) || items[0];
   const source = item.parallelText?.cn?.length ? `${item.author} · 内嵌公版摘录` : `${item.author} · ${item.sourceInstitution || '剧本库'}`;
   reader.innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(source)}</p></div><span class="pill">${item.parallelText?.cn?.length ? '内嵌对照' : '外链阅读'}</span></div>${parallelReaderBody(item)}`;
   bindParallelScrollSync(reader);
 }
 function parallelKey(item) { return `${item.title}__${item.author}`; }
+// 移动端（≤900px 单列布局）点击剧名后，把对照阅读面板滚动进视口，避免用户误以为“无响应”。
+function revealParallelReaderOnMobile() {
+  try {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
+    const reader = document.getElementById('parallelReader');
+    if (!reader) return;
+    window.requestAnimationFrame(() => {
+      try {
+        if (typeof reader.scrollIntoView === 'function') {
+          reader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo(0, reader.getBoundingClientRect().top + window.pageYOffset - 88);
+        }
+      } catch (e) {
+        window.scrollTo(0, reader.getBoundingClientRect().top + window.pageYOffset - 88);
+      }
+    });
+  } catch (e) { /* 静默失败，不影响原有渲染 */ }
+}
 function matchesFilter(item) { return state.scriptFilter === 'all' || (state.scriptFilter === 'public' && item.type === 'public') || (state.scriptFilter === 'copyright' && item.type === 'copyright') || (state.scriptFilter === 'cn' && item.region === 'cn') || (state.scriptFilter === 'zx60' && item.isZhongxi60) || (state.scriptFilter === 'award' && (item.region === 'award' || item.tags.some((tag) => ['普利策', '诺贝尔文学奖', '托尼奖'].includes(tag)))); }
 function matchesBilingual(item) { if (state.filterCn && !item.hasChineseVersion) return false; if (state.filterOriginal && !item.hasOriginalVersion) return false; if (state.filterBilingual && !item.isBilingualReady) return false; return true; }
 function searchableTextForScript(item) { return [item.title, item.author, ...(item.authorAliases || []), item.year, item.summary, item.framework, item.tags.join(' '), item.originalVersion?.title, ...(item.chineseVersions || []).map(v => [v.translator, v.publisher, v.isbn].join(' '))].join(' ').toLowerCase(); }

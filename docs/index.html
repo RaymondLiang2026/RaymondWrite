@@ -17,15 +17,29 @@
     <nav class="nav fixed-nav">
       <a class="brand" href="/RaymondWrite/" data-route><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" role="img" focusable="false"><defs><linearGradient id="sparkGradient" x1="8" y1="2" x2="24" y2="30" gradientUnits="userSpaceOnUse"><stop stop-color="#FB923C"/><stop offset="1" stop-color="#F97316"/></linearGradient></defs><path class="spark-core" d="M16.8 2.8c1.7 4.7-.4 7.2-2.4 9.1-1.5 1.4-2.5 2.8-1.6 5 1.4-1.9 3.4-3.2 5.9-3.7-.3 2.1.5 3.6 1.8 5.1 1.2 1.4 2.1 2.9 2.1 5 0 4-3.1 6.7-7 6.7-4.2 0-7.4-2.8-7.4-7.1 0-3.7 2.1-6.2 4.3-8.5 2.2-2.3 4.3-4.7 4.3-11.6Z"/><path class="spark-flicker" d="M23.9 5.1l.9 2.8 2.8.9-2.8.9-.9 2.8-.9-2.8-2.8-.9 2.8-.9.9-2.8ZM7.3 7.7l.6 1.8 1.8.6-1.8.6-.6 1.8-.6-1.8-1.8-.6 1.8-.6.6-1.8Z"/></svg></span><span>Spark</span></a>
       <button class="menu-toggle" id="menuToggle" aria-label="展开导航" aria-expanded="false">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="/RaymondWrite/" data-route>首页</a>
-        <a href="/RaymondWrite/community" data-route>社区</a>
-        <a href="/RaymondWrite/leaderboard" data-route>排行榜</a>
-        <a href="/RaymondWrite/inspiration" data-route>今日灵感</a>
-        <a href="/RaymondWrite/#chat">AI 创作</a>
-        <a href="/RaymondWrite/directory" data-route>框架库</a>
-        <a href="/RaymondWrite/library" data-route>剧本库</a>
-        <a href="/RaymondWrite/parallel" data-route>对照阅读</a>
+      <div class="nav-links dropdown-nav" id="navLinks" aria-label="主导航">
+        <div class="nav-dropdown" data-nav-group="creation">
+          <button class="nav-parent button-reset" type="button" aria-haspopup="true" aria-expanded="false">创作</button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="/RaymondWrite/#chat" role="menuitem">AI 创作</a>
+            <a href="/RaymondWrite/inspiration" data-route role="menuitem">今日灵感</a>
+          </div>
+        </div>
+        <div class="nav-dropdown" data-nav-group="resources">
+          <button class="nav-parent button-reset" type="button" aria-haspopup="true" aria-expanded="false">资源</button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="/RaymondWrite/directory" data-route role="menuitem">框架库</a>
+            <a href="/RaymondWrite/library" data-route role="menuitem">剧本库</a>
+            <a href="/RaymondWrite/parallel" data-route role="menuitem">对照阅读</a>
+          </div>
+        </div>
+        <div class="nav-dropdown" data-nav-group="community">
+          <button class="nav-parent button-reset" type="button" aria-haspopup="true" aria-expanded="false">社区</button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="/RaymondWrite/community" data-route role="menuitem">社区广场</a>
+            <a href="/RaymondWrite/leaderboard" data-route role="menuitem">排行榜</a>
+          </div>
+        </div>
       </div>
       <div class="auth-panel" id="authPanel"><button id="loginOpenBtn" class="secondary-btn button-reset compact-btn">登录/注册</button></div>
     </nav>
@@ -204,5 +218,6 @@
     <script src="./extended-data.js"></script>
     <script src="./app.js"></script>
     <script src="./mobile-enhance.js"></script>
+    <script src="./nav-enhance.js"></script>
   </body>
 </html>

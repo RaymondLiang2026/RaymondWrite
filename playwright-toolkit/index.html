@@ -162,7 +162,7 @@
       </section>
 
       <section class="section library secondary-page route-page" id="library">
-        <div class="section-heading library-heading"><div><p class="eyebrow">Library 02</p><h2>剧本库</h2></div><div class="search-box"><span class="material-symbols-outlined">search</span><input id="scriptSearch" type="search" placeholder="搜索标题、作者、译者、出版社、类型标签…" /></div></div>
+        <div class="section-heading library-heading"><div><p class="eyebrow">Library 02</p><h2>剧本库</h2></div><div class="library-search-wrap"><div class="search-box"><span class="material-symbols-outlined">search</span><input id="scriptSearch" type="search" placeholder="搜索标题、作者、译者、出版社、类型标签…" autocomplete="off" /></div><div class="author-autocomplete" id="authorAutocomplete" hidden></div></div></div>
         <div class="library-controls"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="public">公版/权威全文</button><button class="filter" data-filter="copyright">版权索引</button><button class="filter" data-filter="cn">中文剧目</button><button class="filter" data-filter="award">获奖/近现代</button><button class="filter" data-filter="zx60">中戏60本</button></div>
         <div class="bilingual-filters"><label><input type="checkbox" id="filterCn" /> 只看有汉译版</label><label><input type="checkbox" id="filterOriginal" /> 只看有原文版</label><label><input type="checkbox" id="filterBilingual" /> 只看双语齐全</label></div>
         <div class="library-stats" id="libraryStats"></div><div id="scriptGrid" class="script-grid"></div>
@@ -192,6 +192,10 @@
 
     <div class="modal framework-modal" id="frameworkModal" role="dialog" aria-modal="true" aria-label="框架详情视频弹窗">
       <div class="modal-card framework-modal-card"><button class="modal-close button-reset" id="frameworkModalCloseBtn">×</button><div id="frameworkModalBody" class="framework-modal-body"></div></div>
+    </div>
+
+    <div class="modal parallel-reader-modal" id="parallelModal" role="dialog" aria-modal="true" aria-label="剧本对照阅读弹窗">
+      <div class="modal-card parallel-reader-modal-card"><div class="parallel-modal-head"><h2 id="parallelModalTitle">对照阅读</h2><button class="modal-close button-reset" id="parallelModalCloseBtn">×</button></div><div id="parallelModalBody" class="parallel-modal-body"></div></div>
     </div>
 
     <footer class="footer"><p>Spark · 写作工具 · 用户社区 · 排行榜 · 今日灵感</p><a href="/" data-route>回到首页</a></footer>

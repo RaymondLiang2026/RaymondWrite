@@ -90,7 +90,9 @@ async function init() {
 }
 
 function bindEvents() {
-  $('#scriptSearch')?.addEventListener('input', (event) => { state.scriptQuery = event.target.value.trim().toLowerCase(); renderScripts(); });
+  $('#scriptSearch')?.addEventListener('input', (event) => { state.scriptQuery = event.target.value.trim().toLowerCase(); renderScripts(); renderAuthorAutocomplete(event.target.value); });
+  $('#scriptSearch')?.addEventListener('focus', (event) => renderAuthorAutocomplete(event.target.value));
+  $('#scriptSearch')?.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeAuthorAutocomplete(); });
   $$('.filter').forEach((button) => button.addEventListener('click', () => { $$('.filter').forEach((item) => item.classList.remove('active')); button.classList.add('active'); state.scriptFilter = button.dataset.filter; renderScripts(); }));
   ['filterCn', 'filterOriginal', 'filterBilingual'].forEach((id) => { const input = $('#' + id); if (input) input.addEventListener('change', () => { state[id] = input.checked; renderScripts(); }); });
   $('#recommendBtn')?.addEventListener('click', () => renderRecommendations($('#ideaInput').value));
@@ -104,6 +106,8 @@ function bindEvents() {
   $('#authCloseBtn')?.addEventListener('click', () => closeModal('authModal'));
   $('#frameworkModalCloseBtn')?.addEventListener('click', closeFrameworkModal);
   $('#frameworkModal')?.addEventListener('click', (event) => { if (event.target.id === 'frameworkModal') closeFrameworkModal(); });
+  $('#parallelModalCloseBtn')?.addEventListener('click', closeParallelModal);
+  $('#parallelModal')?.addEventListener('click', (event) => { if (event.target.id === 'parallelModal') closeParallelModal(); });
   $('#publishCloseBtn')?.addEventListener('click', () => closeModal('publishModal'));
   $('#publishOpenBtn')?.addEventListener('click', () => ensureLogin(() => openModal('publishModal')));
   $('#authLoginBtn')?.addEventListener('click', () => loginOrSignup('login'));
@@ -132,6 +136,7 @@ function bindEvents() {
   $$('#modeDropdown .mode-dropdown-item').forEach((button) => button.addEventListener('click', () => setChatMode(button.dataset.mode)));
   document.addEventListener('click', (event) => {
     if (!event.target.closest('.framework-picker') && !event.target.closest('#frameworkMentionBtn')) closeFrameworkPicker();
+    if (!event.target.closest('#authorAutocomplete') && !event.target.closest('#scriptSearch')) closeAuthorAutocomplete();
     if (!event.target.closest('.model-picker')) closeModelPicker();
     if (!event.target.closest('.mode-select-wrapper')) closeModeDropdown();
   });
@@ -863,12 +868,67 @@ function renderOutlines(input) { const idea = input.trim(); const container = $(
 function renderParallelReadings() { if (!$('#parallelList') || !parallelReadings?.length) return; $('#parallelList').innerHTML = parallelReadings.map((item) => `<button class="parallel-tab ${item.id === state.selectedParallelId ? 'active' : ''}" data-id="${item.id}"><strong>${esc(item.title)}</strong><span>${esc(item.author)}</span></button>`).join(''); $('#parallelList').querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); })); const item = parallelReadings.find(p => p.id === state.selectedParallelId) || parallelReadings[0]; $('#parallelReader').innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(item.source)}</p></div><span class="pill">逐段对照</span></div><div class="parallel-columns"><div class="parallel-col"><h4>原文</h4>${item.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.original)}</p>`).join('')}</div><div class="parallel-col"><h4>汉译</h4>${item.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.chinese)}</p>`).join('')}</div></div>`; }
 function matchesFilter(item) { return state.scriptFilter === 'all' || (state.scriptFilter === 'public' && item.type === 'public') || (state.scriptFilter === 'copyright' && item.type === 'copyright') || (state.scriptFilter === 'cn' && item.region === 'cn') || (state.scriptFilter === 'zx60' && item.isZhongxi60) || (state.scriptFilter === 'award' && (item.region === 'award' || item.tags.some((tag) => ['普利策', '诺贝尔文学奖', '托尼奖'].includes(tag)))); }
 function matchesBilingual(item) { if (state.filterCn && !item.hasChineseVersion) return false; if (state.filterOriginal && !item.hasOriginalVersion) return false; if (state.filterBilingual && !item.isBilingualReady) return false; return true; }
-function matchesQuery(item) { if (!state.scriptQuery) return true; return [item.title, item.author, item.year, item.summary, item.framework, item.tags.join(' '), item.originalVersion?.title, ...(item.chineseVersions || []).map(v => [v.translator, v.publisher, v.isbn].join(' '))].join(' ').toLowerCase().includes(state.scriptQuery); }
+function searchableTextForScript(item) { return [item.title, item.author, ...(item.authorAliases || []), item.year, item.summary, item.framework, item.tags.join(' '), item.originalVersion?.title, ...(item.chineseVersions || []).map(v => [v.translator, v.publisher, v.isbn].join(' '))].join(' ').toLowerCase(); }
+function matchesQuery(item) { if (!state.scriptQuery) return true; return searchableTextForScript(item).includes(state.scriptQuery); }
+function getAuthorDisplayNames(author, aliases = []) {
+  const candidates = [author, ...aliases].filter(Boolean);
+  const chinese = candidates.find((name) => /[\u4e00-\u9fa5]/.test(name)) || author;
+  const english = candidates.find((name) => /^[A-Za-zÀ-ž .'-]+$/.test(name) && /[A-Za-z]/.test(name) && name !== chinese) || '';
+  return { chinese, english };
+}
+function getAuthorAutocompleteItems(query) {
+  const clean = String(query || '').trim().toLowerCase();
+  if (!clean) return [];
+  const authorMap = new Map();
+  scriptLibrary.forEach((item) => {
+    if (!searchableTextForScript(item).includes(clean)) return;
+    const key = (item.authorAliases?.[0] || item.author || '').toLowerCase();
+    const current = authorMap.get(key) || { author: item.author, aliases: item.authorAliases || [], titles: [] };
+    if (!current.titles.includes(item.title)) current.titles.push(item.title);
+    current.aliases = [...new Set([...current.aliases, ...(item.authorAliases || [])])];
+    authorMap.set(key, current);
+  });
+  return Array.from(authorMap.values()).slice(0, 8);
+}
+function renderAuthorAutocomplete(query) {
+  const box = $('#authorAutocomplete');
+  if (!box) return;
+  const items = getAuthorAutocompleteItems(query);
+  if (!items.length) { closeAuthorAutocomplete(); return; }
+  box.innerHTML = items.map((item) => {
+    const names = getAuthorDisplayNames(item.author, item.aliases);
+    const works = item.titles.slice(0, 2).join(' / ');
+    return `<button type="button" class="author-suggestion button-reset" data-author="${esc(names.chinese)}"><strong>${esc(names.chinese)}</strong>${names.english ? `<span>${esc(names.english)}</span>` : ''}<em>${esc(works)}</em></button>`;
+  }).join('');
+  box.hidden = false;
+  box.querySelectorAll('.author-suggestion').forEach((button) => button.addEventListener('click', () => {
+    const input = $('#scriptSearch');
+    if (!input) return;
+    input.value = button.dataset.author;
+    state.scriptQuery = button.dataset.author.toLowerCase();
+    closeAuthorAutocomplete();
+    renderScripts();
+  }));
+}
+function closeAuthorAutocomplete() { const box = $('#authorAutocomplete'); if (box) { box.hidden = true; box.innerHTML = ''; } }
+function hasParallelLinks(item) { return Boolean(item.chineseLink && item.link); }
+function parallelActionMarkup(item) { if (hasParallelLinks(item)) return `<button class="secondary-btn button-reset parallel-open-btn" data-parallel-title="${esc(item.title)}">对照阅读</button>`; if (!item.chineseLink && !item.link) return '<span class="parallel-empty-text">暂无公版对照文本</span>'; return ''; }
+function openParallelModal(item) {
+  const modal = $('#parallelModal');
+  const title = $('#parallelModalTitle');
+  const body = $('#parallelModalBody');
+  if (!modal || !title || !body || !hasParallelLinks(item)) return;
+  title.textContent = item.title;
+  body.innerHTML = `<section class="parallel-frame-col"><div class="parallel-frame-label">中文译本</div><iframe src="${esc(item.chineseLink)}" title="${esc(item.title)} 中文译本" loading="lazy"></iframe></section><section class="parallel-frame-col"><div class="parallel-frame-label">原文</div><iframe src="${esc(item.link)}" title="${esc(item.title)} 原文" loading="lazy"></iframe></section>`;
+  modal.classList.add('open');
+}
+function closeParallelModal() { const modal = $('#parallelModal'); const body = $('#parallelModalBody'); modal?.classList.remove('open'); if (body) body.innerHTML = ''; }
+function bindParallelCardButtons() { $$('.parallel-open-btn').forEach((button) => button.addEventListener('click', () => { const item = scriptLibrary.find((script) => script.title === button.dataset.parallelTitle); if (item) openParallelModal(item); })); }
 function sourceBadge(level) { return `<span class="source-badge ${level || 'biblio'}">${reliabilityLabels[level] || reliabilityLabels.biblio}</span>`; }
 function versionLinks(item) { const cn = (item.chineseVersions || []).map(v => `<div class="version-row">${sourceBadge(v.reliability)}<span><strong>汉译：</strong>${esc(v.translator || '待核验')}｜${esc(v.publisher || '待核验')}${v.isbn ? `｜ISBN ${esc(v.isbn)}` : ''}</span>${v.link ? `<a href="${v.link}" target="_blank" rel="noopener noreferrer">来源</a>` : '<em>无稳定链接</em>'}</div>`).join(''); const ov = item.originalVersion || {}; const original = `<div class="version-row">${sourceBadge(ov.reliability)}<span><strong>原文：</strong>${esc(ov.language || '待核验')}｜${esc(ov.publisher || '待核验')}</span>${ov.link ? `<a href="${ov.link}" target="_blank" rel="noopener noreferrer">来源</a>` : '<em>暂无原文版</em>'}</div>`; return cn + original; }
 function comparisonBlock(item) { if (!item.translationComparisons?.length) return ''; return `<div class="translation-compare"><strong>多译本比较</strong>${item.translationComparisons.map(t => `<p>${esc(t)}</p>`).join('')}</div>`; }
 function renderStats() { const stats = window.libraryExpansionStats || getLibraryStats?.(); if (!stats || !$('#libraryStats')) return; $('#libraryStats').innerHTML = `<span>实际收录 ${stats.total} 条</span><span>中戏60本 ${stats.zhongxi}/60</span><span>有效链接 ${stats.linked} 个</span><span>无链接版本 ${stats.noLink} 个</span><span>剧作家 ${stats.playwrights} 位</span>`; }
-function renderScripts() { if (!$('#scriptGrid')) return; const list = scriptLibrary.filter((item) => matchesFilter(item) && matchesBilingual(item) && matchesQuery(item)); $('#scriptGrid').innerHTML = list.map((item) => { const status = item.type === 'public' ? '公版/权威链接' : '版权索引'; return `<article class="script-card ${item.type} ${item.isZhongxi60 ? 'zx60-card' : ''}"><div class="script-top"><span class="script-status">${status}</span><span>${esc(item.year)}</span></div><h3>${esc(item.title)}</h3><p class="script-author">${esc(item.author)}${item.isZhongxi60 ? ' · 中戏60本' : ''}</p><p class="script-summary">${esc(item.summary)}</p><div class="tag-row">${item.tags.map((tag) => `<span>${esc(tag)}</span>`).join('')}</div><div class="version-box"><h4>版本收录</h4>${versionLinks(item)}</div>${comparisonBlock(item)}<div class="structure-box"><h4>结构拆解</h4><p><strong>幕/场：</strong>${esc(item.structure.acts)}</p><p><strong>转折点：</strong>${esc(item.structure.turns)}</p><p><strong>高潮：</strong>${esc(item.structure.climax)}</p><p><strong>人物弧线：</strong>${esc(item.structure.arcs)}</p></div><div class="script-analysis"><strong>对应框架</strong><p>${esc(item.framework)}</p></div></article>`; }).join('') || '<div class="empty-state">未找到匹配剧本。可以尝试减少关键词，或后续继续补充条目。</div>'; }
+function renderScripts() { if (!$('#scriptGrid')) return; const list = scriptLibrary.filter((item) => matchesFilter(item) && matchesBilingual(item) && matchesQuery(item)); $('#scriptGrid').innerHTML = list.map((item) => { const status = item.type === 'public' ? '公版/权威链接' : '版权索引'; return `<article class="script-card ${item.type} ${item.isZhongxi60 ? 'zx60-card' : ''}"><div class="script-top"><span class="script-status">${status}</span><span>${esc(item.year)}</span></div><h3>${esc(item.title)}</h3><p class="script-author">${esc(item.author)}${item.isZhongxi60 ? ' · 中戏60本' : ''}</p><p class="script-summary">${esc(item.summary)}</p><div class="tag-row">${item.tags.map((tag) => `<span>${esc(tag)}</span>`).join('')}</div><div class="version-box"><h4>版本收录</h4>${versionLinks(item)}</div>${comparisonBlock(item)}<div class="structure-box"><h4>结构拆解</h4><p><strong>幕/场：</strong>${esc(item.structure.acts)}</p><p><strong>转折点：</strong>${esc(item.structure.turns)}</p><p><strong>高潮：</strong>${esc(item.structure.climax)}</p><p><strong>人物弧线：</strong>${esc(item.structure.arcs)}</p></div><div class="script-analysis"><strong>对应框架</strong><p>${esc(item.framework)}</p></div><div class="script-card-actions">${parallelActionMarkup(item)}</div></article>`; }).join('') || '<div class="empty-state">未找到匹配剧本。可以尝试减少关键词，或后续继续补充条目。</div>'; bindParallelCardButtons(); }
 function dayIndex(total) { const start = new Date(new Date().getFullYear(), 0, 0); return Math.floor((new Date() - start) / 86400000) % Math.max(total, 1); }
 function getDailyVideoSources() { return typeof dailyVideoSources !== 'undefined' ? dailyVideoSources : []; }
 function getDailyVideoSource() { const sources = getDailyVideoSources(); return sources[dayIndex(sources.length || 1)] || sources[0]; }

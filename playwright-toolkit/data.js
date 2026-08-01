@@ -5615,3 +5615,61 @@ libraryExpansion20260801.forEach((script) => {
     script.chineseLink = bestChinese ? bestChinese.link : (script.chineseLink || chineseReadableLink);
   });
 })();
+
+const authorAliasDictionary = {
+  '威廉·莎士比亚': ['威廉·莎士比亚', '莎士比亚', 'William Shakespeare', 'Shakespeare'],
+  'William Shakespeare': ['威廉·莎士比亚', '莎士比亚', 'William Shakespeare', 'Shakespeare'],
+  '契诃夫': ['契诃夫', '安东·契诃夫', 'Anton Chekhov', 'Anton Pavlovich Chekhov', 'Chekhov', 'Tchekhov', 'Чехов', 'Антон Павлович Чехов'],
+  '亨利克·易卜生': ['易卜生', '亨利克·易卜生', 'Henrik Ibsen', 'Henrik Johan Ibsen'],
+  '奥古斯特·斯特林堡': ['斯特林堡', '奥古斯特·斯特林堡', 'August Strindberg', 'Johan August Strindberg'],
+  '奥斯卡·王尔德': ['王尔德', '奥斯卡·王尔德', 'Oscar Wilde', 'Oscar Fingal O\'Flahertie Wills Wilde'],
+  '曹禺': ['曹禺', '万家宝', 'Cao Yu', 'Wan Jiabao'],
+  '田汉': ['田汉', 'Tian Han'],
+  '郭沫若': ['郭沫若', 'Guo Moruo'],
+  '老舍': ['老舍', '舒庆春', 'Lao She', 'Shu Qingchun'],
+  '塞缪尔·贝克特': ['贝克特', '塞缪尔·贝克特', 'Samuel Beckett'],
+  '贝托尔特·布莱希特': ['布莱希特', '贝托尔特·布莱希特', 'Bertolt Brecht', 'Bert Brecht'],
+  '尤金·奥尼尔': ['奥尼尔', '尤金·奥尼尔', 'Eugene O\'Neill', 'Eugene Gladstone O\'Neill'],
+  '阿瑟·米勒': ['阿瑟·米勒', '米勒', 'Arthur Miller'],
+  '田纳西·威廉斯': ['田纳西·威廉斯', 'Tennessee Williams', 'Thomas Lanier Williams'],
+  '哈罗德·品特': ['品特', '哈罗德·品特', 'Harold Pinter'],
+  'Harold Pinter': ['品特', '哈罗德·品特', 'Harold Pinter'],
+  'Jon Fosse': ['约恩·福瑟', '琼·福瑟', 'Jon Fosse'],
+  '让-保罗·萨特': ['萨特', '让-保罗·萨特', 'Jean-Paul Sartre', 'Jean Paul Sartre'],
+  '阿尔贝·卡缪': ['卡缪', '阿尔贝·卡缪', 'Albert Camus'],
+  '汤姆·斯托帕德': ['斯托帕德', '汤姆·斯托帕德', 'Tom Stoppard', 'Tomáš Straussler'],
+  '爱德华·阿尔比': ['阿尔比', '爱德华·阿尔比', 'Edward Albee'],
+  '托尼·库什纳': ['库什纳', '托尼·库什纳', 'Tony Kushner'],
+  '廖一梅': ['廖一梅', 'Liao Yimei'],
+  '孟京辉': ['孟京辉', 'Meng Jinghui'],
+  '史铁生': ['史铁生', 'Shi Tiesheng'],
+  '高行健': ['高行健', 'Gao Xingjian'],
+  '查理·考夫曼': ['查理·考夫曼', 'Charlie Kaufman'],
+  'Charlie Kaufman': ['查理·考夫曼', 'Charlie Kaufman'],
+  '亚伦·索金': ['亚伦·索金', 'Aaron Sorkin'],
+  'Aaron Sorkin': ['亚伦·索金', 'Aaron Sorkin'],
+  '宫崎骏': ['宫崎骏', 'Hayao Miyazaki', '宮崎駿'],
+  '是枝裕和': ['是枝裕和', 'Hirokazu Kore-eda'],
+  '王家卫 / 编剧团队': ['王家卫', '王家衛', 'Wong Kar-wai', 'Wong Kar Wai'],
+  '张艺谋 / 编剧团队': ['张艺谋', '張藝謀', 'Zhang Yimou'],
+  '陈可辛 / 编剧团队': ['陈可辛', '陳可辛', 'Peter Chan', 'Peter Ho-sun Chan'],
+  'Branden Jacobs-Jenkins': ['布兰登·雅各布斯-詹金斯', 'Branden Jacobs-Jenkins', 'Branden Jacobs Jenkins'],
+  'Katori Hall': ['卡托里·霍尔', 'Katori Hall']
+};
+
+function normalizeAuthorAliasesForScriptLibrary() {
+  const splitAuthorParts = (author = '') => String(author).split(/\s*(?:,|\/|、| and | & |，)\s*/).map((part) => part.trim()).filter(Boolean);
+  const unique = (items) => [...new Set(items.map((item) => String(item || '').trim()).filter(Boolean))];
+  const aliasesForAuthor = (author = '') => {
+    const directAliases = authorAliasDictionary[author] || [];
+    const partAliases = splitAuthorParts(author).flatMap((part) => authorAliasDictionary[part] || [part]);
+    return unique([author, ...directAliases, ...partAliases]);
+  };
+  [scriptLibrary, typeof libraryExpansion20260801 !== 'undefined' ? libraryExpansion20260801 : []].filter(Array.isArray).forEach((list) => {
+    list.forEach((script) => {
+      script.authorAliases = unique([...(Array.isArray(script.authorAliases) ? script.authorAliases : []), ...aliasesForAuthor(script.author)]);
+    });
+  });
+}
+
+normalizeAuthorAliasesForScriptLibrary();

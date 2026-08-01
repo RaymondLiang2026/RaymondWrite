@@ -690,12 +690,12 @@ function ensureLogin(next) {
 }
 
 async function loadCommunity() {
-  if (!supabaseClient) return renderCommunityError('Supabase SDK 未加载。');
+  if (!supabaseClient) return renderCommunityError('社区数据暂不可用，请稍后刷新重试。');
   setNotice('');
   if ($('#communityList')) $('#communityList').innerHTML = '<div class="empty-state">正在读取社区作品……</div>';
-  const { data, error } = await supabaseClient.from('scripts').select('id,user_id,title,content,tags,framework_type,likes_count,created_at,profiles(username,avatar_url)').order('created_at', { ascending: false }).limit(100);
-  if (error) return renderCommunityError(`读取作品失败：${error.message}。若尚未建表，请先执行 supabase_schema.sql。`);
-  state.community = data || [];
+  const { data, error } = await fetchCommunityScripts({ limit: 100 });
+  if (error) return renderCommunityError('暂无公开作品。可以登录后发布第一篇。');
+  state.community = data;
   await loadMyLikes();
   renderCommunityList();
 }
@@ -709,6 +709,32 @@ async function loadMyLikes() {
   if (!state.session || !supabaseClient) return;
   const { data } = await supabaseClient.from('likes').select('script_id').eq('user_id', state.session.user.id);
   (data || []).forEach((item) => state.likedScriptIds.add(item.script_id));
+}
+
+function normalizeScripts(data = []) {
+  return (data || []).map((item) => ({
+    ...item,
+    title: item.title || '未命名作品',
+    content: item.content || '',
+    tags: Array.isArray(item.tags) ? item.tags : [],
+    likes_count: Number(item.likes_count || 0),
+    profiles: item.profiles || null
+  }));
+}
+
+async function fetchCommunityScripts({ limit = 100, fromDate = '', orderByLikes = false } = {}) {
+  const columnsWithProfile = 'id,user_id,title,content,tags,framework_type,likes_count,created_at,profiles(username,avatar_url)';
+  const columns = 'id,user_id,title,content,tags,framework_type,likes_count,created_at';
+  const buildQuery = (selectColumns) => {
+    let query = supabaseClient.from('scripts').select(selectColumns).limit(limit);
+    if (fromDate) query = query.gte('created_at', fromDate);
+    if (orderByLikes && state.leaderboardFramework !== 'all') query = query.eq('framework_type', state.leaderboardFramework);
+    return query.order(orderByLikes ? 'likes_count' : 'created_at', { ascending: false });
+  };
+  const primary = await buildQuery(columnsWithProfile);
+  if (!primary.error) return { data: normalizeScripts(primary.data), error: null };
+  const fallback = await buildQuery(columns);
+  return { data: normalizeScripts(fallback.data), error: fallback.error };
 }
 
 function communityMatches(item) {
@@ -814,14 +840,19 @@ function periodStart(period) {
 }
 
 async function loadLeaderboard() {
-  if (!supabaseClient) return;
   const box = $('#leaderboardList');
-  if (box) box.innerHTML = '<div class="empty-state">正在读取排行榜……</div>';
-  let query = supabaseClient.from('scripts').select('id,user_id,title,content,tags,framework_type,likes_count,created_at,profiles(username)').gte('created_at', periodStart(state.leaderboardPeriod)).order('likes_count', { ascending: false }).limit(50);
-  if (state.leaderboardFramework !== 'all') query = query.eq('framework_type', state.leaderboardFramework);
-  const { data, error } = await query;
-  if (error) { box.innerHTML = `<div class="empty-state">排行榜读取失败：${esc(error.message)}</div>`; return; }
-  box.innerHTML = (data || []).map((item, index) => `<article class="rank-row"><strong>${index + 1}</strong><div><h3>${esc(item.title)}</h3><p>${esc(item.profiles?.username || '匿名作者')} · ${esc(item.framework_type || '未分类')}</p></div><span>❤ ${item.likes_count || 0}</span><button class="mini-link" onclick="window.appNavigate('/script/${item.id}')">查看</button></article>`).join('') || '<div class="empty-state">当前时间档暂无作品。</div>';
+  if (!box) return;
+  if (!supabaseClient) {
+    box.innerHTML = '<div class="empty-state">排行榜数据暂不可用，请稍后刷新重试。</div>';
+    return;
+  }
+  box.innerHTML = '<div class="empty-state">正在读取排行榜……</div>';
+  const { data, error } = await fetchCommunityScripts({ limit: 50, fromDate: periodStart(state.leaderboardPeriod), orderByLikes: true });
+  if (error || !data.length) {
+    box.innerHTML = '<div class="empty-state">当前时间档暂无作品。</div>';
+    return;
+  }
+  box.innerHTML = data.map((item, index) => `<article class="rank-row"><strong>${index + 1}</strong><div><h3>${esc(item.title)}</h3><p>${esc(item.profiles?.username || '匿名作者')} · ${esc(item.framework_type || '未分类')}</p></div><span>❤ ${item.likes_count || 0}</span><button class="mini-link" onclick="window.appNavigate('/script/${item.id}')">查看</button></article>`).join('');
 }
 
 function setupRealtimeOrPolling() {

@@ -56,7 +56,8 @@ const state = {
   chatMessages: [],
   selectedChatFramework: '',
   isSending: false,
-  dailyVideoPlaying: false
+  dailyVideoPlaying: false,
+  activeFrameworkModal: null
 };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -101,6 +102,8 @@ function bindEvents() {
   $('#toggleHistoryBtn')?.addEventListener('click', () => $('#challengeHistory')?.classList.toggle('hidden'));
   $('#loginOpenBtn')?.addEventListener('click', () => openModal('authModal'));
   $('#authCloseBtn')?.addEventListener('click', () => closeModal('authModal'));
+  $('#frameworkModalCloseBtn')?.addEventListener('click', closeFrameworkModal);
+  $('#frameworkModal')?.addEventListener('click', (event) => { if (event.target.id === 'frameworkModal') closeFrameworkModal(); });
   $('#publishCloseBtn')?.addEventListener('click', () => closeModal('publishModal'));
   $('#publishOpenBtn')?.addEventListener('click', () => ensureLogin(() => openModal('publishModal')));
   $('#authLoginBtn')?.addEventListener('click', () => loginOrSignup('login'));
@@ -556,6 +559,17 @@ async function sendChatMessage() {
 
 function openModal(id) { $('#' + id)?.classList.add('open'); }
 function closeModal(id) { $('#' + id)?.classList.remove('open'); }
+function videoMarkup(video) {
+  if (!video?.url) return '<div class="framework-video-empty">暂无可稳定嵌入的视频，先保留文字结构。</div>';
+  return `<div class="framework-video"><iframe src="${esc(video.url)}" title="${esc(video.title || '框架讲解视频')}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="framework-video-source">${esc(video.title || '讲解视频')}｜${esc(video.source || 'Video')}</p>`;
+}
+function openFrameworkModal(framework) {
+  if (!framework || !$('#frameworkModalBody')) return;
+  state.activeFrameworkModal = framework;
+  $('#frameworkModalBody').innerHTML = `<div class="detail-header"><span class="material-symbols-outlined">local_movies</span><div><p class="eyebrow">Framework Video</p><h3>${esc(framework.name)}</h3></div></div><p class="source-line">理论来源：${esc(framework.source)}</p><p class="detail-summary">${esc(framework.summary)}</p>${videoMarkup(framework.video)}<div class="detail-block"><h4>模板步骤</h4>${listMarkup(framework.template || [])}</div><div class="detail-block"><h4>节拍列表</h4><div class="beat-flow">${(framework.beats || []).map((beat) => `<span>${esc(beat)}</span>`).join('')}</div></div><div class="detail-block conflict-block"><h4>冲突描述</h4><p>${esc(framework.conflict)}</p></div><div class="detail-block usecase-block"><h4>适用场景</h4><p>${esc(framework.useCase)}</p></div>`;
+  openModal('frameworkModal');
+}
+function closeFrameworkModal() { state.activeFrameworkModal = null; closeModal('frameworkModal'); }
 function setNotice(message, type = 'info') { if ($('#globalNotice')) $('#globalNotice').innerHTML = message ? `<span class="${type}">${esc(message)}</span>` : ''; }
 function setAuthFeedback(message) { if ($('#authFeedback')) $('#authFeedback').textContent = message; }
 function setPublishFeedback(message) { if ($('#publishFeedback')) $('#publishFeedback').textContent = message; }
@@ -836,7 +850,7 @@ function handleDailyVideoAction(event) {
 }
 function getSelectedType() { return storyTypes.find((item) => item.id === state.selectedTypeId) || storyTypes[0]; }
 function renderTypes() { const container = $('#typeList'); if (!container) return; const selected = getSelectedType(); $('#selectedTypeTitle').textContent = selected.title; container.innerHTML = storyTypes.map((item) => `<button class="type-button ${item.id === state.selectedTypeId ? 'active' : ''}" data-id="${item.id}"><span>${item.title}</span><small>${item.frameworks.length} 个框架</small></button>`).join(''); container.querySelectorAll('.type-button').forEach((button) => button.addEventListener('click', () => { state.selectedTypeId = button.dataset.id; state.selectedFrameworkIndex = 0; renderTypes(); renderFrameworks(); })); }
-function renderFrameworks() { const selected = getSelectedType(); if (!$('#frameworkList')) return; $('#selectedTypeTitle').textContent = selected.title; $('#selectedTypeMeta').textContent = selected.meta; $('#selectedTypeDescription').textContent = selected.description; $('#frameworkList').innerHTML = selected.frameworks.map((framework, index) => `<button class="framework-card ${index === state.selectedFrameworkIndex ? 'active' : ''}" data-index="${index}"><span class="framework-index">${String(index + 1).padStart(2, '0')}</span><div><h4>${esc(framework.name)}</h4><p>${esc(framework.summary)}</p><small>${esc(framework.source)}</small></div></button>`).join(''); $('#frameworkList').querySelectorAll('.framework-card').forEach((card) => card.addEventListener('click', () => { state.selectedFrameworkIndex = Number(card.dataset.index); renderFrameworks(); })); renderFrameworkDetail(selected.frameworks[state.selectedFrameworkIndex]); }
+function renderFrameworks() { const selected = getSelectedType(); if (!$('#frameworkList')) return; $('#selectedTypeTitle').textContent = selected.title; $('#selectedTypeMeta').textContent = selected.meta; $('#selectedTypeDescription').textContent = selected.description; $('#frameworkList').innerHTML = selected.frameworks.map((framework, index) => `<button class="framework-card ${index === state.selectedFrameworkIndex ? 'active' : ''}" data-index="${index}" aria-label="打开 ${esc(framework.name)} 详情弹窗"><span class="framework-index">${String(index + 1).padStart(2, '0')}</span><div><h4>${esc(framework.name)}</h4><p>${esc(framework.summary)}</p><small>${esc(framework.source)}</small><span class="video-badge ${framework.video?.url ? '' : 'empty'}">${framework.video?.url ? '含视频讲解' : '文字详情'}</span></div></button>`).join(''); $('#frameworkList').querySelectorAll('.framework-card').forEach((card) => card.addEventListener('click', () => { state.selectedFrameworkIndex = Number(card.dataset.index); renderFrameworks(); openFrameworkModal(selected.frameworks[state.selectedFrameworkIndex]); })); renderFrameworkDetail(selected.frameworks[state.selectedFrameworkIndex]); }
 function jumpToFramework(typeId, frameworkName) { const type = storyTypes.find((item) => item.id === typeId); if (!type) return; state.selectedTypeId = typeId; state.selectedFrameworkIndex = Math.max(0, type.frameworks.findIndex((item) => item.name === frameworkName)); renderTypes(); renderFrameworks(); navigateTo('/directory'); }
 function listMarkup(items) { return `<ol>${items.map((item) => `<li>${esc(item)}</li>`).join('')}</ol>`; }
 function renderFrameworkDetail(framework) { if (!$('#frameworkDetail')) return; $('#frameworkDetail').innerHTML = `<div class="detail-header"><span class="material-symbols-outlined">theater_comedy</span><div><p class="eyebrow">Framework Detail</p><h3>${esc(framework.name)}</h3></div></div><p class="source-line">理论来源：${esc(framework.source)}</p><p class="detail-summary">${esc(framework.summary)}</p><div class="detail-block"><h4>起承转合模板</h4>${listMarkup(framework.template)}</div><div class="detail-block"><h4>节拍 / 幕结构</h4><div class="beat-flow">${framework.beats.map((beat) => `<span>${esc(beat)}</span>`).join('')}</div></div><div class="detail-block conflict-block"><h4>核心冲突设计</h4><p>${esc(framework.conflict)}</p></div><div class="detail-block usecase-block"><h4>适用场景</h4><p>${esc(framework.useCase)}</p><p><strong>人物建议：</strong>${esc(framework.characterAdvice || '可根据人物欲望与阻力继续扩展。')}</p></div>`; }

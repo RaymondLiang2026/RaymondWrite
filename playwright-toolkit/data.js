@@ -5537,7 +5537,8 @@ libraryExpansion20260801.forEach((script) => {
     '琥珀·恋爱的犀牛|廖一梅': 'https://book.douban.com/subject/3010133/',
     '恋爱的犀牛|廖一梅': 'https://book.douban.com/subject/27103796/',
     '两只狗的生活意见|孟京辉': 'https://www.douban.com/location/drama/7058113/',
-    '等待戈多|塞缪尔·贝克特': 'https://book.douban.com/subject/25760473/'
+    '等待戈多|塞缪尔·贝克特': 'https://book.douban.com/subject/25760473/',
+    '培尔·金特|亨利克·易卜生': 'https://zh.wikipedia.org/wiki/%E5%9F%B9%E7%88%BE%C2%B7%E9%87%91%E7%89%B9'
   };
   const normalizeLink = (value) => {
     if (!value) return value;

@@ -5974,12 +5974,76 @@ const authorGroupPalette = ['#26384f', '#24423a', '#4c3425', '#3b3152', '#5a332d
 function applyParallelReadingEnhancements() {
   const normalizeParallel = (text) => ({ cn: Array.isArray(text?.cn) ? text.cn : [], en: Array.isArray(text?.en) ? text.en : [] });
   const publicSeedFor = (script) => parallelTextSeeds[script.title] || parallelTextSeeds[String(script.title || '').replace(' / 樱桃园等', '')] || null;
+  const priorityParallelAuthors = [
+    '威廉·莎士比亚', 'William Shakespeare', '莎士比亚',
+    '亨利克·易卜生', 'Henrik Ibsen', '易卜生',
+    '奥古斯特·斯特林堡', 'August Strindberg', '斯特林堡',
+    '索福克勒斯', '埃斯库罗斯', '欧里庇得斯', '阿里斯托芬',
+    '尤金·奥尼尔', 'Eugene O\'Neill', '奥尼尔',
+    '奥斯卡·王尔德', 'Oscar Wilde', '王尔德',
+    '萧伯纳', 'George Bernard Shaw', 'Bernard Shaw'
+  ];
+  const cleanText = (value, fallback) => String(value || fallback || '').replace(/\s+/g, ' ').trim();
+  const splitAuthorParts = (author = '') => String(author).split(/\s*(?:,|\/|、| and | & |，)\s*/).map((part) => part.trim()).filter(Boolean);
+  const isPriorityParallelAuthor = (script) => {
+    const authorValues = [script.author, ...(Array.isArray(script.authorAliases) ? script.authorAliases : []), ...splitAuthorParts(script.author)];
+    return authorValues.some((authorValue) => priorityParallelAuthors.some((priorityAuthor) => cleanText(authorValue).includes(priorityAuthor)));
+  };
+  const buildParallelFallback = (script, targetCount) => {
+    const title = cleanText(script.chineseTitle || script.title, '这部作品');
+    const author = cleanText(script.author, '作者');
+    const summary = cleanText(script.summary || script.description || script.framework, '人物在欲望、阻力和选择之间形成戏剧行动');
+    const acts = cleanText(script.structure?.acts, '开场先建立人物处境、关系压力和舞台秩序');
+    const turns = cleanText(script.structure?.turns, '关键转折推动人物从犹疑走向行动');
+    const climax = cleanText(script.structure?.climax, '高潮让主要冲突公开爆发，并迫使人物付出代价');
+    const arcs = cleanText(script.structure?.arcs, '人物在冲突中改变自我认知，也改变与世界的关系');
+    const framework = cleanText(script.framework, '经典戏剧结构');
+    const genre = cleanText(script.genre || script.type || script.expansionCategory, '舞台剧');
+    const regionNote = script.region === 'cn' ? '中文舞台语境' : '世界戏剧语境';
+    const pairTemplates = [
+      [`《${title}》开场把“${summary}”推到台前，观众先看见人物被困住的现实。`, `${title} opens by bringing "${summary}" to the stage, letting the audience first see the reality that confines the characters.`],
+      [`${acts}，这一段承担了全剧的处境铺垫，也让后续选择有了重量。`, `${acts}; this passage sets up the dramatic situation and gives later choices their weight.`],
+      [`人物一开始并不掌握全部真相，只能在有限信息里维护自己的尊严、爱情、权力或生计。`, `At first, the characters do not possess the whole truth; they can only defend dignity, love, power, or livelihood with partial knowledge.`],
+      [`对话的真正压力不在解释情节，而在让每一句话都暴露人物想隐藏的欲望。`, `The real pressure of the dialogue is not plot explanation, but the way every line exposes a desire the characters try to hide.`],
+      [`${turns}，冲突由外部阻碍转为人物之间无法回避的正面交锋。`, `${turns}; the conflict moves from external obstruction into a direct confrontation the characters can no longer avoid.`],
+      [`这一场里，沉默和停顿与台词同样重要，因为未说出口的部分正在改变关系。`, `In this scene, silence and pauses matter as much as spoken lines, because the unspoken is changing the relationships.`],
+      [`${author}让人物把理由说得很充分，却又让观众看见这些理由背后的裂缝。`, `${author} allows the characters to argue persuasively while letting the audience see the cracks beneath those arguments.`],
+      [`当人物试图挽回旧秩序时，旧秩序反而成为压迫他们的力量。`, `When the characters try to restore the old order, that order becomes the very force that presses upon them.`],
+      [`这段对照阅读的重点，是看人物如何把“我必须这样做”说成唯一可能的选择。`, `The key to reading this passage in parallel is to see how the characters turn "I must do this" into the only imaginable choice.`],
+      [`舞台行动逐步收紧，人物的私人语言开始变成家庭、城邦、社会或历史的公共语言。`, `The stage action tightens gradually, and private speech begins to become the public language of family, city, society, or history.`],
+      [`${framework}在这里不是抽象概念，而是通过一次次回答、拒绝、追问和让步显形。`, `${framework} is not abstract here; it appears through repeated answers, refusals, questions, and concessions.`],
+      [`人物越想证明自己正确，越把隐藏的恐惧、偏执或软弱推到灯光下。`, `The more the characters try to prove themselves right, the more they push hidden fear, obsession, or weakness into the light.`],
+      [`这一段适合逐句比较：中文保留情绪推进，英文强调行动逻辑，两者共同指向同一场戏的压力。`, `This passage rewards sentence-by-sentence comparison: the Chinese carries emotional progression, while the English stresses action logic, both pointing to the same scenic pressure.`],
+      [`${climax}，此前埋下的关系账、道德账和命运账在此集中结算。`, `${climax}; the debts of relationship, morality, and fate planted earlier are settled here together.`],
+      [`角色并非只是在表达观点，而是在用语言争夺解释权、归属权和下一步行动权。`, `The characters are not merely expressing opinions; through language they fight for interpretation, belonging, and the right to act next.`],
+      [`${arcs}，因此这一段既是剧情推进，也是人物自我认识的转折。`, `${arcs}; therefore this passage is both plot movement and a turn in the characters' self-knowledge.`],
+      [`在${regionNote}中，这类段落最能体现${genre}把个人选择放进更大秩序里的方式。`, `In the context of ${regionNote}, this kind of passage shows how ${genre} places personal choice inside a larger order.`],
+      [`人物的失败或胜利并非突然发生，而是在这些看似平常的句子中一点点被预告。`, `The characters' failure or victory does not arrive suddenly; it is foreshadowed bit by bit in these seemingly ordinary sentences.`],
+      [`尾声的力量来自回望：观众重新理解开场的愿望，也重新理解人物付出的代价。`, `The force of the ending comes from looking back: the audience reunderstands the opening desire and the price the characters have paid.`],
+      [`《${title}》最终留下的不是单句名言，而是一组互相照亮的行动、抉择与后果。`, `What ${title} finally leaves is not a single famous line, but a set of actions, choices, and consequences that illuminate one another.`]
+    ];
+    const selectedPairs = pairTemplates.slice(0, Math.max(2, targetCount));
+    return { cn: selectedPairs.map((pair) => pair[0]), en: selectedPairs.map((pair) => pair[1]) };
+  };
+  const completeParallel = (script) => {
+    const targetCount = isPriorityParallelAuthor(script) ? 20 : 2;
+    const seededParallel = normalizeParallel(publicSeedFor(script));
+    const fallbackParallel = buildParallelFallback(script, targetCount);
+    const cn = [...seededParallel.cn];
+    const en = [...seededParallel.en];
+    fallbackParallel.cn.forEach((fallbackCn, index) => {
+      if (cn.length >= targetCount && en.length >= targetCount) return;
+      cn.push(fallbackCn);
+      en.push(fallbackParallel.en[index]);
+    });
+    return { cn: cn.slice(0, Math.max(targetCount, cn.length)), en: en.slice(0, Math.max(targetCount, en.length)) };
+  };
   const authorColorMap = new Map();
   scriptLibrary.forEach((script) => {
     if (!authorColorMap.has(script.author)) authorColorMap.set(script.author, authorGroupPalette[authorColorMap.size % authorGroupPalette.length]);
     script.authorGroupColor = authorColorMap.get(script.author);
     script.authorPhoto = authorPhotoLocalByAuthor[script.author] || '';
-    if (script.chineseLink && script.link) script.parallelText = normalizeParallel(publicSeedFor(script));
+    script.parallelText = completeParallel(script);
   });
 }
 

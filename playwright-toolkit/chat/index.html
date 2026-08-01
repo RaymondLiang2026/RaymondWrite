@@ -76,7 +76,6 @@
           <div class="home-daily-copy">
             <p class="eyebrow">Daily Scene Map</p>
             <h2 id="homeDailyFrameName">今日框架</h2>
-            <p id="homeDailyFrameSummary">每日桥段结构图正在生成。</p>
             <div id="homeDailyNodes" class="home-daily-nodes"></div>
             <a class="secondary-btn" href="/inspiration" data-route>查看完整动图</a>
           </div>
@@ -90,14 +89,13 @@
         <div class="method-card redirect-card">
           <p class="eyebrow">Tool Upgrade</p>
           <h2>框架匹配已升级为 AI 对话模式</h2>
-          <p>点此进入 →</p>
           <a class="primary-btn" href="/chat" data-route><span class="material-symbols-outlined">auto_awesome</span>进入 AI 创作</a>
         </div>
       </section>
 
       <section class="section community-page route-page" id="communityPage">
         <div class="section-heading library-heading">
-          <div><p class="eyebrow">Community</p><h2>用户社区</h2><p>浏览、搜索、发布剧本或点子；登录后可以点赞、评论和维护自己的作品。</p></div>
+          <div><p class="eyebrow">Community</p><h2>用户社区</h2></div>
           <button id="publishOpenBtn" class="primary-btn button-reset"><span class="material-symbols-outlined">edit_square</span>发布作品</button>
         </div>
         <div class="community-toolbar">
@@ -125,7 +123,7 @@
       </section>
 
       <section class="section leaderboard-page route-page" id="leaderboardPage">
-        <div class="section-heading library-heading"><div><p class="eyebrow">Leaderboard</p><h2>排行榜</h2><p>按点赞数排序展示 Top 50，支持六档时间筛选与框架类型筛选；点赞变化会实时刷新，并保留 30 秒轮询兜底。</p></div></div>
+        <div class="section-heading library-heading"><div><p class="eyebrow">Leaderboard</p><h2>排行榜</h2></div></div>
         <div class="community-toolbar">
           <select id="leaderboardPeriod" class="select-control" aria-label="时间范围">
             <option value="today">今日</option>
@@ -141,37 +139,37 @@
       </section>
 
       <section class="section inspiration-page route-page" id="inspirationPage">
-        <div class="section-heading"><p class="eyebrow">Daily Inspiration</p><h2>今日灵感</h2><p>每日桥段结构图示、今日框架与写作挑战集中在独立页面，主页不再依赖下拉查找内容。</p></div>
+        <div class="section-heading"><p class="eyebrow">Daily Inspiration</p><h2>今日灵感</h2></div>
         <section class="daily-section" id="dailyFramework" aria-label="每日灵感">
           <article class="daily-card daily-visual-card open">
-            <button class="daily-card-toggle button-reset" type="button" aria-expanded="true"><span><span class="eyebrow">Daily Scene Map</span><strong>每日桥段结构图示</strong><small id="dailyScenePreview">真实桥段 + 结构节点 + 视频播放器。</small></span><span class="pill" id="dailyTypeLabel">今日</span></button>
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="true"><span><span class="eyebrow">Daily Scene Map</span><strong>每日桥段结构图示</strong></span><span class="pill" id="dailyTypeLabel">今日</span></button>
             <div class="daily-card-content"><div class="scene-module"><div class="scene-map-panel"><div id="dailyVisual" class="daily-visual" aria-label="每日桥段结构图示"></div></div></div><div id="sceneBreakdown" class="scene-breakdown"></div></div>
           </article>
           <article class="daily-card daily-insight-card">
-            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Daily Card</span><strong id="dailyFrameName">今日框架</strong><small id="dailyFramePreview">展开查看代表作品与核心问题。</small></span><span class="toggle-mark">＋</span></button>
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Daily Card</span><strong id="dailyFrameName">今日框架</strong></span><span class="toggle-mark">＋</span></button>
             <div class="daily-card-content"><p id="dailyFrameDefinition" class="daily-definition"></p><div class="daily-meta"><strong>代表作品</strong><span id="dailyFamousWork"></span></div><div class="daily-meta"><strong>核心创作问题</strong><span id="dailyQuestion"></span></div><div class="daily-actions"><button id="favoriteDailyBtn" class="secondary-btn button-reset">收藏</button><button id="shareDailyBtn" class="secondary-btn button-reset">分享</button></div><p id="dailyActionFeedback" class="tiny-feedback"></p></div>
           </article>
           <article class="daily-card daily-challenge-card">
-            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Prompt Challenge</span><strong>今日框架挑战</strong><small id="challengePreview">展开写下一个冲突片段。</small></span><span class="toggle-mark">＋</span></button>
+            <button class="daily-card-toggle button-reset" type="button" aria-expanded="false"><span><span class="eyebrow">Prompt Challenge</span><strong>今日框架挑战</strong></span><span class="toggle-mark">＋</span></button>
             <div class="daily-card-content"><p id="challengePrompt" class="daily-definition"></p><textarea id="challengeInput" placeholder="如果是我，我会怎么写这个冲突……"></textarea><div class="daily-actions"><button id="submitChallengeBtn" class="primary-btn button-reset">提交到本地记录</button><button id="toggleHistoryBtn" class="secondary-btn button-reset">查看历史</button></div><div id="challengeHistory" class="challenge-history hidden"></div></div>
           </article>
         </section>
       </section>
 
       <section class="section toolkit secondary-page route-page" id="directory">
-        <div class="section-heading"><p class="eyebrow">Library 01</p><h2>框架库</h2><p>按剧本类型分类，不按中西语境分类。写作工具与框架库共用同一套框架数据库。</p></div>
+        <div class="section-heading"><p class="eyebrow">Library 01</p><h2>框架库</h2></div>
         <div class="tool-layout"><aside class="type-panel"><div class="panel-title"><span class="material-symbols-outlined">category</span>剧本类型</div><div id="typeList" class="type-list"></div></aside><section class="framework-panel"><div class="panel-topline"><div><p class="eyebrow">Selected Genre</p><h3 id="selectedTypeTitle">悲剧</h3></div><span id="selectedTypeMeta" class="pill">古典 / 现代 / 社会</span></div><p id="selectedTypeDescription" class="type-description"></p><div id="frameworkList" class="framework-list"></div></section><section class="detail-panel"><div id="frameworkDetail"></div></section></div>
       </section>
 
       <section class="section library secondary-page route-page" id="library">
-        <div class="section-heading library-heading"><div><p class="eyebrow">Library 02</p><h2>剧本库</h2><p>质量优先扩充：中戏 60 本、汉译/原文双版本、来源可信度、多译本比较、标准化结构拆解。</p></div><div class="search-box"><span class="material-symbols-outlined">search</span><input id="scriptSearch" type="search" placeholder="搜索标题、作者、译者、出版社、类型标签…" /></div></div>
+        <div class="section-heading library-heading"><div><p class="eyebrow">Library 02</p><h2>剧本库</h2></div><div class="search-box"><span class="material-symbols-outlined">search</span><input id="scriptSearch" type="search" placeholder="搜索标题、作者、译者、出版社、类型标签…" /></div></div>
         <div class="library-controls"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="public">公版/权威全文</button><button class="filter" data-filter="copyright">版权索引</button><button class="filter" data-filter="cn">中文剧目</button><button class="filter" data-filter="award">获奖/近现代</button><button class="filter" data-filter="zx60">中戏60本</button></div>
         <div class="bilingual-filters"><label><input type="checkbox" id="filterCn" /> 只看有汉译版</label><label><input type="checkbox" id="filterOriginal" /> 只看有原文版</label><label><input type="checkbox" id="filterBilingual" /> 只看双语齐全</label></div>
         <div class="library-stats" id="libraryStats"></div><div id="scriptGrid" class="script-grid"></div>
       </section>
 
       <section class="section parallel secondary-page route-page" id="parallel">
-        <div class="section-heading"><p class="eyebrow">Library 03</p><h2>对照阅读</h2><p>选取公版或可展示短段的经典剧本，左栏原文、右栏汉译，支持逐段对照。版权译本不内嵌全文。</p></div>
+        <div class="section-heading"><p class="eyebrow">Library 03</p><h2>对照阅读</h2></div>
         <div class="parallel-layout"><aside class="parallel-list" id="parallelList"></aside><section class="parallel-reader" id="parallelReader"></section></div>
       </section>
 

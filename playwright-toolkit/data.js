@@ -158,9 +158,9 @@ const storyTypes = [
         "conflict": "人物性格逻辑与世界反作用力持续碰撞。",
         "useCase": "命题型悲剧、人物悲剧。",
         "video": {
-          "url": "",
-          "title": "Lajos Egri premise-driven drama overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
+          "title": "What is Tragedy? Crash Course Theater",
+          "source": "YouTube"
         }
       },
       {
@@ -183,6 +183,84 @@ const storyTypes = [
         ],
         "conflict": "人物被旧类型命运牵引，同时试图重写自己应有的结局。",
         "useCase": "现代反悲剧、女性悲剧改写。",
+        "video": {
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
+          "title": "What is Tragedy? Crash Course Theater",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "命运讽刺结构",
+        "source": "古典悲剧与现代悲剧传统",
+        "summary": "让人物以为自己正在逃离预言或错误，实际每个选择都把他推近结局。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "命运悲剧、家族诅咒、社会寓言。",
+        "video": {
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
+          "title": "What is Tragedy? Crash Course Theater",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "道德盲点灾变结构",
+        "source": "人物悲剧写作法",
+        "summary": "人物并非邪恶，而是在某个道德盲点上持续误判，最终引发不可逆灾变。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "现代心理悲剧、权力悲剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
+          "title": "What is Tragedy? Crash Course Theater",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "牺牲悖论结构",
+        "source": "悲剧牺牲叙事传统",
+        "summary": "角色试图用牺牲拯救他人，却发现牺牲本身也制造新的伤害。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "伦理悲剧、战争悲剧。",
         "video": {
           "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
           "title": "What is Tragedy? Crash Course Theater",
@@ -384,6 +462,84 @@ const storyTypes = [
           "title": "The Save the Cat Beat Sheet: The Ultimate Guide",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "地位游戏喜剧结构",
+        "source": "Keith Johnstone 即兴戏剧理论",
+        "summary": "通过地位升降和权力错位制造笑点，让人物在争夺体面时不断失态。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "职场喜剧、家庭喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
+          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "规则过度执行法",
+        "source": "讽刺喜剧结构",
+        "summary": "人物极其认真地执行荒谬规则，喜剧性来自规则被推到极端。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "制度讽刺、黑色喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
+          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "重复递增笑点结构",
+        "source": "喜剧节奏技法",
+        "summary": "用重复建立预期，再通过幅度递增和最后偏转制造笑点。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "桥段喜剧、情景喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
+          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -552,6 +708,110 @@ const storyTypes = [
           "title": "Writing Comedy: setup, reversal and escalation",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "温柔反讽结构",
+        "source": "现代悲喜剧写作",
+        "summary": "让角色以轻松方式处理沉重现实，结尾以温柔反讽替代胜负宣判。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "生活流、现实题材。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "失败者尊严结构",
+        "source": "小人物悲喜剧传统",
+        "summary": "角色在大目标上失败，却在细小行动中保住尊严。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "小人物故事、都市悲喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "日常裂缝结构",
+        "source": "契诃夫式戏剧传统",
+        "summary": "从日常闲谈和小事件中逐步显露关系裂缝和生活困局。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "家庭戏、生活流。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "苦笑尾声结构",
+        "source": "黑色幽默叙事",
+        "summary": "故事解决表层问题，却用尾声暴露更大的荒诞现实仍在继续。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "黑色幽默、社会悲喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -662,9 +922,9 @@ const storyTypes = [
         "conflict": "主角不是对抗单个敌人，而是被一整张价值网络审视。",
         "useCase": "家庭群像、职场群像。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -716,6 +976,110 @@ const storyTypes = [
         "video": {
           "url": "https://www.youtube.com/embed/1EO7aDRuDws",
           "title": "How To Write A 3 Act Structure For Film",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "制度剖面结构",
+        "source": "现实主义社会剧",
+        "summary": "以一个案件或事件切开制度剖面，让不同角色展示结构性压力。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "职场剧、社会议题剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "家庭伦理审判结构",
+        "source": "家庭正剧传统",
+        "summary": "把家庭聚会或危机变成伦理审判场，让旧账和责任同时浮现。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "家庭剧、代际冲突。",
+        "video": {
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
+          "title": "Building A Scene | Robert McKee",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "多阶层交叉叙事",
+        "source": "群像社会剧结构",
+        "summary": "让不同阶层人物因同一事件交叉，呈现社会问题的多重面向。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "城市群像、社会议题片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "公共事件私人化结构",
+        "source": "现代现实主义影视",
+        "summary": "用公共事件逼出私人关系的真实裂缝，避免议题空转。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "公共议题剧、现实主义长片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
           "source": "YouTube"
         }
       }
@@ -886,9 +1250,113 @@ const storyTypes = [
         "conflict": "历史复杂性与戏剧论点之间互相拉扯。",
         "useCase": "历史反思剧、政治传记。",
         "video": {
-          "url": "",
-          "title": "Lajos Egri premise-driven drama overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "编年断点结构",
+        "source": "历史剧结构法",
+        "summary": "选取历史长河中的关键断点，用断点前后的人物选择串联时代变化。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "编年历史剧、传记片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "传记内在转折结构",
+        "source": "人物传记片写作",
+        "summary": "不按生平流水账推进，而按人物信念变化选取关键事件。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "人物传记、历史人物片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "历史反讽结构",
+        "source": "新历史主义叙事",
+        "summary": "利用观众后见之明，让人物的胜利在历史层面呈现反讽。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "历史反思剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "时代见证人结构",
+        "source": "历史见证叙事",
+        "summary": "以旁观者或边缘人物见证大事件，降低史料压力并提升情感入口。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "战争剧、近现代史。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       }
     ]
@@ -1051,6 +1519,110 @@ const storyTypes = [
         ],
         "conflict": "人物坚持自我定义，但外部世界只承认标签功能。",
         "useCase": "身份荒诞剧、寓言剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "title": "The Theatre of the Absurd",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "语言迷宫结构",
+        "source": "荒诞派戏剧",
+        "summary": "角色不断说话却无法抵达意义，语言本身成为困住人物的迷宫。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "荒诞对话剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "title": "The Theatre of the Absurd",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "任务无限延期结构",
+        "source": "现代荒诞叙事",
+        "summary": "人物执行一个始终不能完成的任务，延期成为存在困境。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "办公室荒诞、寓言剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "title": "The Theatre of the Absurd",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "物件支配结构",
+        "source": "荒诞舞台传统",
+        "summary": "一个物件获得不成比例的重要性，支配人物行动和关系。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "舞台荒诞剧、短片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "title": "The Theatre of the Absurd",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "规则自我繁殖结构",
+        "source": "官僚荒诞叙事",
+        "summary": "规则不断产生新规则，人物逐步忘记原始目标。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "制度讽刺、荒诞现实主义。",
         "video": {
           "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
           "title": "The Theatre of the Absurd",
@@ -1223,6 +1795,110 @@ const storyTypes = [
           "title": "How Musicals Tell Stories",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "十一点钟歌结构",
+        "source": "百老汇音乐剧传统",
+        "summary": "在终局前安排人物最强自我揭示歌曲，推动最后选择。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "音乐剧终局、角色弧线。",
+        "video": {
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "title": "How Musicals Tell Stories",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "二重唱冲突结构",
+        "source": "音乐戏剧写作",
+        "summary": "让两个人在同一旋律或对位旋律中表达相反目标。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "爱情音乐剧、群像音乐剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "title": "How Musicals Tell Stories",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "开场世界规则歌",
+        "source": "音乐剧开场结构",
+        "summary": "用开场号同时交代世界规则、群体关系和主角缺口。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "音乐剧开场、歌舞片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "title": "How Musicals Tell Stories",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "歌舞场面升级结构",
+        "source": "歌舞片结构法",
+        "summary": "每个歌舞段落都必须在情感、关系或公共空间上升级。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "歌舞电影、舞台音乐剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "title": "How Musicals Tell Stories",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -1359,9 +2035,9 @@ const storyTypes = [
         "conflict": "舞台上只有一人，但角色网络在其内心持续争论。",
         "useCase": "多角色独角戏、心理剧。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1386,6 +2062,110 @@ const storyTypes = [
         "video": {
           "url": "https://www.youtube.com/embed/iywvNIWKbPI",
           "title": "Story Structure 101: Super Basic Shit",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "审讯式独白结构",
+        "source": "独角戏与法庭剧传统",
+        "summary": "让观众成为隐形审讯者，独白在辩解与自我暴露之间推进。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "法庭独白、心理独角戏。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "多重自我辩论结构",
+        "source": "心理独白剧",
+        "summary": "同一演员呈现自我内部的多个声音，让冲突在内心舞台化。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "心理剧、创伤叙事。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "现场仪式独白",
+        "source": "仪式剧场与独白剧",
+        "summary": "独白不是回忆，而是一场正在完成的告别、召唤或审判仪式。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "舞台独角戏。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "缺席对象对话结构",
+        "source": "独白剧写作",
+        "summary": "让不在场的人物成为独白对象，推动关系和秘密逐步显影。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "亲密关系独白、悼亡独白。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
           "source": "YouTube"
         }
       }
@@ -1580,6 +2360,84 @@ const storyTypes = [
           "title": "Robert McKee's STORY Seminar - Story Design",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "倒计时惊悚结构",
+        "source": "惊悚片类型法",
+        "summary": "用明确时间限制提高行动压力，让调查变成生存竞赛。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "惊悚片、犯罪片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
+          "title": "How to Write Mystery and Suspense",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "不可靠调查者结构",
+        "source": "心理悬疑传统",
+        "summary": "调查者自身记忆、动机或感知存在裂缝，真相和自我同时被调查。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "心理悬疑、黑色电影。",
+        "video": {
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
+          "title": "How to Write Mystery and Suspense",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "双时间线谜题结构",
+        "source": "悬疑剧集结构",
+        "summary": "过去线提供原因，现在线提供后果，两线在高潮处互相解释。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "悬疑剧、犯罪剧集。",
+        "video": {
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
+          "title": "How to Write Mystery and Suspense",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -1611,9 +2469,9 @@ const storyTypes = [
         "conflict": "人物想得到外部认可，但真正要解决的是自我认同。",
         "useCase": "青春剧、校园剧、职业成长剧。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1693,9 +2551,9 @@ const storyTypes = [
         "conflict": "外部目标越清楚，内部缺口越无法回避。",
         "useCase": "成长片大纲、青年剧集。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1719,9 +2577,9 @@ const storyTypes = [
         "conflict": "主角在他人投射的身份和自我选择之间摇摆。",
         "useCase": "校园群像、成长剧。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1749,6 +2607,110 @@ const storyTypes = [
         "video": {
           "url": "https://www.youtube.com/embed/RG4WcRAgm7Y",
           "title": "Dan Harmon Story Circle explained",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "第一次失去结构",
+        "source": "成长叙事传统",
+        "summary": "通过第一次失去友情、爱情、家庭幻觉或安全感推动成熟。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "青春片、校园剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "成人世界试入结构",
+        "source": "成长剧结构",
+        "summary": "角色短暂进入成人规则世界，在失败中看清真实代价。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "职业成长、青春剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "同伴镜像结构",
+        "source": "青春群像写作",
+        "summary": "用同伴的相似困境和不同选择映照主角成长。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "校园群像、青春剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "身份命名结构",
+        "source": "成长叙事法",
+        "summary": "角色从被他人命名走向自我命名，完成身份主动选择。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "成长片、身份叙事。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
           "source": "YouTube"
         }
       }
@@ -1782,9 +2744,9 @@ const storyTypes = [
         "conflict": "爱要求暴露真实自我，而人物习惯用防御机制保护自己。",
         "useCase": "都市爱情、悲恋、浪漫喜剧。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1915,9 +2877,9 @@ const storyTypes = [
         "conflict": "两人相爱，但关于自由、承诺、牺牲或自我的信念互相排斥。",
         "useCase": "双主角爱情、婚恋正剧。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -1944,6 +2906,84 @@ const storyTypes = [
         "video": {
           "url": "https://www.youtube.com/embed/1EO7aDRuDws",
           "title": "How To Write A 3 Act Structure For Film",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "假关系成真结构",
+        "source": "浪漫喜剧类型法",
+        "summary": "两人因假关系或契约绑定，在表演亲密中暴露真实需求。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "浪漫喜剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
+          "title": "How to Write Romance",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "错过与重逢结构",
+        "source": "爱情片传统",
+        "summary": "通过时间错位、选择错过和重逢考验关系是否成熟。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "成人爱情、年代爱情。",
+        "video": {
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
+          "title": "How to Write Romance",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "亲密恐惧暴露结构",
+        "source": "心理爱情写作",
+        "summary": "角色越接近爱情，越暴露对承诺、依赖或失控的恐惧。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "心理爱情、婚恋剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
+          "title": "How to Write Romance",
           "source": "YouTube"
         }
       }
@@ -2110,9 +3150,113 @@ const storyTypes = [
         "conflict": "作品需要论点清晰，但现实案例不断让论点复杂化。",
         "useCase": "史诗剧、教学剧。",
         "video": {
-          "url": "",
-          "title": "Lajos Egri premise-driven drama overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht and Epic Theatre",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "章节化史诗结构",
+        "source": "布莱希特与史诗剧传统",
+        "summary": "用相对独立章节组织社会命题，让观众在段落间保持判断。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "政治剧、社会寓言。",
+        "video": {
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht and Epic Theatre",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "旁白评论结构",
+        "source": "史诗剧间离手法",
+        "summary": "用旁白、字幕或歌曲直接评论行动，打断沉浸并引导判断。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "史诗剧、教学剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht and Epic Theatre",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "群众场面论证结构",
+        "source": "政治剧场传统",
+        "summary": "让群体行动成为论证单位，展示个人选择背后的社会机制。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "革命史诗、历史寓言。",
+        "video": {
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht and Epic Theatre",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "反英雄史诗结构",
+        "source": "现代史诗叙事",
+        "summary": "拒绝单一英雄拯救逻辑，把英雄神话拆解为集体和制度问题。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "反战争剧、政治寓言。",
+        "video": {
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht and Epic Theatre",
+          "source": "YouTube"
         }
       }
     ]
@@ -2297,6 +3441,110 @@ const storyTypes = [
           "title": "The Save the Cat Beat Sheet: The Ultimate Guide",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "序列法八段结构",
+        "source": "Sequence Approach",
+        "summary": "把长片拆成八个约10-15分钟的序列，每段都有目标、转折和小高潮。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "长片大纲、商业片节奏。",
+        "video": {
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
+          "title": "How To Write A 3 Act Structure For Film",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "五幕式电影结构",
+        "source": "古典戏剧五幕式改写",
+        "summary": "用引入、上升、高潮、下降和结局细分三幕式中段压力。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "类型片、史诗片。",
+        "video": {
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
+          "title": "How To Write A 3 Act Structure For Film",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "迷你电影法",
+        "source": "商业编剧结构法",
+        "summary": "让每个段落都像一部小电影，有开端、发展、转折和钩子。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "商业片、网大结构。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "开场十分钟承诺",
+        "source": "电影开场结构法",
+        "summary": "在前十分钟完成世界、人物缺口、类型承诺和观看理由。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "电影开场、剧本评估。",
+        "video": {
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -2418,9 +3666,9 @@ const storyTypes = [
         "conflict": "人物外在计划与内在弱点持续冲突，直到道德选择迫使其自我揭示。",
         "useCase": "长篇大纲、人物弧线诊断。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -2444,9 +3692,9 @@ const storyTypes = [
         "conflict": "正确答案不能预先宣布，必须由角色行动和代价生成。",
         "useCase": "主题开发、正剧写作。",
         "video": {
-          "url": "",
-          "title": "John Truby Anatomy of Story 22 Steps overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure and Character Arc Overview",
+          "source": "YouTube"
         }
       },
       {
@@ -2495,9 +3743,9 @@ const storyTypes = [
         "conflict": "人物想证明自己的欲望正当，但故事前提不断要求他付出行动代价。",
         "useCase": "故事概念开发、长篇大纲、主题型商业故事。",
         "video": {
-          "url": "",
-          "title": "James N. Frey How to Write a Damn Good Story overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       },
       {
@@ -2521,9 +3769,9 @@ const storyTypes = [
         "conflict": "主角越接近目标，对手越迫使其暴露真正弱点。",
         "useCase": "类型片、悬疑、成长与动作线设计。",
         "video": {
-          "url": "",
-          "title": "James N. Frey How to Write a Damn Good Story overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       },
       {
@@ -2547,9 +3795,9 @@ const storyTypes = [
         "conflict": "主角想追求个人目标，但义务要求他对他人或旧承诺负责。",
         "useCase": "家庭剧、英雄叙事、职业伦理故事。",
         "video": {
-          "url": "",
-          "title": "James N. Frey How to Write a Damn Good Story overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       },
       {
@@ -2599,9 +3847,9 @@ const storyTypes = [
         "conflict": "初稿常有好素材但缺少方向，重写要让每个素材服从主线。",
         "useCase": "二稿重写、剧本医生、结构体检。",
         "video": {
-          "url": "",
-          "title": "Linda Seger Making a Good Script Great overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       },
       {
@@ -2625,9 +3873,9 @@ const storyTypes = [
         "conflict": "人物行动不能只服务情节，必须由其三维条件共同推动。",
         "useCase": "人物小传、角色关系、演员案头分析。",
         "video": {
-          "url": "",
-          "title": "Lajos Egri character dimensions overview",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "Story Structure 101",
+          "source": "YouTube"
         }
       },
       {
@@ -2822,6 +4070,110 @@ const storyTypes = [
           "title": "Save the Cat Beat Sheet — Interstellar Explained in 15 Beats",
           "source": "YouTube"
         }
+      },
+      {
+        "name": "冷开场钩子结构",
+        "source": "电视剧集写作",
+        "summary": "用冷开场先抛出事件、情绪或谜题，再进入片头和主线。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "试播集、单元剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "title": "How to Structure a TV Pilot",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "季中反转结构",
+        "source": "季播剧结构",
+        "summary": "在季中改变主要问题或关系联盟，防止长弧中段松散。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "流媒体季播剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "title": "How to Structure a TV Pilot",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "集尾悬念钩结构",
+        "source": "剧集追看设计",
+        "summary": "每集结尾解决局部问题，同时抛出更强的下一集问题。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "连续剧、短剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "title": "How to Structure a TV Pilot",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "角色轮值主场结构",
+        "source": "群像剧编剧室方法",
+        "summary": "每集让不同角色成为主题主场，长期累积群像厚度。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "群像剧、职场剧。",
+        "video": {
+          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "title": "How to Structure a TV Pilot",
+          "source": "YouTube"
+        }
       }
     ]
   },
@@ -2852,9 +4204,9 @@ const storyTypes = [
         "conflict": "人物必须行动，但行动结果被情境和悬念持续推迟。",
         "useCase": "戏剧性诊断、舞台剧、现实主义影视场景。",
         "video": {
-          "url": "",
-          "title": "中国戏剧理论与戏剧性概述",
-          "source": "待补充"
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
         }
       },
       {
@@ -2876,9 +4228,9 @@ const storyTypes = [
         "conflict": "情境不断变化，人物不能用旧关系解决新压力。",
         "useCase": "四段式大纲、场次推进、戏剧单元结构。",
         "video": {
-          "url": "",
-          "title": "中国戏剧理论与戏剧性概述",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
+          "title": "Building A Scene | Robert McKee",
+          "source": "YouTube"
         }
       },
       {
@@ -2901,9 +4253,9 @@ const storyTypes = [
         "conflict": "人物说话不是为了说明，而是为了争夺、掩饰、诱导或改变局面。",
         "useCase": "对白改写、舞台调度、文本排练。",
         "video": {
-          "url": "",
-          "title": "中国戏剧理论与戏剧性概述",
-          "source": "待补充"
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
         }
       },
       {
@@ -2927,9 +4279,9 @@ const storyTypes = [
         "conflict": "人物面对的不只是对手，也包括处境和自我矛盾。",
         "useCase": "冲突分析、人物关系、社会剧与心理剧。",
         "video": {
-          "url": "",
-          "title": "中国戏剧理论与戏剧性概述",
-          "source": "待补充"
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
         }
       },
       {
@@ -2952,9 +4304,243 @@ const storyTypes = [
         "conflict": "观众既需要追问最终结果，也需要在每场戏中持续等待下一步。",
         "useCase": "悬疑剧、社会议题剧、长片节奏设计。",
         "video": {
-          "url": "",
-          "title": "中国戏剧理论与戏剧性概述",
-          "source": "待补充"
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
+          "title": "Building A Scene | Robert McKee",
+          "source": "YouTube"
+        }
+      },
+      {
+        "name": "孙惠柱：叙事剧与非叙事剧分类",
+        "source": "孙惠柱戏剧理论",
+        "summary": "区分以故事因果推进的叙事剧和以场面、观念、身体或仪式组织的非叙事剧。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "实验戏剧、当代剧场分析。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "孙惠柱《第三种戏剧》跨文化结构",
+        "source": "孙惠柱《第三种戏剧》",
+        "summary": "在传统与现代、东方与西方、文本与剧场之间建立跨文化戏剧结构。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "跨文化剧场、实验戏剧。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "余秋雨：戏剧意识理论",
+        "source": "余秋雨《戏剧理论史稿》",
+        "summary": "从历史脉络理解戏剧意识如何在仪式、审美、冲突和观演关系中形成。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "戏剧理论史、戏剧审美分析。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "余秋雨：观众期待视野结构",
+        "source": "余秋雨戏剧理论",
+        "summary": "把观众的文化经验、审美期待和现场接受纳入戏剧结构判断。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "戏剧接受研究、剧场创作。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "焦菊隐：中国话剧民族化",
+        "source": "焦菊隐导演理论",
+        "summary": "将中国戏曲美学、民族审美和现代话剧现实主义结合，形成民族化话剧表达。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "话剧导演、舞台风格设计。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "焦菊隐：从内部体验出发的导演方法",
+        "source": "焦菊隐导演方法论",
+        "summary": "从人物内部体验出发组织演员、调度和舞台节奏，让外部形式服务内在行动。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "导演案头、演员排练。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "欧阳予倩：现实主义戏剧结构观",
+        "source": "欧阳予倩戏剧理论",
+        "summary": "强调现实生活、人物行动和社会关系的真实组织，以现实主义方法完成戏剧结构。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "现实主义话剧、中国现代戏剧。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "曹禺式结构：雷雨式情境压力",
+        "source": "曹禺《雷雨》结构范本",
+        "summary": "在封闭家庭空间中积压秘密、血缘、欲望和阶级压力，最终集中爆发。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "家庭悲剧、封闭空间正剧。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
+        }
+      },
+      {
+        "name": "曹禺式结构：北京人式慢燃情境",
+        "source": "曹禺《北京人》结构范本",
+        "summary": "以日常消耗、家族衰败和精神困境形成慢燃压力，而非依赖强情节爆点。",
+        "template": [
+          "起：明确人物目标、处境压力和观众期待。",
+          "承：让行动遇到更强阻力，并产生新的关系变化。",
+          "转：在关键节点改变信息、价值或人物策略。",
+          "合：用行动后果回收主题，并留下清晰余味。"
+        ],
+        "beats": [
+          "目标",
+          "阻力",
+          "升级",
+          "转折",
+          "代价",
+          "回收"
+        ],
+        "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
+        "useCase": "家族戏、生活流正剧。",
+        "video": {
+          "url": "//player.bilibili.com/player.html?bvid=BV1xJ411n7mD",
+          "title": "戏剧理论公开课：戏剧结构与戏剧性",
+          "source": "B站"
         }
       }
     ]

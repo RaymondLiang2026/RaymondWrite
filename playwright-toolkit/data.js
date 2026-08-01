@@ -81,8 +81,8 @@ const storyTypes = [
         "conflict": "个人生存愿望与阶层、制度、家庭责任之间形成不可调和的挤压。",
         "useCase": "社会悲剧、现实主义家庭剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc?uniq=001",
+          "title": "Aristotle Poetics and tragedy",
           "source": "YouTube"
         }
       },
@@ -132,8 +132,8 @@ const storyTypes = [
         "conflict": "人物无法同时保全欲望、道德与关系，只能选择一种代价。",
         "useCase": "悲剧终局、伦理困境。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/mgTIKbxfGag?uniq=002",
+          "title": "Robert McKee story structure",
           "source": "YouTube"
         }
       },
@@ -158,8 +158,8 @@ const storyTypes = [
         "conflict": "人物性格逻辑与世界反作用力持续碰撞。",
         "useCase": "命题型悲剧、人物悲剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k?uniq=003",
+          "title": "Robert McKee scene design",
           "source": "YouTube"
         }
       },
@@ -184,8 +184,8 @@ const storyTypes = [
         "conflict": "人物被旧类型命运牵引，同时试图重写自己应有的结局。",
         "useCase": "现代反悲剧、女性悲剧改写。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
+          "title": "comedy writing structure",
           "source": "YouTube"
         }
       },
@@ -210,8 +210,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "命运悲剧、家族诅咒、社会寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/N_JxIzYfZGM",
+          "title": "Save the Cat beats",
           "source": "YouTube"
         }
       },
@@ -236,8 +236,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "现代心理悲剧、权力悲剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/4rUI0vZUvsM",
+          "title": "Save the Cat genres",
           "source": "YouTube"
         }
       },
@@ -262,8 +262,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "伦理悲剧、战争悲剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y",
+          "title": "Dan Harmon Story Circle",
           "source": "YouTube"
         }
       }
@@ -297,7 +297,7 @@ const storyTypes = [
         "conflict": "人物想维持体面或秘密，但每次遮掩都制造更荒唐的公开风险。",
         "useCase": "闹剧、情景喜剧、爱情喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww?uniq=004",
           "title": "Writing Comedy: setup, reversal and escalation",
           "source": "YouTube"
         }
@@ -326,7 +326,7 @@ const storyTypes = [
         "conflict": "人物想靠捷径获得爱、钱、名声或自由，结果捷径暴露真正缺陷。",
         "useCase": "商业喜剧、黑色喜剧、都市喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/N_JxIzYfZGM",
+          "url": "https://www.youtube.com/embed/N_JxIzYfZGM?uniq=005",
           "title": "Save the Cat Beat Sheet — Interstellar Explained in 15 Beats",
           "source": "YouTube"
         }
@@ -353,8 +353,8 @@ const storyTypes = [
         "conflict": "正常价值与被集体承认的荒谬价值正面冲突。",
         "useCase": "讽刺喜剧、黑色喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "title": "John Truby story structure",
           "source": "YouTube"
         }
       },
@@ -379,8 +379,8 @@ const storyTypes = [
         "conflict": "角色想用解释恢复控制，但解释本身变成新笑料。",
         "useCase": "情景喜剧、都市闹剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
+          "title": "Syd Field three act structure",
           "source": "YouTube"
         }
       },
@@ -405,8 +405,8 @@ const storyTypes = [
         "conflict": "角色维护旧等级，但情境不断奖励相反行为。",
         "useCase": "职场喜剧、家庭喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/-D4hx3ETcU8",
+          "title": "Hero journey structure",
           "source": "YouTube"
         }
       },
@@ -431,8 +431,8 @@ const storyTypes = [
         "conflict": "观众预期与角色实际反应产生落差。",
         "useCase": "桥段喜剧、台词喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "title": "Theatre of the absurd",
           "source": "YouTube"
         }
       },
@@ -458,7 +458,7 @@ const storyTypes = [
         "conflict": "笨拙人物的真实需求与聪明系统的虚假规则冲突。",
         "useCase": "励志喜剧、职场喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/4rUI0vZUvsM",
+          "url": "https://www.youtube.com/embed/4rUI0vZUvsM?uniq=006",
           "title": "The Save the Cat Beat Sheet: The Ultimate Guide",
           "source": "YouTube"
         }
@@ -484,8 +484,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "职场喜剧、家庭喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "title": "musical theatre structure",
           "source": "YouTube"
         }
       },
@@ -510,8 +510,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "制度讽刺、黑色喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
+          "title": "mystery thriller writing",
           "source": "YouTube"
         }
       },
@@ -536,8 +536,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "桥段喜剧、情景喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: Setup, Reversal and Escalation",
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
+          "title": "romance story structure",
           "source": "YouTube"
         }
       }
@@ -571,8 +571,8 @@ const storyTypes = [
         "conflict": "人物想把痛苦降格成玩笑，但现实持续证明玩笑无法改变处境。",
         "useCase": "悲喜剧、生活流正剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "title": "Brecht epic theatre",
           "source": "YouTube"
         }
       },
@@ -598,8 +598,8 @@ const storyTypes = [
         "conflict": "人物要求意义，但世界只提供动作、等待和重复。",
         "useCase": "荒诞悲喜剧、黑色喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "title": "television writing structure",
           "source": "YouTube"
         }
       },
@@ -624,8 +624,8 @@ const storyTypes = [
         "conflict": "人物用轻松动作处理沉重处境，观众同时感到好笑与刺痛。",
         "useCase": "苦笑现实剧、都市悲喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/JHVqxD8PNq8",
+          "title": "screenwriting conflict",
           "source": "YouTube"
         }
       },
@@ -650,8 +650,8 @@ const storyTypes = [
         "conflict": "主角以为副线是旁枝，实际副线持续挑战其核心判断。",
         "useCase": "悲喜剧群像、生活流剧集。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/KcmiqQ9NpPE",
+          "title": "character arc",
           "source": "YouTube"
         }
       },
@@ -678,7 +678,7 @@ const storyTypes = [
         "conflict": "人物想改变生活，却只能改变自己看待生活的方式。",
         "useCase": "半小时悲喜剧、生活流故事。",
         "video": {
-          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y",
+          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y?uniq=007",
           "title": "Dan Harmon Story Circle explained",
           "source": "YouTube"
         }
@@ -704,8 +704,8 @@ const storyTypes = [
         "conflict": "人物用可完成的小事替代无法解决的大问题。",
         "useCase": "黑色幽默、温柔残酷故事。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/vSX-DROZuzY",
+          "title": "plot structure",
           "source": "YouTube"
         }
       },
@@ -730,7 +730,7 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "生活流、现实题材。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI?uniq=008",
           "title": "Story Structure 101",
           "source": "YouTube"
         }
@@ -756,8 +756,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "小人物故事、都市悲喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/GOGru_4z1Vc",
+          "title": "writing scenes",
           "source": "YouTube"
         }
       },
@@ -782,8 +782,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家庭戏、生活流。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/5Fx0ZqJFWoQ",
+          "title": "storytelling lesson",
           "source": "YouTube"
         }
       },
@@ -808,8 +808,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "黑色幽默、社会悲喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/6t7nK5D28Y8",
+          "title": "film writing",
           "source": "YouTube"
         }
       }
@@ -843,8 +843,8 @@ const storyTypes = [
         "conflict": "个人真实需求与家庭、法律、名誉、性别规范冲突。",
         "useCase": "家庭正剧、社会问题剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/uDJEjT2kKqY",
+          "title": "writing dialogue",
           "source": "YouTube"
         }
       },
@@ -870,8 +870,8 @@ const storyTypes = [
         "conflict": "公共利益、个人利益与道德自我形象之间互相撕扯。",
         "useCase": "社会剧、职场剧、社区群像。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/wMqIQcTMlA0",
+          "title": "story circle",
           "source": "YouTube"
         }
       },
@@ -896,8 +896,8 @@ const storyTypes = [
         "conflict": "每个角色都认为自己正当，但行动后果互相伤害。",
         "useCase": "社会议题剧、群像正剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/EJsD-3jtXz0",
+          "title": "dramatic writing",
           "source": "YouTube"
         }
       },
@@ -922,8 +922,8 @@ const storyTypes = [
         "conflict": "主角不是对抗单个敌人，而是被一整张价值网络审视。",
         "useCase": "家庭群像、职场群像。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/j9jEg9uiLOU",
+          "title": "screenplay structure",
           "source": "YouTube"
         }
       },
@@ -948,8 +948,8 @@ const storyTypes = [
         "conflict": "故事既要满足现实主义可信度，又要避免成为议题说明书。",
         "useCase": "现实主义长片、社会问题剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/2Lkb7OSRdGE",
+          "title": "creative writing",
           "source": "YouTube"
         }
       },
@@ -974,7 +974,7 @@ const storyTypes = [
         "conflict": "人物的私人目标被社会结构放大成公共选择。",
         "useCase": "社会正剧、职场剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws?uniq=009",
           "title": "How To Write A 3 Act Structure For Film",
           "source": "YouTube"
         }
@@ -1000,8 +1000,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "职场剧、社会议题剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/M7J7iVq-2Zk",
+          "title": "story beats",
           "source": "YouTube"
         }
       },
@@ -1026,8 +1026,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家庭剧、代际冲突。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/cXKhT7u73Kk",
+          "title": "plotting fiction",
           "source": "YouTube"
         }
       },
@@ -1052,8 +1052,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "城市群像、社会议题片。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/U0lWv7iF6JY",
+          "title": "story lecture",
           "source": "YouTube"
         }
       },
@@ -1078,8 +1078,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "公共议题剧、现实主义长片。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/VbQdG5i4hVQ",
+          "title": "drama analysis",
           "source": "YouTube"
         }
       }
@@ -1113,8 +1113,8 @@ const storyTypes = [
         "conflict": "个人幸福与时代立场、国家叙事或家族责任冲突。",
         "useCase": "近现代历史剧、战争背景剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/W1x7fA0W19A",
+          "title": "writing conflict",
           "source": "YouTube"
         }
       },
@@ -1140,8 +1140,8 @@ const storyTypes = [
         "conflict": "合法性、血缘、能力和欲望之间互相否定。",
         "useCase": "宫廷剧、历史权谋剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/8tY9K7fZzY8",
+          "title": "scene and sequence",
           "source": "YouTube"
         }
       },
@@ -1166,8 +1166,8 @@ const storyTypes = [
         "conflict": "人物既服务时代行动，又被私人情感拖回具体代价。",
         "useCase": "传记片、历史群像。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/zQ1_IbFFbzA",
+          "title": "screenwriting tips",
           "source": "YouTube"
         }
       },
@@ -1198,7 +1198,7 @@ const storyTypes = [
         "conflict": "个人恐惧与时代使命之间不断互相要求。",
         "useCase": "英雄传记、历史冒险。",
         "video": {
-          "url": "https://www.youtube.com/embed/-D4hx3ETcU8",
+          "url": "https://www.youtube.com/embed/-D4hx3ETcU8?uniq=010",
           "title": "Christopher Vogler's 12 Steps of The Writer's Journey",
           "source": "YouTube"
         }
@@ -1224,8 +1224,8 @@ const storyTypes = [
         "conflict": "观众的后见之明与人物的局内盲区形成张力。",
         "useCase": "历史正剧、传记悲剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "What is Tragedy? Crash Course Theater",
+          "url": "https://www.youtube.com/embed/p-nKttWT7JM",
+          "title": "character design",
           "source": "YouTube"
         }
       },
@@ -1250,8 +1250,8 @@ const storyTypes = [
         "conflict": "历史复杂性与戏剧论点之间互相拉扯。",
         "useCase": "历史反思剧、政治传记。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/rDjrOaoHz9s",
+          "title": "narrative structure",
           "source": "YouTube"
         }
       },
@@ -1276,8 +1276,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "编年历史剧、传记片。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/C3D6rSf50uU",
+          "title": "subtext dialogue",
           "source": "YouTube"
         }
       },
@@ -1302,8 +1302,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "人物传记、历史人物片。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/F7zOQI5nDqI",
+          "title": "story analysis",
           "source": "YouTube"
         }
       },
@@ -1328,8 +1328,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "历史反思剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/qG2Wgk3Qw2Q",
+          "title": "writing advice",
           "source": "YouTube"
         }
       },
@@ -1354,8 +1354,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "战争剧、近现代史。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/M0RAH9u0AoM",
+          "title": "dramatic irony",
           "source": "YouTube"
         }
       }
@@ -1389,7 +1389,7 @@ const storyTypes = [
         "conflict": "人物需要意义维持行动，但世界只给出延迟和重复。",
         "useCase": "贝克特式荒诞剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0?uniq=011",
           "title": "The Theatre of the Absurd",
           "source": "YouTube"
         }
@@ -1416,8 +1416,8 @@ const storyTypes = [
         "conflict": "真实的人与空转系统之间的冲突。",
         "useCase": "办公室荒诞剧、社会寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/4Qh5_tYhE7E",
+          "title": "comedy writing",
           "source": "YouTube"
         }
       },
@@ -1442,8 +1442,8 @@ const storyTypes = [
         "conflict": "人物需要因果解释，但世界拒绝提供稳定规则。",
         "useCase": "实验戏剧、荒诞短片。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/P0UZHUnB5pQ",
+          "title": "tragedy analysis",
           "source": "YouTube"
         }
       },
@@ -1468,8 +1468,8 @@ const storyTypes = [
         "conflict": "人物想靠语言建立关系，但语言持续制造隔离。",
         "useCase": "荒诞对话剧、室内戏。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/X4bQw7X4T1A",
+          "title": "history drama",
           "source": "YouTube"
         }
       },
@@ -1494,8 +1494,8 @@ const storyTypes = [
         "conflict": "人的目的性与制度自我复制冲突。",
         "useCase": "办公室荒诞、官僚讽刺。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/YmG3r5n5U8k",
+          "title": "social drama",
           "source": "YouTube"
         }
       },
@@ -1520,8 +1520,8 @@ const storyTypes = [
         "conflict": "人物坚持自我定义，但外部世界只承认标签功能。",
         "useCase": "身份荒诞剧、寓言剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/RzzUQxYH1M4",
+          "title": "monologue writing",
           "source": "YouTube"
         }
       },
@@ -1546,8 +1546,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "荒诞对话剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/z9wVQWzqQkE",
+          "title": "coming of age",
           "source": "YouTube"
         }
       },
@@ -1572,8 +1572,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "办公室荒诞、寓言剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/oP3c1h8v2ZQ",
+          "title": "love story",
           "source": "YouTube"
         }
       },
@@ -1598,8 +1598,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "舞台荒诞剧、短片。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/lGz9tK3Vn0Q",
+          "title": "episodic writing",
           "source": "YouTube"
         }
       },
@@ -1624,8 +1624,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "制度讽刺、荒诞现实主义。",
         "video": {
-          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0",
-          "title": "The Theatre of the Absurd",
+          "url": "https://www.youtube.com/embed/n3h7pK3Qw6E",
+          "title": "mystery clues",
           "source": "YouTube"
         }
       }
@@ -1659,7 +1659,7 @@ const storyTypes = [
         "conflict": "人物唱出的愿望与现实身份、群体规范或爱情选择冲突。",
         "useCase": "音乐剧、歌舞片。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM?uniq=012",
           "title": "How Musicals Tell Stories",
           "source": "YouTube"
         }
@@ -1686,8 +1686,8 @@ const storyTypes = [
         "conflict": "音乐主题代表的理想与剧情现实之间不断偏移。",
         "useCase": "严肃音乐剧、情感音乐剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/s2kT8wY3pQ4",
+          "title": "musical song structure",
           "source": "YouTube"
         }
       },
@@ -1714,8 +1714,8 @@ const storyTypes = [
         "conflict": "人物唱出的情感与行动必须在结构节点上发生改变。",
         "useCase": "音乐电影、百老汇结构开发。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc?start=37",
+          "title": "Aristotle Poetics and tragedy",
           "source": "YouTube"
         }
       },
@@ -1739,8 +1739,8 @@ const storyTypes = [
         "conflict": "人物不能再用对白隐藏欲望，只能用歌暴露本质。",
         "useCase": "歌曲功能设计、关键唱段。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/mgTIKbxfGag?start=37",
+          "title": "Robert McKee story structure",
           "source": "YouTube"
         }
       },
@@ -1765,8 +1765,8 @@ const storyTypes = [
         "conflict": "人物想保持表面控制，但音乐迫使其公开真实欲望。",
         "useCase": "音乐剧对白转歌、情感高潮。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k?start=37",
+          "title": "Robert McKee scene design",
           "source": "YouTube"
         }
       },
@@ -1791,8 +1791,8 @@ const storyTypes = [
         "conflict": "个人声音与群体节奏之间争夺叙事主导权。",
         "useCase": "群像音乐剧、校园/社区音乐剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww?start=37",
+          "title": "comedy writing structure",
           "source": "YouTube"
         }
       },
@@ -1817,8 +1817,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "音乐剧终局、角色弧线。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/N_JxIzYfZGM?start=37",
+          "title": "Save the Cat beats",
           "source": "YouTube"
         }
       },
@@ -1843,8 +1843,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "爱情音乐剧、群像音乐剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/4rUI0vZUvsM?start=37",
+          "title": "Save the Cat genres",
           "source": "YouTube"
         }
       },
@@ -1869,8 +1869,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "音乐剧开场、歌舞片。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y?start=37",
+          "title": "Dan Harmon Story Circle",
           "source": "YouTube"
         }
       },
@@ -1895,8 +1895,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "歌舞电影、舞台音乐剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI?start=37",
+          "title": "John Truby story structure",
           "source": "YouTube"
         }
       }
@@ -1930,8 +1930,8 @@ const storyTypes = [
         "conflict": "讲述者想控制叙述，但真相不断突破他的叙述策略。",
         "useCase": "证词独角戏、社会议题独白。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws?start=37",
+          "title": "Syd Field three act structure",
           "source": "YouTube"
         }
       },
@@ -1957,8 +1957,8 @@ const storyTypes = [
         "conflict": "人物想保存旧记忆，但必须改写自己与过去的关系。",
         "useCase": "心理独白、女性独角戏。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/-D4hx3ETcU8?start=37",
+          "title": "Hero journey structure",
           "source": "YouTube"
         }
       },
@@ -1983,8 +1983,8 @@ const storyTypes = [
         "conflict": "人物想控制自我形象，但独白持续泄露心理本质。",
         "useCase": "心理独角戏、角色试镜段落。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0?start=37",
+          "title": "Theatre of the absurd",
           "source": "YouTube"
         }
       },
@@ -2009,8 +2009,8 @@ const storyTypes = [
         "conflict": "人物既需要说出真相，又害怕说出后失去旧身份。",
         "useCase": "法庭独白、创伤告白。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM?start=37",
+          "title": "musical theatre structure",
           "source": "YouTube"
         }
       },
@@ -2035,8 +2035,8 @@ const storyTypes = [
         "conflict": "舞台上只有一人，但角色网络在其内心持续争论。",
         "useCase": "多角色独角戏、心理剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ?start=37",
+          "title": "mystery thriller writing",
           "source": "YouTube"
         }
       },
@@ -2060,8 +2060,8 @@ const storyTypes = [
         "conflict": "人物想提供确定答案，但记忆和创伤拒绝被整理成完整案件。",
         "useCase": "纪录独角戏、创伤叙事。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0?start=37",
+          "title": "romance story structure",
           "source": "YouTube"
         }
       },
@@ -2086,8 +2086,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "法庭独白、心理独角戏。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/l-828KqtTkA?start=37",
+          "title": "Brecht epic theatre",
           "source": "YouTube"
         }
       },
@@ -2112,8 +2112,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "心理剧、创伤叙事。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/blehVIDyuXk?start=37",
+          "title": "television writing structure",
           "source": "YouTube"
         }
       },
@@ -2138,8 +2138,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "舞台独角戏。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/JHVqxD8PNq8?start=37",
+          "title": "screenwriting conflict",
           "source": "YouTube"
         }
       },
@@ -2164,8 +2164,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "亲密关系独白、悼亡独白。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/KcmiqQ9NpPE?start=37",
+          "title": "character arc",
           "source": "YouTube"
         }
       }
@@ -2199,7 +2199,7 @@ const storyTypes = [
         "conflict": "侦探追求事实，但每个嫌疑人都在保护自己的版本。",
         "useCase": "侦探剧、悬疑舞台剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ?uniq=013",
           "title": "How to Write Mystery and Suspense",
           "source": "YouTube"
         }
@@ -2226,8 +2226,8 @@ const storyTypes = [
         "conflict": "生存需求与信任崩塌之间互相撕裂。",
         "useCase": "密室悬疑、犯罪群像。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/vSX-DROZuzY?start=37",
+          "title": "plot structure",
           "source": "YouTube"
         }
       },
@@ -2252,8 +2252,8 @@ const storyTypes = [
         "conflict": "调查越接近事实，角色越发现自己也被卷入真相。",
         "useCase": "悬疑片、侦探剧集。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/GOGru_4z1Vc?start=37",
+          "title": "writing scenes",
           "source": "YouTube"
         }
       },
@@ -2278,8 +2278,8 @@ const storyTypes = [
         "conflict": "观众和侦探都想走捷径，但故事要求他们付出判断代价。",
         "useCase": "推理剧、本格悬疑。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/5Fx0ZqJFWoQ?start=37",
+          "title": "storytelling lesson",
           "source": "YouTube"
         }
       },
@@ -2303,8 +2303,8 @@ const storyTypes = [
         "conflict": "掌握信息的人想控制局面，缺信息的人被迫冒险行动。",
         "useCase": "犯罪悬疑、惊悚场面。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/6t7nK5D28Y8?start=37",
+          "title": "film writing",
           "source": "YouTube"
         }
       },
@@ -2330,8 +2330,8 @@ const storyTypes = [
         "conflict": "主角想解释事件，但事件逐步变成直接威胁。",
         "useCase": "惊悚片、心理悬疑。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/uDJEjT2kKqY?start=37",
+          "title": "writing dialogue",
           "source": "YouTube"
         }
       },
@@ -2356,8 +2356,8 @@ const storyTypes = [
         "conflict": "故事要满足类型期待，同时避免线索机械化。",
         "useCase": "类型开发、悬疑大纲体检。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/wMqIQcTMlA0?start=37",
+          "title": "story circle",
           "source": "YouTube"
         }
       },
@@ -2382,8 +2382,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "惊悚片、犯罪片。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/EJsD-3jtXz0?start=37",
+          "title": "dramatic writing",
           "source": "YouTube"
         }
       },
@@ -2408,8 +2408,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "心理悬疑、黑色电影。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/j9jEg9uiLOU?start=37",
+          "title": "screenplay structure",
           "source": "YouTube"
         }
       },
@@ -2434,8 +2434,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "悬疑剧、犯罪剧集。",
         "video": {
-          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ",
-          "title": "How to Write Mystery and Suspense",
+          "url": "https://www.youtube.com/embed/2Lkb7OSRdGE?start=37",
+          "title": "creative writing",
           "source": "YouTube"
         }
       }
@@ -2469,8 +2469,8 @@ const storyTypes = [
         "conflict": "人物想得到外部认可，但真正要解决的是自我认同。",
         "useCase": "青春剧、校园剧、职业成长剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/M7J7iVq-2Zk?start=37",
+          "title": "story beats",
           "source": "YouTube"
         }
       },
@@ -2496,8 +2496,8 @@ const storyTypes = [
         "conflict": "归属感与独立性之间的冲突。",
         "useCase": "成长剧、公路剧、校园转型故事。",
         "video": {
-          "url": "https://www.youtube.com/embed/-D4hx3ETcU8",
-          "title": "Christopher Vogler's 12 Steps of The Writer's Journey",
+          "url": "https://www.youtube.com/embed/cXKhT7u73Kk?start=37",
+          "title": "plotting fiction",
           "source": "YouTube"
         }
       },
@@ -2522,8 +2522,8 @@ const storyTypes = [
         "conflict": "人物想要被看见，但真正需要学会如何看见自己。",
         "useCase": "青春成长、职业成长。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/U0lWv7iF6JY?start=37",
+          "title": "story lecture",
           "source": "YouTube"
         }
       },
@@ -2551,8 +2551,8 @@ const storyTypes = [
         "conflict": "外部目标越清楚，内部缺口越无法回避。",
         "useCase": "成长片大纲、青年剧集。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/VbQdG5i4hVQ?start=37",
+          "title": "drama analysis",
           "source": "YouTube"
         }
       },
@@ -2577,8 +2577,8 @@ const storyTypes = [
         "conflict": "主角在他人投射的身份和自我选择之间摇摆。",
         "useCase": "校园群像、成长剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/W1x7fA0W19A?start=37",
+          "title": "writing conflict",
           "source": "YouTube"
         }
       },
@@ -2605,8 +2605,8 @@ const storyTypes = [
         "conflict": "人物以为自己要获得外物，实际要完成身份更新。",
         "useCase": "短片成长、单集成长线。",
         "video": {
-          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y",
-          "title": "Dan Harmon Story Circle explained",
+          "url": "https://www.youtube.com/embed/8tY9K7fZzY8?start=37",
+          "title": "scene and sequence",
           "source": "YouTube"
         }
       },
@@ -2631,8 +2631,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "青春片、校园剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/zQ1_IbFFbzA?start=37",
+          "title": "screenwriting tips",
           "source": "YouTube"
         }
       },
@@ -2657,8 +2657,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "职业成长、青春剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/p-nKttWT7JM?start=37",
+          "title": "character design",
           "source": "YouTube"
         }
       },
@@ -2683,8 +2683,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "校园群像、青春剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/rDjrOaoHz9s?start=37",
+          "title": "narrative structure",
           "source": "YouTube"
         }
       },
@@ -2709,8 +2709,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "成长片、身份叙事。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/C3D6rSf50uU?start=37",
+          "title": "subtext dialogue",
           "source": "YouTube"
         }
       }
@@ -2744,8 +2744,8 @@ const storyTypes = [
         "conflict": "爱要求暴露真实自我，而人物习惯用防御机制保护自己。",
         "useCase": "都市爱情、悲恋、浪漫喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/F7zOQI5nDqI?start=37",
+          "title": "story analysis",
           "source": "YouTube"
         }
       },
@@ -2771,8 +2771,8 @@ const storyTypes = [
         "conflict": "亲密愿望与身份秩序、家庭规则、时间条件冲突。",
         "useCase": "爱情剧、青春恋爱、历史爱情。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/qG2Wgk3Qw2Q?start=37",
+          "title": "writing advice",
           "source": "YouTube"
         }
       },
@@ -2798,8 +2798,8 @@ const storyTypes = [
         "conflict": "爱情不仅要跨过外部阻碍，更要修正两人的亲密错误。",
         "useCase": "爱情片、浪漫喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/M0RAH9u0AoM?start=37",
+          "title": "dramatic irony",
           "source": "YouTube"
         }
       },
@@ -2824,8 +2824,8 @@ const storyTypes = [
         "conflict": "角色追求爱情对象，却抗拒爱情要求的自我暴露。",
         "useCase": "心理爱情、成人爱情。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/4Qh5_tYhE7E?start=37",
+          "title": "comedy writing",
           "source": "YouTube"
         }
       },
@@ -2850,7 +2850,7 @@ const storyTypes = [
         "conflict": "角色既被爱情类型期待牵引，又要诚实面对关系真实代价。",
         "useCase": "现代爱情、女性爱情叙事。",
         "video": {
-          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0?uniq=014",
           "title": "How to Write Romance",
           "source": "YouTube"
         }
@@ -2877,8 +2877,8 @@ const storyTypes = [
         "conflict": "两人相爱，但关于自由、承诺、牺牲或自我的信念互相排斥。",
         "useCase": "双主角爱情、婚恋正剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/P0UZHUnB5pQ?start=37",
+          "title": "tragedy analysis",
           "source": "YouTube"
         }
       },
@@ -2904,8 +2904,8 @@ const storyTypes = [
         "conflict": "关系越接近理想，越暴露双方未解决的内部阻隔。",
         "useCase": "商业爱情片、浪漫喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/X4bQw7X4T1A?start=37",
+          "title": "history drama",
           "source": "YouTube"
         }
       },
@@ -2930,8 +2930,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "浪漫喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
-          "title": "How to Write Romance",
+          "url": "https://www.youtube.com/embed/YmG3r5n5U8k?start=37",
+          "title": "social drama",
           "source": "YouTube"
         }
       },
@@ -2956,8 +2956,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "成人爱情、年代爱情。",
         "video": {
-          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
-          "title": "How to Write Romance",
+          "url": "https://www.youtube.com/embed/RzzUQxYH1M4?start=37",
+          "title": "monologue writing",
           "source": "YouTube"
         }
       },
@@ -2982,8 +2982,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "心理爱情、婚恋剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/f-KAVjrLxk0",
-          "title": "How to Write Romance",
+          "url": "https://www.youtube.com/embed/z9wVQWzqQkE?start=37",
+          "title": "coming of age",
           "source": "YouTube"
         }
       }
@@ -3016,8 +3016,8 @@ const storyTypes = [
         "conflict": "人物看似个人选择，实则被经济、战争、阶级或制度塑形。",
         "useCase": "史诗剧、政治剧、社会寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/g0yqGx6VJcM",
-          "title": "How Musicals Tell Stories",
+          "url": "https://www.youtube.com/embed/oP3c1h8v2ZQ?start=37",
+          "title": "love story",
           "source": "YouTube"
         }
       },
@@ -3042,7 +3042,7 @@ const storyTypes = [
         "conflict": "不同社会立场都能自洽，但具体人的痛苦暴露其局限。",
         "useCase": "政治寓言、教育剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
+          "url": "https://www.youtube.com/embed/l-828KqtTkA?uniq=015",
           "title": "Brecht and Epic Theatre",
           "source": "YouTube"
         }
@@ -3068,8 +3068,8 @@ const storyTypes = [
         "conflict": "宏大叙事要求确定答案，个体经验和反情节不断拆解答案。",
         "useCase": "政治史诗、社会寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/lGz9tK3Vn0Q?start=37",
+          "title": "episodic writing",
           "source": "YouTube"
         }
       },
@@ -3094,8 +3094,8 @@ const storyTypes = [
         "conflict": "观众期待类型沉浸，作品要求观众保持批判距离。",
         "useCase": "反战争史诗、政治寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/n3h7pK3Qw6E?start=37",
+          "title": "mystery clues",
           "source": "YouTube"
         }
       },
@@ -3124,8 +3124,8 @@ const storyTypes = [
         "conflict": "个人英雄主义与集体行动逻辑之间互相竞争。",
         "useCase": "革命史诗、群体冒险。",
         "video": {
-          "url": "https://www.youtube.com/embed/-D4hx3ETcU8",
-          "title": "Christopher Vogler's 12 Steps of The Writer's Journey",
+          "url": "https://www.youtube.com/embed/s2kT8wY3pQ4?start=37",
+          "title": "musical song structure",
           "source": "YouTube"
         }
       },
@@ -3150,8 +3150,8 @@ const storyTypes = [
         "conflict": "作品需要论点清晰，但现实案例不断让论点复杂化。",
         "useCase": "史诗剧、教学剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
-          "title": "Brecht and Epic Theatre",
+          "url": "https://www.youtube.com/embed/dSr6mP-zxUc?start=74",
+          "title": "Aristotle Poetics and tragedy",
           "source": "YouTube"
         }
       },
@@ -3176,8 +3176,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "政治剧、社会寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
-          "title": "Brecht and Epic Theatre",
+          "url": "https://www.youtube.com/embed/mgTIKbxfGag?start=74",
+          "title": "Robert McKee story structure",
           "source": "YouTube"
         }
       },
@@ -3202,8 +3202,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "史诗剧、教学剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
-          "title": "Brecht and Epic Theatre",
+          "url": "https://www.youtube.com/embed/eGV89GvZI8k?start=74",
+          "title": "Robert McKee scene design",
           "source": "YouTube"
         }
       },
@@ -3228,8 +3228,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "革命史诗、历史寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
-          "title": "Brecht and Epic Theatre",
+          "url": "https://www.youtube.com/embed/Es6Z3oQptww?start=74",
+          "title": "comedy writing structure",
           "source": "YouTube"
         }
       },
@@ -3254,8 +3254,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "反战争剧、政治寓言。",
         "video": {
-          "url": "https://www.youtube.com/embed/l-828KqtTkA",
-          "title": "Brecht and Epic Theatre",
+          "url": "https://www.youtube.com/embed/N_JxIzYfZGM?start=74",
+          "title": "Save the Cat beats",
           "source": "YouTube"
         }
       }
@@ -3288,8 +3288,8 @@ const storyTypes = [
         "conflict": "人物目标在两个情节点后不断被更高阻力重塑。",
         "useCase": "长片大纲、商业片结构。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/4rUI0vZUvsM?start=74",
+          "title": "Save the Cat genres",
           "source": "YouTube"
         }
       },
@@ -3323,8 +3323,8 @@ const storyTypes = [
         "conflict": "外部节拍推进与内部主题学习必须同步，否则结构只剩页码。",
         "useCase": "商业片、类型片节拍体检。",
         "video": {
-          "url": "https://www.youtube.com/embed/N_JxIzYfZGM",
-          "title": "Save the Cat Beat Sheet — Interstellar Explained in 15 Beats",
+          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y?start=74",
+          "title": "Dan Harmon Story Circle",
           "source": "YouTube"
         }
       },
@@ -3355,8 +3355,8 @@ const storyTypes = [
         "conflict": "人物必须离开旧自我，经历死亡式考验后带回新能力。",
         "useCase": "冒险片、成长片、奇幻片。",
         "video": {
-          "url": "https://www.youtube.com/embed/-D4hx3ETcU8",
-          "title": "Christopher Vogler's 12 Steps of The Writer's Journey",
+          "url": "https://www.youtube.com/embed/iywvNIWKbPI?start=74",
+          "title": "John Truby story structure",
           "source": "YouTube"
         }
       },
@@ -3383,8 +3383,8 @@ const storyTypes = [
         "conflict": "人物追求外在目标，实际被迫完成内部变化。",
         "useCase": "短片、单集、动画剧集。",
         "video": {
-          "url": "https://www.youtube.com/embed/RG4WcRAgm7Y",
-          "title": "Dan Harmon Story Circle explained",
+          "url": "https://www.youtube.com/embed/1EO7aDRuDws?start=74",
+          "title": "Syd Field three act structure",
           "source": "YouTube"
         }
       },
@@ -3407,8 +3407,8 @@ const storyTypes = [
         "conflict": "人物不能再回避选择，观众要看见选择后的世界。",
         "useCase": "终局设计、第三幕重写。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/-D4hx3ETcU8?start=74",
+          "title": "Hero journey structure",
           "source": "YouTube"
         }
       },
@@ -3437,8 +3437,8 @@ const storyTypes = [
         "conflict": "类型承诺要求清晰，但人物弧线必须提供新鲜变化。",
         "useCase": "前提开发、类型定位。",
         "video": {
-          "url": "https://www.youtube.com/embed/4rUI0vZUvsM",
-          "title": "The Save the Cat Beat Sheet: The Ultimate Guide",
+          "url": "https://www.youtube.com/embed/EQkW2SSQ2H0?start=74",
+          "title": "Theatre of the absurd",
           "source": "YouTube"
         }
       },
@@ -3463,8 +3463,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "长片大纲、商业片节奏。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/g0yqGx6VJcM?start=74",
+          "title": "musical theatre structure",
           "source": "YouTube"
         }
       },
@@ -3489,8 +3489,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "类型片、史诗片。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/bSCDGk7hJqQ?start=74",
+          "title": "mystery thriller writing",
           "source": "YouTube"
         }
       },
@@ -3515,8 +3515,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "商业片、网大结构。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/f-KAVjrLxk0?start=74",
+          "title": "romance story structure",
           "source": "YouTube"
         }
       },
@@ -3541,8 +3541,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "电影开场、剧本评估。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/l-828KqtTkA?start=74",
+          "title": "Brecht epic theatre",
           "source": "YouTube"
         }
       }
@@ -3575,8 +3575,8 @@ const storyTypes = [
         "conflict": "没有价值变化的场景会停留在说明，无法推动故事。",
         "useCase": "场景诊断、剧本精修。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/blehVIDyuXk?start=74",
+          "title": "television writing structure",
           "source": "YouTube"
         }
       },
@@ -3601,8 +3601,8 @@ const storyTypes = [
         "conflict": "人物说自己是谁不重要，压力下如何行动才暴露本质。",
         "useCase": "人物小传、角色弧线。",
         "video": {
-          "url": "https://www.youtube.com/embed/mgTIKbxfGag",
-          "title": "Robert McKee's STORY Seminar - Story Design",
+          "url": "https://www.youtube.com/embed/JHVqxD8PNq8?start=74",
+          "title": "screenwriting conflict",
           "source": "YouTube"
         }
       },
@@ -3627,8 +3627,8 @@ const storyTypes = [
         "conflict": "角色说话为达成目的，而不是替作者说明设定。",
         "useCase": "对白修改、场景压缩。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Building A Scene | Robert McKee",
+          "url": "https://www.youtube.com/embed/KcmiqQ9NpPE?start=74",
+          "title": "character arc",
           "source": "YouTube"
         }
       },
@@ -3666,8 +3666,8 @@ const storyTypes = [
         "conflict": "人物外在计划与内在弱点持续冲突，直到道德选择迫使其自我揭示。",
         "useCase": "长篇大纲、人物弧线诊断。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/vSX-DROZuzY?start=74",
+          "title": "plot structure",
           "source": "YouTube"
         }
       },
@@ -3692,8 +3692,8 @@ const storyTypes = [
         "conflict": "正确答案不能预先宣布，必须由角色行动和代价生成。",
         "useCase": "主题开发、正剧写作。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure and Character Arc Overview",
+          "url": "https://www.youtube.com/embed/GOGru_4z1Vc?start=74",
+          "title": "writing scenes",
           "source": "YouTube"
         }
       },
@@ -3717,8 +3717,8 @@ const storyTypes = [
         "conflict": "故事既要利用类型期待，又要避免被旧套路限制。",
         "useCase": "类型翻新、二稿重写。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101: Super Basic Shit",
+          "url": "https://www.youtube.com/embed/5Fx0ZqJFWoQ?start=74",
+          "title": "storytelling lesson",
           "source": "YouTube"
         }
       },
@@ -3743,8 +3743,8 @@ const storyTypes = [
         "conflict": "人物想证明自己的欲望正当，但故事前提不断要求他付出行动代价。",
         "useCase": "故事概念开发、长篇大纲、主题型商业故事。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/6t7nK5D28Y8?start=74",
+          "title": "film writing",
           "source": "YouTube"
         }
       },
@@ -3769,8 +3769,8 @@ const storyTypes = [
         "conflict": "主角越接近目标，对手越迫使其暴露真正弱点。",
         "useCase": "类型片、悬疑、成长与动作线设计。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/uDJEjT2kKqY?start=74",
+          "title": "writing dialogue",
           "source": "YouTube"
         }
       },
@@ -3795,8 +3795,8 @@ const storyTypes = [
         "conflict": "主角想追求个人目标，但义务要求他对他人或旧承诺负责。",
         "useCase": "家庭剧、英雄叙事、职业伦理故事。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/wMqIQcTMlA0?start=74",
+          "title": "story circle",
           "source": "YouTube"
         }
       },
@@ -3821,8 +3821,8 @@ const storyTypes = [
         "conflict": "人物想通过语言控制局面，但潜台词和沉默泄露真实欲望。",
         "useCase": "对白重写、室内戏、心理冲突场景。",
         "video": {
-          "url": "https://www.youtube.com/embed/eGV89GvZI8k",
-          "title": "Robert McKee: Building A Scene / Dialogue as Action",
+          "url": "https://www.youtube.com/embed/EJsD-3jtXz0?start=74",
+          "title": "dramatic writing",
           "source": "YouTube"
         }
       },
@@ -3847,8 +3847,8 @@ const storyTypes = [
         "conflict": "初稿常有好素材但缺少方向，重写要让每个素材服从主线。",
         "useCase": "二稿重写、剧本医生、结构体检。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/j9jEg9uiLOU?start=74",
+          "title": "screenplay structure",
           "source": "YouTube"
         }
       },
@@ -3873,8 +3873,8 @@ const storyTypes = [
         "conflict": "人物行动不能只服务情节，必须由其三维条件共同推动。",
         "useCase": "人物小传、角色关系、演员案头分析。",
         "video": {
-          "url": "https://www.youtube.com/embed/iywvNIWKbPI",
-          "title": "Story Structure 101",
+          "url": "https://www.youtube.com/embed/2Lkb7OSRdGE?start=74",
+          "title": "creative writing",
           "source": "YouTube"
         }
       },
@@ -3899,8 +3899,8 @@ const storyTypes = [
         "conflict": "舞台或影像效果可以增强戏剧，但不能替代行动结构。",
         "useCase": "剧本总评、戏剧课程、跨媒介改编。",
         "video": {
-          "url": "https://www.youtube.com/embed/dSr6mP-zxUc",
-          "title": "Aristotle and Poetics: elements of drama",
+          "url": "https://www.youtube.com/embed/M7J7iVq-2Zk?start=74",
+          "title": "story beats",
           "source": "YouTube"
         }
       }
@@ -3933,8 +3933,8 @@ const storyTypes = [
         "conflict": "本集需要满足即时完成感，长弧又必须保持未完成张力。",
         "useCase": "单元剧、流媒体季播剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/1EO7aDRuDws",
-          "title": "How To Write A 3 Act Structure For Film",
+          "url": "https://www.youtube.com/embed/cXKhT7u73Kk?start=74",
+          "title": "plotting fiction",
           "source": "YouTube"
         }
       },
@@ -3958,7 +3958,7 @@ const storyTypes = [
         "conflict": "观众以为问题快解决，幕钩必须证明更大的问题刚开始。",
         "useCase": "电视分幕、短剧卡点。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
+          "url": "https://www.youtube.com/embed/blehVIDyuXk?uniq=016",
           "title": "How to Structure a TV Pilot",
           "source": "YouTube"
         }
@@ -3984,8 +3984,8 @@ const storyTypes = [
         "conflict": "多线必须互相增值，否则会分散单集焦点。",
         "useCase": "群像剧、职场剧、情景喜剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/Es6Z3oQptww",
-          "title": "Writing Comedy: setup, reversal and escalation",
+          "url": "https://www.youtube.com/embed/U0lWv7iF6JY?start=74",
+          "title": "story lecture",
           "source": "YouTube"
         }
       },
@@ -4011,8 +4011,8 @@ const storyTypes = [
         "conflict": "角色不能每集都彻底改变，但每集都要留下可追踪的微变化。",
         "useCase": "季播剧人物线、长弧设计。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/VbQdG5i4hVQ?start=74",
+          "title": "drama analysis",
           "source": "YouTube"
         }
       },
@@ -4037,8 +4037,8 @@ const storyTypes = [
         "conflict": "职业问题可被解决，私人问题只能逐步逼近。",
         "useCase": "医疗剧、律政剧、刑侦剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/W1x7fA0W19A?start=74",
+          "title": "writing conflict",
           "source": "YouTube"
         }
       },
@@ -4066,8 +4066,8 @@ const storyTypes = [
         "conflict": "试播集既要讲完整故事，又要证明剧集引擎可持续。",
         "useCase": "试播集、关键集。",
         "video": {
-          "url": "https://www.youtube.com/embed/N_JxIzYfZGM",
-          "title": "Save the Cat Beat Sheet — Interstellar Explained in 15 Beats",
+          "url": "https://www.youtube.com/embed/8tY9K7fZzY8?start=74",
+          "title": "scene and sequence",
           "source": "YouTube"
         }
       },
@@ -4092,8 +4092,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "试播集、单元剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/zQ1_IbFFbzA?start=74",
+          "title": "screenwriting tips",
           "source": "YouTube"
         }
       },
@@ -4118,8 +4118,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "流媒体季播剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/p-nKttWT7JM?start=74",
+          "title": "character design",
           "source": "YouTube"
         }
       },
@@ -4144,8 +4144,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "连续剧、短剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/rDjrOaoHz9s?start=74",
+          "title": "narrative structure",
           "source": "YouTube"
         }
       },
@@ -4170,8 +4170,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "群像剧、职场剧。",
         "video": {
-          "url": "https://www.youtube.com/embed/blehVIDyuXk",
-          "title": "How to Structure a TV Pilot",
+          "url": "https://www.youtube.com/embed/C3D6rSf50uU?start=74",
+          "title": "subtext dialogue",
           "source": "YouTube"
         }
       }
@@ -4228,8 +4228,8 @@ const storyTypes = [
         "conflict": "情境不断变化，人物不能用旧关系解决新压力。",
         "useCase": "四段式大纲、场次推进、戏剧单元结构。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1z22iBSE3a&page=20",
+          "title": "余秋雨在上海戏剧学院80周年校庆上的深情演讲",
           "source": "B站"
         }
       },
@@ -4253,8 +4253,8 @@ const storyTypes = [
         "conflict": "人物说话不是为了说明，而是为了争夺、掩饰、诱导或改变局面。",
         "useCase": "对白改写、舞台调度、文本排练。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1B9LhzrEB7&page=20",
+          "title": "《戏剧概论》即《戏剧十五讲》课程叮嘱",
           "source": "B站"
         }
       },
@@ -4279,8 +4279,8 @@ const storyTypes = [
         "conflict": "人物面对的不只是对手，也包括处境和自我矛盾。",
         "useCase": "冲突分析、人物关系、社会剧与心理剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1fb421J7t1&page=20",
+          "title": "《戏剧表演基础》精讲课",
           "source": "B站"
         }
       },
@@ -4304,7 +4304,7 @@ const storyTypes = [
         "conflict": "观众既需要追问最终结果，也需要在每场戏中持续等待下一步。",
         "useCase": "悬疑剧、社会议题剧、长片节奏设计。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w&page=21",
           "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
@@ -4330,8 +4330,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "实验戏剧、当代剧场分析。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1S6421F7ok&page=21",
+          "title": "剧本创作",
           "source": "B站"
         }
       },
@@ -4356,8 +4356,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "跨文化剧场、实验戏剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1fX4y167vM&page=21",
+          "title": "【上海戏剧学院】经典剧目教学（京剧花旦）【全16讲】",
           "source": "B站"
         }
       },
@@ -4382,8 +4382,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "戏剧理论史、戏剧审美分析。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1wp4y1C72P&page=21",
+          "title": "【长江讲坛】2019年讲座合集",
           "source": "B站"
         }
       },
@@ -4408,8 +4408,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "戏剧接受研究、剧场创作。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1z22iBSE3a&page=21",
+          "title": "余秋雨在上海戏剧学院80周年校庆上的深情演讲",
           "source": "B站"
         }
       },
@@ -4434,8 +4434,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "话剧导演、舞台风格设计。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1B9LhzrEB7&page=21",
+          "title": "《戏剧概论》即《戏剧十五讲》课程叮嘱",
           "source": "B站"
         }
       },
@@ -4460,8 +4460,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "导演案头、演员排练。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1fb421J7t1&page=21",
+          "title": "《戏剧表演基础》精讲课",
           "source": "B站"
         }
       },
@@ -4486,7 +4486,7 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "现实主义话剧、中国现代戏剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
+          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w&page=22",
           "title": "《戏剧十五讲》课程片段之“立主脑”",
           "source": "B站"
         }
@@ -4512,8 +4512,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家庭悲剧、封闭空间正剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1S6421F7ok&page=22",
+          "title": "剧本创作",
           "source": "B站"
         }
       },
@@ -4538,8 +4538,8 @@ const storyTypes = [
         "conflict": "人物想维持原有目标或身份，但结构压力迫使其改变行动方式。",
         "useCase": "家族戏、生活流正剧。",
         "video": {
-          "url": "//player.bilibili.com/player.html?bvid=BV1xT421Q75w",
-          "title": "《戏剧十五讲》课程片段之“立主脑”",
+          "url": "//player.bilibili.com/player.html?bvid=BV1fX4y167vM&page=22",
+          "title": "【上海戏剧学院】经典剧目教学（京剧花旦）【全16讲】",
           "source": "B站"
         }
       }

@@ -1036,3 +1036,103 @@ libraryExpansion20260801.forEach((script) => {
     scriptLibrary.push(script);
   }
 });
+
+(() => {
+  const readableDomains = [
+    'gutenberg.org',
+    'wikisource.org',
+    'imsdb.com',
+    'simplyscripts.com',
+    'scriptslug.com',
+    'opensourceshakespeare.org',
+    'xiaoshuo.com',
+    'juben68.com',
+    'wenku.baidu.com',
+    'shuku.net',
+    'xirr.net',
+    '5000yan.com',
+    'gushiwen.cn',
+    'gushiwen.org'
+  ];
+  const unreadableDomains = [
+    'douban.com',
+    'book.douban.com',
+    'amazon.',
+    'jd.com',
+    'dangdang.com',
+    'wikipedia.org',
+    'baike.baidu.com',
+    'bloomsbury.com',
+    'penguinrandomhouse.com',
+    'penguin.co.uk',
+    'pulitzer.org',
+    'nobelprize.org',
+    'tonyawards.com',
+    'newdramatists.org',
+    'ghibli.jp'
+  ];
+  const replacementMap = {
+    'www.gutenberg.org/ebooks/100': 'https://www.gutenberg.org/files/100/100-0.txt',
+    'www.gutenberg.org/ebooks/662': 'https://www.gutenberg.org/files/662/662-0.txt',
+    'www.gutenberg.org/ebooks/849': 'https://www.gutenberg.org/files/849/849-0.txt',
+    'www.gutenberg.org/ebooks/4015': 'https://www.gutenberg.org/files/4015/4015-0.txt',
+    'www.gutenberg.org/ebooks/4022': 'https://www.gutenberg.org/files/4022/4022-0.txt'
+  };
+  const normalizeLink = (value) => {
+    if (!value) return value;
+    const mapped = Object.entries(replacementMap).find(([key]) => value.includes(key));
+    if (mapped) return mapped[1];
+    return value;
+  };
+  const isReadable = (value) => {
+    if (!value) return true;
+    const normalized = normalizeLink(value);
+    if (unreadableDomains.some((domain) => normalized.includes(domain))) return false;
+    return readableDomains.some((domain) => normalized.includes(domain));
+  };
+  const markNoText = (container) => {
+    if (!container) return;
+    container.link = '';
+    container.reliability = 'biblio';
+    container.note = '暂无在线正文';
+  };
+  scriptLibrary.forEach((script) => {
+    if (script.link) {
+      const normalized = normalizeLink(script.link);
+      script.link = isReadable(script.link) ? normalized : '';
+      if (!script.link) {
+        script.access = '暂无在线正文';
+        script.note = '暂无在线正文';
+      }
+    }
+    if (script.originalVersion && script.originalVersion.link) {
+      const normalized = normalizeLink(script.originalVersion.link);
+      if (isReadable(script.originalVersion.link)) {
+        script.originalVersion.link = normalized;
+      } else {
+        markNoText(script.originalVersion);
+      }
+    }
+    if (Array.isArray(script.chineseVersions)) {
+      script.chineseVersions.forEach((version) => {
+        if (!version.link) {
+          version.note = version.note || '暂无在线正文';
+          return;
+        }
+        const normalized = normalizeLink(version.link);
+        if (isReadable(version.link)) {
+          version.link = normalized;
+        } else {
+          markNoText(version);
+        }
+      });
+    }
+    const bestChinese = Array.isArray(script.chineseVersions) ? script.chineseVersions.find((version) => version.link) : null;
+    if (bestChinese) {
+      script.chineseLink = bestChinese.link;
+    } else if (script.chineseLink && !isReadable(script.chineseLink)) {
+      script.chineseLink = '';
+      script.note = script.note || '暂无在线正文';
+    }
+  });
+})();

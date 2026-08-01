@@ -1,7 +1,14 @@
 /* global storyTypes, parallelReadings, getAllFrameworks, scriptLibrary, reliabilityLabels, getLibraryStats, dailyVideoSources */
 const SUPABASE_URL = 'https://uoshmiqwqhfnkomnjqsa.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_tO7eSddTeedoOd3nlpUqUQ_RGHmhsmK';
-const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_SITE_URL = `${window.location.origin}${location.pathname.startsWith('/RaymondWrite') ? '/RaymondWrite' : ''}/`;
+const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true
+  }
+});
 
 /*
   Supabase 控制台 SQL 说明：
@@ -664,6 +671,15 @@ function renderAuthNav() {
   $('#myWorksBtn')?.addEventListener('click', () => navigateTo(`/profile/${state.session.user.id}`));
 }
 
+function getAuthErrorMessage(error) {
+  const message = error?.message || '认证失败，请稍后重试。';
+  const lower = message.toLowerCase();
+  if (lower.includes('invalid login credentials')) return '邮箱或密码不正确；如果刚注册，请先完成邮箱验证后再登录。';
+  if (lower.includes('email not confirmed')) return '邮箱尚未验证，请先点击验证邮件中的链接。';
+  if (lower.includes('signup') && lower.includes('disabled')) return '当前 Supabase 项目未开启邮箱注册，请在后台启用 Email Signup。';
+  return message;
+}
+
 async function loginOrSignup(mode) {
   if (!supabaseClient) return setAuthFeedback('Supabase SDK 未加载，请刷新页面重试。');
   const email = $('#authEmail')?.value.trim();
@@ -671,11 +687,16 @@ async function loginOrSignup(mode) {
   if (!email || !password) return setAuthFeedback('请填写邮箱和密码。');
   setAuthFeedback('处理中……');
   const result = mode === 'signup'
-    ? await supabaseClient.auth.signUp({ email, password })
+    ? await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: SUPABASE_SITE_URL }
+    })
     : await supabaseClient.auth.signInWithPassword({ email, password });
-  if (result.error) return setAuthFeedback(result.error.message);
-  setAuthFeedback(mode === 'signup' ? '注册成功。如项目开启邮箱验证，请先查收验证邮件。' : '登录成功。');
-  setTimeout(() => closeModal('authModal'), 600);
+  if (result.error) return setAuthFeedback(getAuthErrorMessage(result.error));
+  const needsEmailConfirmation = mode === 'signup' && !result.data.session;
+  setAuthFeedback(needsEmailConfirmation ? `验证邮件已发送，请点击邮件中的链接后返回 ${SUPABASE_SITE_URL} 登录。` : (mode === 'signup' ? '注册成功，已自动登录。' : '登录成功。'));
+  if (!needsEmailConfirmation) setTimeout(() => closeModal('authModal'), 600);
 }
 
 async function logout() {

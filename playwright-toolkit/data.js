@@ -5784,6 +5784,74 @@ libraryExpansion20260801.forEach((script) => {
   });
 })();
 
+const parallelTextSeeds = {
+  '哈姆雷特': { cn: ['生存还是毁灭，这是一个值得考虑的问题。', '默然忍受命运的暴虐的毒箭，或是挺身反抗人世无涯的苦难。', '死了；睡着了；什么都完了。', '良心使我们全都成了懦夫。'], en: ['To be, or not to be: that is the question.', 'Whether ’tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles.', 'To die: to sleep; No more.', 'Thus conscience does make cowards of us all.'] },
+  '麦克白': { cn: ['明天，明天，再一个明天，一天接着一天地蹑步前进。', '人生不过是一个行走的影子。', '一个拙劣的伶人，在台上指手画脚片刻，此后便悄然无声。', '这是一个愚人所讲的故事，充满喧哗与骚动，却没有意义。'], en: ['Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.', 'Life’s but a walking shadow.', 'A poor player that struts and frets his hour upon the stage, and then is heard no more.', 'It is a tale told by an idiot, full of sound and fury, signifying nothing.'] },
+  '李尔王': { cn: ['吹吧，风啊，吹破了你的脸颊！怒吼吧，吹吧！', '你们这些瀑布和飓风，倾泻吧。', '我不责备你们这些元素无情。', '我从未给过你们王国，称你们为我的孩子。'], en: ['Blow, winds, and crack your cheeks! rage! blow!', 'You cataracts and hurricanoes, spout till you have drench’d our steeples.', 'I tax not you, you elements, with unkindness.', 'I never gave you kingdom, call’d you children.'] },
+  '奥赛罗': { cn: ['留心嫉妒吧；那是绿眼的妖魔。', '它嘲弄自己赖以为食的肉。', '被欺骗而不知情的人并不算受骗。', '知道自己被掠夺的人，已失去一切。'], en: ['O, beware, my lord, of jealousy; It is the green-eyed monster.', 'Which doth mock the meat it feeds on.', 'He that is robb’d, not wanting what is stolen, let him not know’t, and he’s not robb’d at all.', 'But he that filches from me my good name robs me of that which not enriches him.'] },
+  '罗密欧与朱丽叶': { cn: ['轻声！那边窗子里亮起来的是什么光？', '那是东方，朱丽叶就是太阳。', '名字有什么意义？玫瑰不叫玫瑰，依然芳香。', '别对着月亮起誓，它每月都要变化。'], en: ['But, soft! what light through yonder window breaks?', 'It is the east, and Juliet is the sun.', 'What’s in a name? That which we call a rose by any other name would smell as sweet.', 'O, swear not by the moon, the inconstant moon.'] },
+  '仲夏夜之梦': { cn: ['真爱的道路从来不是平坦的。', '爱情并不用眼睛观看，而是用心灵观看。', '所以长着翅膀的丘比特常常被画成盲目。', '梦不过是影子。'], en: ['The course of true love never did run smooth.', 'Love looks not with the eyes, but with the mind.', 'And therefore is wing’d Cupid painted blind.', 'A dream is but a shadow.'] },
+  '第十二夜': { cn: ['若音乐是爱情的食粮，奏下去吧。', '给我过量，使欲望因饱足而病倒死去。', '有人生而伟大，有人成就伟大。', '也有人被伟大降临在身上。'], en: ['If music be the food of love, play on.', 'Give me excess of it, that, surfeiting, the appetite may sicken, and so die.', 'Some are born great, some achieve greatness.', 'And some have greatness thrust upon them.'] },
+  '暴风雨': { cn: ['我们正是梦所织成的材料。', '我们短暂的一生，四周都环绕着睡眠。', '地狱是空的，所有魔鬼都在这里。', '过去的苦难，只要说出来，便可以使人安心。'], en: ['We are such stuff as dreams are made on.', 'And our little life is rounded with a sleep.', 'Hell is empty and all the devils are here.', 'The rarer action is in virtue than in vengeance.'] },
+  '海鸥': { cn: ['我相信，不是旧形式，也不是新形式。', '重要的是一个人写作，不去想形式。', '艺术应当表现生活本来的样子。', '人的灵魂怎样在生活里受苦，也怎样在舞台上显现。'], en: ['I believe it is not a question of old forms or new forms.', 'A man writes because it flows freely from his soul, not because he has thought of forms.', 'The stage should show life as it is.', 'It should show how human souls suffer in ordinary life.'] },
+  '万尼亚舅舅': { cn: ['我们要活下去，万尼亚舅舅。', '我们要活过一长串漫长的日子和夜晚。', '我们要耐心承受命运给我们的考验。', '到那时，我们会安息。'], en: ['We shall live, Uncle Vanya.', 'We shall live through a long, long chain of days and tedious nights.', 'We shall patiently bear the trials that fate sends us.', 'And then we shall rest.'] },
+  '樱桃园': { cn: ['整座俄罗斯都是我们的果园。', '大地广阔而美丽，有许多奇妙的地方。', '生活已经过去，好像从未生活过一样。', '新的生活正在开始。'], en: ['All Russia is our orchard.', 'The earth is great and beautiful; there are many marvellous places in it.', 'Our life has gone by as if we had never lived.', 'A new life is beginning.'] },
+  '三姐妹 / 樱桃园等': { cn: ['到莫斯科去！到莫斯科去！', '人总要知道自己为什么活着。', '如果不知道，就不能生活。', '我们会知道自己为什么受苦。'], en: ['To Moscow! To Moscow!', 'A man must know why he lives.', 'If he does not know, he cannot live.', 'We shall know why we suffer.'] },
+  '玩偶之家': { cn: ['我首先是一个人，正像你一样。', '我不能再满足于多数人所说的话。', '我必须亲自思考这些事情。', '我要弄清楚谁是对的，社会还是我。'], en: ['I believe that before all else I am a human being, just as much as you are.', 'I can no longer be satisfied with what most people say.', 'I must think things out for myself.', 'I must try to discover who is right, society or I.'] },
+  '培尔·金特': { cn: ['绕过去，佩尔！绕过去！', '做你自己，这句话说起来容易。', '我在哪里曾经完整地做过自己？', '洋葱一层层剥开，却找不到核心。'], en: ['Go roundabout, Peer! Go roundabout!', 'To be oneself is easy to say.', 'Where have I ever been myself, whole and true?', 'The onion is peeled layer by layer, yet no kernel is found.'] },
+  '朱莉小姐': { cn: ['我有时梦见自己坐在柱子顶上。', '我看不见下来，只能向下看。', '我必须下来，却没有勇气跳。', '我不能停留，也不能攀得更高。'], en: ['I dream sometimes that I am sitting on the top of a pillar.', 'I can see no way of getting down; I only look downward.', 'I must get down, but I have not the courage to jump.', 'I cannot stay where I am, and I cannot climb higher.'] },
+  '认真的重要性': { cn: ['真相很少纯粹，也从不简单。', '如果真相纯粹或简单，现代生活会十分乏味。', '无知像一枚精致的异国水果；一碰就会失去光泽。', '认真是一件重要的事。'], en: ['The truth is rarely pure and never simple.', 'Modern life would be very tedious if it were either.', 'Ignorance is like a delicate exotic fruit; touch it and the bloom is gone.', 'The importance of being earnest.'] },
+  '毛猿': { cn: ['我属于这里吗？', '我使钢铁活起来。', '他们坐在头等舱里，却不知道谁给船以力量。', '我要找到我所属的地方。'], en: ['Where do I get off at? Where do I fit in?', 'I make steel, and steel makes this whole thing go.', 'They sit in first class and never know what makes the ship move.', 'I want to belong.'] },
+  '安娜·克里斯蒂': { cn: ['雾，雾，到处都是雾。', '海上有些东西会把人拉回去。', '你不能逃开过去。', '可人总还可以重新开始。'], en: ['Fog, fog, all bloody time.', 'There is something in the sea that calls people back.', 'You cannot get away from what has been.', 'But a person can still begin again.'] },
+  '天边外': { cn: ['路在山那边。', '我总想知道天边外有什么。', '一个人若不去追寻，就会在原地枯萎。', '梦也会使人付出代价。'], en: ['The road is beyond the hills.', 'I always wanted to know what was beyond the horizon.', 'If a man does not follow his dream, he withers where he stands.', 'Dreams exact their own price.'] }
+};
+
+const authorPhotoLocalByAuthor = {
+  '威廉·莎士比亚': './assets/authors/author-1.jpg',
+  '契诃夫': './assets/authors/author-2.jpg',
+  '亨利克·易卜生': './assets/authors/author-3.jpg',
+  '奥古斯特·斯特林堡': './assets/authors/author-4.jpg',
+  '奥斯卡·王尔德': './assets/authors/author-5.jpg',
+  '曹禺': './assets/authors/author-6.jpg',
+  '田汉': './assets/authors/author-7.jpg',
+  '郭沫若': './assets/authors/author-8.jpg',
+  '老舍': './assets/authors/author-9.jpg',
+  '夏衍': './assets/authors/author-10.jpg',
+  '塞缪尔·贝克特': './assets/authors/author-11.jpg',
+  '尤金·奥尼尔': './assets/authors/author-12.jpg',
+  '阿瑟·米勒': './assets/authors/author-13.jpg',
+  '田纳西·威廉斯': './assets/authors/author-14.jpg',
+  '贝托尔特·布莱希特': './assets/authors/author-15.jpg',
+  '让-保罗·萨特': './assets/authors/author-16.jpg',
+  '阿尔贝·卡缪': './assets/authors/author-17.jpg',
+  '高行健': './assets/authors/author-22.jpg',
+  '查理·考夫曼': './assets/authors/author-23.jpg',
+  '亚伦·索金': './assets/authors/author-24.jpg',
+  '亚伦·索金 / 斯蒂文·泽里安': './assets/authors/author-25.jpg',
+  '克里斯托弗·诺兰': './assets/authors/author-28.jpg',
+  '克里斯托弗·诺兰 / 乔纳森·诺兰': './assets/authors/author-29.jpg',
+  '科恩兄弟': './assets/authors/author-30.jpg',
+  '王家卫 / 编剧团队': './assets/authors/author-31.jpg',
+  '张艺谋 / 编剧团队': './assets/authors/author-32.jpg',
+  '是枝裕和': './assets/authors/author-34.jpg'
+};
+
+const authorGroupPalette = ['#26384f', '#24423a', '#4c3425', '#3b3152', '#5a332d', '#30424a', '#3f4a2f', '#4a3a2a'];
+
+function applyParallelReadingEnhancements() {
+  const normalizeParallel = (text) => ({ cn: Array.isArray(text?.cn) ? text.cn : [], en: Array.isArray(text?.en) ? text.en : [] });
+  const publicSeedFor = (script) => parallelTextSeeds[script.title] || parallelTextSeeds[String(script.title || '').replace(' / 樱桃园等', '')] || null;
+  const authorColorMap = new Map();
+  scriptLibrary.forEach((script) => {
+    if (!authorColorMap.has(script.author)) authorColorMap.set(script.author, authorGroupPalette[authorColorMap.size % authorGroupPalette.length]);
+    script.authorGroupColor = authorColorMap.get(script.author);
+    script.authorPhoto = authorPhotoLocalByAuthor[script.author] || '';
+    if (script.chineseLink && script.link) script.parallelText = normalizeParallel(publicSeedFor(script));
+  });
+}
+
+applyParallelReadingEnhancements();
+
 const authorAliasDictionary = {
   '威廉·莎士比亚': ['威廉·莎士比亚', '莎士比亚', 'William Shakespeare', 'Shakespeare'],
   'William Shakespeare': ['威廉·莎士比亚', '莎士比亚', 'William Shakespeare', 'Shakespeare'],

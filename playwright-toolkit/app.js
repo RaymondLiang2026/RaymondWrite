@@ -875,6 +875,41 @@ function matchesParallelQuery(item) {
   if (!state.parallelQuery) return true;
   return searchableTextForScript(item).includes(state.parallelQuery);
 }
+function safeCssUrl(url = '') { return String(url).replace(/["'()\\]/g, encodeURIComponent); }
+function authorGroupStyle(item) {
+  const bg = item.authorGroupColor || '#26384f';
+  const photo = item.authorPhoto ? `--author-photo: url(&quot;${safeCssUrl(item.authorPhoto)}&quot;);` : '';
+  return `--author-bg:${bg};${photo}`;
+}
+function parallelLinkButtons(item) {
+  return `<div class="parallel-link-actions"><a href="${esc(item.chineseLink)}" target="_blank" rel="noopener noreferrer">前往中文译本 →</a><a href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">前往完整原文 →</a></div>`;
+}
+function parallelTextRows(item) {
+  const cn = Array.isArray(item.parallelText?.cn) ? item.parallelText.cn : [];
+  const en = Array.isArray(item.parallelText?.en) ? item.parallelText.en : [];
+  const rowCount = Math.min(cn.length, en.length);
+  if (!rowCount) return '';
+  return `<div class="parallel-columns parallel-text-columns" data-scroll-sync><div class="parallel-col parallel-cn"><h4>中文译文摘录</h4><div class="parallel-scroll-pane">${cn.slice(0, rowCount).map((text, i) => `<p data-row="${i}">${esc(text)}</p>`).join('')}</div></div><div class="parallel-col parallel-en"><h4>原文对应段落</h4><div class="parallel-scroll-pane">${en.slice(0, rowCount).map((text, i) => `<p data-row="${i}">${esc(text)}</p>`).join('')}</div></div></div>`;
+}
+function parallelReaderBody(item) {
+  const textRows = parallelTextRows(item);
+  const fallback = '<div class="parallel-static-empty"><strong>点击下方链接阅读完整原文</strong><span>该条目暂未收录可核验的公版对照摘录，保留外链跳转。</span></div>';
+  return `${textRows || fallback}${parallelLinkButtons(item)}`;
+}
+function bindParallelScrollSync(root = document) {
+  root.querySelectorAll('[data-scroll-sync]').forEach((box) => {
+    const panes = box.querySelectorAll('.parallel-scroll-pane');
+    if (panes.length < 2) return;
+    let locked = false;
+    panes.forEach((pane) => pane.addEventListener('scroll', () => {
+      if (locked) return;
+      locked = true;
+      const ratio = pane.scrollTop / Math.max(1, pane.scrollHeight - pane.clientHeight);
+      panes.forEach((other) => { if (other !== pane) other.scrollTop = ratio * (other.scrollHeight - other.clientHeight); });
+      window.requestAnimationFrame(() => { locked = false; });
+    }));
+  });
+}
 function renderParallelReadings() {
   const listBox = $('#parallelList');
   const reader = $('#parallelReader');
@@ -889,16 +924,15 @@ function renderParallelReadings() {
   let currentAuthor = '';
   listBox.innerHTML = items.map((item) => {
     const key = parallelKey(item);
-    const group = item.author !== currentAuthor ? `<p class="parallel-author-group">${esc(item.author)}</p>` : '';
+    const group = item.author !== currentAuthor ? `<div class="parallel-author-group ${item.authorPhoto ? 'has-photo' : ''}" style="${authorGroupStyle(item)}"><strong>${esc(item.author)}</strong><span>${esc(item.sourceInstitution || '剧作家')}</span></div>` : '';
     currentAuthor = item.author;
     return `${group}<button class="parallel-tab ${key === state.selectedParallelId ? 'active' : ''}" data-id="${esc(key)}"><strong>${esc(item.title)}</strong><span>${esc(item.author)}</span></button>`;
   }).join('');
   listBox.querySelectorAll('.parallel-tab').forEach(btn => btn.addEventListener('click', () => { state.selectedParallelId = btn.dataset.id; renderParallelReadings(); }));
   const item = items.find((entry) => parallelKey(entry) === state.selectedParallelId) || items[0];
-  const detail = item.parallelDetail;
-  const source = detail?.source || `${item.author} · ${item.sourceInstitution || '剧本库'}`;
-  const body = detail?.segments?.length ? `<div class="parallel-columns"><div class="parallel-col"><h4>原文</h4>${detail.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.original)}</p>`).join('')}</div><div class="parallel-col"><h4>汉译</h4>${detail.segments.map((seg, i) => `<p data-row="${i}">${esc(seg.chinese)}</p>`).join('')}</div></div>` : `<div class="parallel-columns parallel-iframe-columns"><div class="parallel-col"><h4>中文译本</h4><iframe src="${esc(item.chineseLink)}" title="${esc(item.title)} 中文译本" loading="lazy"></iframe></div><div class="parallel-col"><h4>原文</h4><iframe src="${esc(item.link)}" title="${esc(item.title)} 原文" loading="lazy"></iframe></div></div>`;
-  reader.innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(source)}</p></div><span class="pill">${detail?.segments?.length ? '逐段对照' : '双栏全文'}</span></div>${body}`;
+  const source = item.parallelText?.cn?.length ? `${item.author} · 内嵌公版摘录` : `${item.author} · ${item.sourceInstitution || '剧本库'}`;
+  reader.innerHTML = `<div class="parallel-reader-head"><div><p class="eyebrow">Parallel Reading</p><h3>${esc(item.title)}</h3><p>${esc(source)}</p></div><span class="pill">${item.parallelText?.cn?.length ? '内嵌对照' : '外链阅读'}</span></div>${parallelReaderBody(item)}`;
+  bindParallelScrollSync(reader);
 }
 function parallelKey(item) { return `${item.title}__${item.author}`; }
 function matchesFilter(item) { return state.scriptFilter === 'all' || (state.scriptFilter === 'public' && item.type === 'public') || (state.scriptFilter === 'copyright' && item.type === 'copyright') || (state.scriptFilter === 'cn' && item.region === 'cn') || (state.scriptFilter === 'zx60' && item.isZhongxi60) || (state.scriptFilter === 'award' && (item.region === 'award' || item.tags.some((tag) => ['普利策', '诺贝尔文学奖', '托尼奖'].includes(tag)))); }
@@ -954,8 +988,9 @@ function openParallelModal(item) {
   const body = $('#parallelModalBody');
   if (!modal || !title || !body || !hasParallelLinks(item)) return;
   title.textContent = item.title;
-  body.innerHTML = `<section class="parallel-frame-col"><div class="parallel-frame-label">中文译本</div><iframe src="${esc(item.chineseLink)}" title="${esc(item.title)} 中文译本" loading="lazy"></iframe></section><section class="parallel-frame-col"><div class="parallel-frame-label">原文</div><iframe src="${esc(item.link)}" title="${esc(item.title)} 原文" loading="lazy"></iframe></section>`;
+  body.innerHTML = `<section class="parallel-frame-col parallel-static-modal"><div class="parallel-frame-label">对照阅读</div>${parallelReaderBody(item)}</section>`;
   modal.classList.add('open');
+  bindParallelScrollSync(body);
 }
 function closeParallelModal() { const modal = $('#parallelModal'); const body = $('#parallelModalBody'); modal?.classList.remove('open'); if (body) body.innerHTML = ''; }
 function bindParallelCardButtons() { $$('.parallel-open-btn').forEach((button) => button.addEventListener('click', () => { const item = scriptLibrary.find((script) => script.title === button.dataset.parallelTitle); if (item) openParallelModal(item); })); }

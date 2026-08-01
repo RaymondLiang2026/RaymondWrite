@@ -1094,7 +1094,7 @@ libraryExpansion20260801.forEach((script) => {
     'gushiwen.cn',
     'gushiwen.org'
   ];
-  const unreadableDomains = [
+  const authorityDomains = [
     'douban.com',
     'book.douban.com',
     'amazon.',
@@ -1118,31 +1118,57 @@ libraryExpansion20260801.forEach((script) => {
     'www.gutenberg.org/ebooks/4015': 'https://www.gutenberg.org/files/4015/4015-0.txt',
     'www.gutenberg.org/ebooks/4022': 'https://www.gutenberg.org/files/4022/4022-0.txt'
   };
+  const knownAuthorityLinks = {
+    '雷雨|曹禺': 'https://book.douban.com/subject/1013416/',
+    '日出|曹禺': 'https://book.douban.com/subject/30289610/',
+    '原野|曹禺': 'https://book.douban.com/subject/36240090/',
+    '获虎之夜|田汉': 'https://book.douban.com/subject/6963699/',
+    '屈原|郭沫若': 'https://book.douban.com/subject/1202366/',
+    '琥珀·恋爱的犀牛|廖一梅': 'https://book.douban.com/subject/3010133/',
+    '恋爱的犀牛|廖一梅': 'https://book.douban.com/subject/27103796/',
+    '两只狗的生活意见|孟京辉': 'https://www.douban.com/location/drama/7058113/',
+    '等待戈多|塞缪尔·贝克特': 'https://book.douban.com/subject/25760473/'
+  };
   const normalizeLink = (value) => {
     if (!value) return value;
     const mapped = Object.entries(replacementMap).find(([key]) => value.includes(key));
     if (mapped) return mapped[1];
     return value;
   };
+  const isAuthority = (value) => Boolean(value) && authorityDomains.some((domain) => value.includes(domain));
   const isReadable = (value) => {
     if (!value) return true;
     const normalized = normalizeLink(value);
-    if (unreadableDomains.some((domain) => normalized.includes(domain))) return false;
+    if (isAuthority(normalized)) return false;
     return readableDomains.some((domain) => normalized.includes(domain));
   };
-  const markNoText = (container) => {
+  const addAuthority = (script, value) => {
+    if (!value || isReadable(value)) return;
+    const normalized = normalizeLink(value);
+    if (!script.authorityLink) {
+      script.authorityLink = normalized;
+    }
+  };
+  const clearAsNoText = (container) => {
     if (!container) return;
     container.link = '';
     container.reliability = 'biblio';
     container.note = '暂无在线正文';
   };
   scriptLibrary.forEach((script) => {
+    const authorityKey = `${script.title}|${script.author}`;
+    if (knownAuthorityLinks[authorityKey] && !script.authorityLink) {
+      script.authorityLink = knownAuthorityLinks[authorityKey];
+    }
     if (script.link) {
       const normalized = normalizeLink(script.link);
-      script.link = isReadable(script.link) ? normalized : '';
-      if (!script.link) {
+      if (isReadable(script.link)) {
+        script.link = normalized;
+      } else {
+        addAuthority(script, script.link);
+        script.link = '';
         script.access = '暂无在线正文';
-        script.note = '暂无在线正文';
+        script.note = script.note || '暂无在线正文';
       }
     }
     if (script.originalVersion && script.originalVersion.link) {
@@ -1150,7 +1176,8 @@ libraryExpansion20260801.forEach((script) => {
       if (isReadable(script.originalVersion.link)) {
         script.originalVersion.link = normalized;
       } else {
-        markNoText(script.originalVersion);
+        addAuthority(script, script.originalVersion.link);
+        clearAsNoText(script.originalVersion);
       }
     }
     if (Array.isArray(script.chineseVersions)) {
@@ -1163,16 +1190,18 @@ libraryExpansion20260801.forEach((script) => {
         if (isReadable(version.link)) {
           version.link = normalized;
         } else {
-          markNoText(version);
+          addAuthority(script, version.link);
+          clearAsNoText(version);
         }
       });
     }
-    const bestChinese = Array.isArray(script.chineseVersions) ? script.chineseVersions.find((version) => version.link) : null;
-    if (bestChinese) {
-      script.chineseLink = bestChinese.link;
-    } else if (script.chineseLink && !isReadable(script.chineseLink)) {
+    if (script.chineseLink && !isReadable(script.chineseLink)) {
+      addAuthority(script, script.chineseLink);
       script.chineseLink = '';
       script.note = script.note || '暂无在线正文';
     }
+    const bestChinese = Array.isArray(script.chineseVersions) ? script.chineseVersions.find((version) => version.link) : null;
+    const chineseReadableLink = script.link && isReadable(script.link) && (script.region === 'cn' || /[\u4e00-\u9fa5]/.test(script.title)) ? script.link : '';
+    script.chineseLink = bestChinese ? bestChinese.link : (script.chineseLink || chineseReadableLink);
   });
 })();

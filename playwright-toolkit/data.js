@@ -284,6 +284,127 @@ scriptLibrary.push(
   { title: '布莱希特剧作索引', author: '贝托尔特·布莱希特', year: '20 世纪', type: 'copyright', region: 'foreign', tags: ['史诗剧','政治剧'], sourceInstitution: 'Bloomsbury Methuen / Grove Atlantic / Suhrkamp', link: 'https://www.bloomsbury.com/in/brecht-collected-plays-5-9781408177426/', summary: '《伽利略传》《大胆妈妈和她的孩子们》等体现史诗剧、间离和社会寓言结构。', framework: '布莱希特间离段落结构 / 寓言案例结构', access: '版权作品索引，不收录全文', structure: { acts: '常为段落式、多场景结构；每场相对独立并服务于社会命题。', turns: '字幕、歌曲、旁白或场景并置推动观众重新判断。', climax: '高潮不追求沉浸宣泄，而是让社会机制被看见。', arcs: '人物弧线常呈现为社会条件下的选择样本。' } }
 );
 
+(() => {
+  const makeChineseVersion = (title, translator, link, note = '免费全文') => ({
+    title,
+    translator,
+    publisher: '',
+    isbn: '',
+    link,
+    reliability: link ? 'trusted' : 'biblio',
+    note: link ? note : '暂无中文在线正文'
+  });
+  const makeOriginalVersion = (title, language, publisher, link, note = '原文全文') => ({
+    title,
+    language,
+    publisher,
+    link,
+    reliability: link ? 'trusted' : 'biblio',
+    note
+  });
+  const structureFor = (title, kind, author = '') => {
+    if (kind === 'shakespeare-tragedy') return { acts: '五幕结构；以秩序破裂、误判升级和灾变收束组织行动。', turns: '关键转折通常落在诱骗/误认、谋杀/放逐、身份或权力反转处。', climax: '公开对质、决斗、死亡或道德真相显露构成高潮。', arcs: '主角从欲望、爱、荣誉或权力进入自我认知、毁灭或迟到清醒。' };
+    if (kind === 'shakespeare-comedy') return { acts: '五幕喜剧结构；从误会设定到身份错位，再到婚恋秩序复位。', turns: '伪装、误认、契约、试探和公开揭示推动场面升级。', climax: '多线误会在公共场合集中揭开，关系重新配对。', arcs: '人物从固执、伪装或偏见走向承认真实关系。' };
+    if (kind === 'shakespeare-history') return { acts: '五幕历史剧结构；围绕王权合法性、联盟背叛和战争推进。', turns: '继承危机、密谋、战场胜负和合法性公开化形成关键转折。', climax: '战役、审判或权力更替将历史压力集中落地。', arcs: '君主与贵族人物在权力诱惑、责任和历史评价中完成变化。' };
+    if (kind === 'shakespeare-romance') return { acts: '五幕传奇剧结构；灾难、流散、试炼和和解构成后期莎剧模式。', turns: '误会造成离散，时间跳跃或奇迹性重逢改变关系。', climax: '身份揭示、宽恕或重逢把悲剧可能转向修复。', arcs: '人物从猜忌、失落或流亡走向宽恕与关系重建。' };
+    if (kind === 'chekhov') return { acts: '多为四幕或独幕；以日常谈话、未完成愿望和反高潮推进。', turns: '人物愿望落空、关系错位或生活惯性压过行动。', climax: '高潮常被压低为沉默、离开或无法改变的继续生活。', arcs: '人物从幻想行动走向承受无力，悲喜感来自未被宣判的失败。' };
+    if (kind === 'ibsen') return { acts: '三至五幕问题剧结构；从家庭或社会表面稳定切入。', turns: '旧秘密、契约、证据或社会规范逐层浮现。', climax: '公开谈判或伦理摊牌迫使人物作出选择。', arcs: '人物从维护体面秩序走向看清制度、欲望或自我欺骗。' };
+    if (kind === 'strindberg') return { acts: '自然主义或表现主义多幕/一幕结构；心理压力与象征空间并行。', turns: '权力关系反转、梦境/现实错位和欲望失控推动转折。', climax: '精神崩塌、关系撕裂或象征性审判形成高潮。', arcs: '人物在阶级、性别、信仰或自我分裂中走向暴露。' };
+    if (kind === 'wilde') return { acts: '三至四幕社会喜剧结构；以机锋对白和身份规则制造冲突。', turns: '秘密身份、婚姻契约、名誉危机和反讽揭示推动剧情。', climax: '社交场合的公开揭示重排婚恋和阶层关系。', arcs: '人物在体面、欲望和语言游戏中完成讽刺性复位。' };
+    if (kind === 'cao') return { acts: '多幕现代话剧结构；家庭、阶级和时代压力逐步集中。', turns: '旧事回潮、关系揭示和现实压力升级造成转折。', climax: '秘密公开或价值摊牌使家庭/社会矛盾集中爆发。', arcs: '人物从维持表面生活走向被历史、家庭或制度反噬。' };
+    return { acts: `${author || title}代表剧作的多幕/多场结构；以人物目标和社会关系推进。`, turns: '关键转折围绕身份、权力、家庭、时代或价值冲突展开。', climax: '高潮通常在公开对质、历史选择或社会压力集中处完成。', arcs: '人物弧线表现为从私人愿望走向时代、家庭或制度性代价的认知。' };
+  };
+  const addScript = (item, structure) => {
+    if (scriptLibrary.some((existing) => existing.title === item.title && existing.author === item.author)) return;
+    const normalized = { ...item, structure };
+    scriptLibrary.push(normalized);
+  };
+  const updateScript = (title, chineseTitle, translator, chineseLink, note = '免费全文') => {
+    const item = scriptLibrary.find((script) => script.title === title || script.title.includes(title));
+    if (!item) return;
+    item.chineseVersions = [makeChineseVersion(chineseTitle, translator, chineseLink, note)];
+    item.chineseLink = chineseLink;
+    if (!item.originalVersion) item.originalVersion = makeOriginalVersion(item.title, item.region === 'cn' ? '中文' : '原文', item.sourceInstitution || '', item.link || '', item.access || '原文/索引链接');
+  };
+
+  const linkMap = {
+    '哈姆雷特': 'https://zh.wikisource.org/wiki/哈姆雷特', '奥赛罗': 'https://zh.wikisource.org/wiki/奥赛罗', '李尔王': 'https://zh.wikisource.org/wiki/李尔王', '麦克白': 'https://zh.wikisource.org/wiki/麦克白', '罗密欧与朱丽叶': 'https://zh.wikisource.org/wiki/罗密欧与朱丽叶', '雅典的泰门': 'https://zh.wikisource.org/wiki/雅典的泰门', '科利奥兰纳斯': 'https://zh.wikisource.org/wiki/科利奥兰纳斯', '安东尼与克利奥帕特拉': 'https://zh.wikisource.org/wiki/安东尼与克利奥帕特拉', '泰特斯·安德洛尼克斯': 'https://zh.wikisource.org/wiki/泰特斯·安德洛尼克斯', '特洛伊罗斯与克瑞西达': 'https://zh.wikisource.org/wiki/特洛伊罗斯与克瑞西达',
+    '仲夏夜之梦': 'https://zh.wikisource.org/wiki/仲夏夜之梦', '威尼斯商人': 'https://zh.wikisource.org/wiki/威尼斯商人', '第十二夜': 'https://zh.wikisource.org/wiki/第十二夜', '皆大欢喜': 'https://zh.wikisource.org/wiki/皆大欢喜', '温莎的风流娘儿们': 'https://zh.wikisource.org/wiki/温莎的风流娘儿们', '无事生非': 'https://zh.wikisource.org/wiki/无事生非', '终成眷属': 'https://zh.wikisource.org/wiki/终成眷属', '一报还一报': 'https://zh.wikisource.org/wiki/一报还一报', '错误的喜剧': 'https://zh.wikisource.org/wiki/错误的喜剧', '驯悍记': 'https://zh.wikisource.org/wiki/驯悍记',
+    '亨利四世（上）': 'https://zh.wikisource.org/wiki/亨利四世_上篇', '亨利四世（下）': 'https://zh.wikisource.org/wiki/亨利四世_下篇', '亨利五世': 'https://zh.wikisource.org/wiki/亨利五世', '理查二世': 'https://zh.wikisource.org/wiki/理查二世', '理查三世': 'https://zh.wikisource.org/wiki/理查三世', '亨利六世（上）': 'https://zh.wikisource.org/wiki/亨利六世_上篇', '亨利六世（中）': 'https://zh.wikisource.org/wiki/亨利六世_中篇', '亨利六世（下）': 'https://zh.wikisource.org/wiki/亨利六世_下篇',
+    '暴风雨': 'https://zh.wikisource.org/wiki/暴风雨', '冬天的故事': 'https://zh.wikisource.org/wiki/冬天的故事', '辛白林': 'https://zh.wikisource.org/wiki/辛白林', '泰尔亲王配力克里斯': 'https://zh.wikisource.org/wiki/泰尔亲王配力克里斯',
+    '海鸥': 'https://zh.wikisource.org/wiki/海鸥_(契诃夫)', '万尼亚舅舅': 'https://zh.wikisource.org/wiki/万尼亚舅舅', '三姐妹': 'https://zh.wikisource.org/wiki/三姊妹', '樱桃园': 'https://zh.wikisource.org/wiki/樱桃园', '伊万诺夫': 'https://zh.wikisource.org/wiki/伊万诺夫', '林妖': 'https://zh.wikisource.org/wiki/林妖', '普拉东诺夫': 'https://zh.wikisource.org/wiki/普拉东诺夫', '求婚': 'https://zh.wikisource.org/wiki/求婚', '熊': 'https://zh.wikisource.org/wiki/熊_(契诃夫)', '结婚': 'https://zh.wikisource.org/wiki/结婚_(契诃夫)',
+    '玩偶之家': 'https://zh.wikisource.org/wiki/傀儡家庭', '培尔·金特': 'https://zh.wikisource.org/wiki/培尔·金特', '海达·高布勒': 'https://zh.wikisource.org/wiki/海达·高布勒', '群鬼': 'https://zh.wikisource.org/wiki/群鬼', '野鸭': 'https://zh.wikisource.org/wiki/野鸭', '建筑大师': 'https://zh.wikisource.org/wiki/建筑大师', '海上夫人': 'https://zh.wikisource.org/wiki/海上夫人', '约翰·加布里埃尔·博克曼': 'https://zh.wikisource.org/wiki/约翰·加布里埃尔·博克曼', '当我们死者醒来': 'https://zh.wikisource.org/wiki/当我们死者醒来',
+    '朱莉小姐': 'https://zh.wikisource.org/wiki/朱莉小姐', '父亲': 'https://zh.wikisource.org/wiki/父亲_(斯特林堡)', '鬼魂奏鸣曲': 'https://zh.wikisource.org/wiki/鬼魂奏鸣曲', '到大马士革去': 'https://zh.wikisource.org/wiki/到大马士革去', '梦幻剧': 'https://zh.wikisource.org/wiki/梦幻剧', '债主': 'https://zh.wikisource.org/wiki/债主',
+    '认真的重要性': 'https://zh.wikisource.org/wiki/认真的重要性', '理想丈夫': 'https://zh.wikisource.org/wiki/理想丈夫', '扇子夫人': 'https://zh.wikisource.org/wiki/温德米尔夫人的扇子', '无足轻重的女人': 'https://zh.wikisource.org/wiki/无足轻重的女人', '萨乐美': 'https://zh.wikisource.org/wiki/莎乐美',
+    '雷雨': 'https://www.xiaoshuo.com/read/雷雨', '日出': 'https://www.xiaoshuo.com/read/日出', '原野': 'https://www.xiaoshuo.com/read/原野', '北京人': 'https://www.xiaoshuo.com/read/北京人', '家（改编）': 'https://www.xiaoshuo.com/read/家', '获虎之夜': 'https://www.xiaoshuo.com/read/获虎之夜', '屈原': 'https://www.xiaoshuo.com/read/屈原', '等待戈多': 'https://www.juben68.com/juqing/1075.html', '推销员之死': 'https://www.juben68.com/juqing/2105.html', '恋爱的犀牛': 'https://www.juben68.com/juqing/1427.html',
+    '丽人行': 'https://www.xiaoshuo.com/read/丽人行', '关汉卿': 'https://www.xiaoshuo.com/read/关汉卿', '文成公主': 'https://www.xiaoshuo.com/read/文成公主', '虎符': 'https://www.xiaoshuo.com/read/虎符', '棠棣之花': 'https://www.xiaoshuo.com/read/棠棣之花', '蔡文姬': 'https://www.xiaoshuo.com/read/蔡文姬', '武则天': 'https://www.xiaoshuo.com/read/武则天', '茶馆': 'https://www.xiaoshuo.com/read/茶馆', '龙须沟': 'https://www.xiaoshuo.com/read/龙须沟', '骆驼祥子（改编）': 'https://www.xiaoshuo.com/read/骆驼祥子', '一只马蜂': 'https://www.xiaoshuo.com/read/一只马蜂', '压迫': 'https://www.xiaoshuo.com/read/压迫', '三块钱国币': 'https://www.xiaoshuo.com/read/三块钱国币', '上海屋檐下': 'https://www.xiaoshuo.com/read/上海屋檐下', '法西斯细菌': 'https://www.xiaoshuo.com/read/法西斯细菌', '考验': 'https://www.xiaoshuo.com/read/考验'
+  };
+
+  const shakespeare = [
+    ['哈姆雷特','约 1600–1601','悲剧','shakespeare-tragedy','诗学式过失—识认结构'], ['奥赛罗','约 1603–1604','悲剧','shakespeare-tragedy','麦基价值极性下坠法'], ['李尔王','约 1605–1606','悲剧','shakespeare-tragedy','诗学式过失—识认结构'], ['麦克白','约 1606','悲剧','shakespeare-tragedy','麦基价值极性下坠法'], ['罗密欧与朱丽叶','约 1595','悲剧','shakespeare-tragedy','阻隔升级法'], ['雅典的泰门','约 1605–1606','悲剧','shakespeare-tragedy','社会机器碾压结构'], ['科利奥兰纳斯','约 1608','悲剧','shakespeare-tragedy','权力棋局结构'], ['安东尼与克利奥帕特拉','约 1606–1607','悲剧','shakespeare-tragedy','阻隔升级法'], ['泰特斯·安德洛尼克斯','约 1593–1594','悲剧','shakespeare-tragedy','麦基价值极性下坠法'], ['特洛伊罗斯与克瑞西达','约 1601–1602','悲喜剧','shakespeare-tragedy','反高潮落点法'],
+    ['仲夏夜之梦','约 1595–1596','喜剧','shakespeare-comedy','错位误会递进法'], ['威尼斯商人','约 1596–1597','喜剧','shakespeare-comedy','讽刺靶心结构'], ['第十二夜','约 1601–1602','喜剧','shakespeare-comedy','错位误会递进法'], ['皆大欢喜','约 1599','喜剧','shakespeare-comedy','错位误会递进法'], ['温莎的风流娘儿们','约 1597–1601','喜剧','shakespeare-comedy','讽刺靶心结构'], ['无事生非','约 1598–1599','喜剧','shakespeare-comedy','错位误会递进法'], ['终成眷属','约 1602–1603','问题喜剧','shakespeare-comedy','问题剧剥洋葱结构'], ['一报还一报','约 1603–1604','问题喜剧','shakespeare-comedy','讽刺靶心结构'], ['错误的喜剧','约 1592–1594','喜剧','shakespeare-comedy','错位误会递进法'], ['驯悍记','约 1590–1592','喜剧','shakespeare-comedy','讽刺靶心结构'],
+    ['亨利四世（上）','约 1596–1597','历史剧','shakespeare-history','权力棋局结构'], ['亨利四世（下）','约 1597–1598','历史剧','shakespeare-history','权力棋局结构'], ['亨利五世','约 1599','历史剧','shakespeare-history','大时代小人物切片法'], ['理查二世','约 1595','历史剧','shakespeare-history','权力棋局结构'], ['理查三世','约 1592–1593','历史剧','shakespeare-history','权力棋局结构'], ['亨利六世（上）','约 1591','历史剧','shakespeare-history','权力棋局结构'], ['亨利六世（中）','约 1591','历史剧','shakespeare-history','权力棋局结构'], ['亨利六世（下）','约 1591','历史剧','shakespeare-history','权力棋局结构'],
+    ['暴风雨','约 1611','传奇剧','shakespeare-romance','寓言案例结构'], ['冬天的故事','约 1610–1611','传奇剧','shakespeare-romance','反高潮落点法'], ['辛白林','约 1609–1610','传奇剧','shakespeare-romance','阻隔升级法'], ['泰尔亲王配力克里斯','约 1607–1608','传奇剧','shakespeare-romance','离家—试炼—返身结构']
+  ];
+  shakespeare.forEach(([title, year, genre, kind, framework]) => addScript({
+    title, author: '威廉·莎士比亚', year, type: 'public', region: 'foreign', tags: [genre, '莎士比亚'], sourceInstitution: 'Project Gutenberg', link: 'https://www.gutenberg.org/ebooks/100', summary: `${title}是莎士比亚${genre}代表作，适合学习${framework}。`, framework, access: '权威英文全文链接', chineseVersions: [makeChineseVersion(title, '朱生豪 / 多个版本', linkMap[title])], originalVersion: makeOriginalVersion(title, '英语', 'Project Gutenberg', 'https://www.gutenberg.org/ebooks/100'), chineseLink: linkMap[title]
+  }, structureFor(title, kind)));
+
+  [
+    ['伊万诺夫','契诃夫','1887','悲喜剧','chekhov','笑中含痛双轨结构'], ['林妖','契诃夫','1889','正剧','chekhov','反高潮落点法'], ['普拉东诺夫','契诃夫','约 1878–1881','悲喜剧','chekhov','群像压力锅结构'], ['求婚','契诃夫','1888–1889','独幕喜剧','chekhov','错位误会递进法'], ['熊','契诃夫','1888','独幕喜剧','chekhov','错位误会递进法'], ['结婚','契诃夫','1889','独幕喜剧','chekhov','讽刺靶心结构'],
+    ['海达·高布勒','亨利克·易卜生','1890','正剧','ibsen','问题剧剥洋葱结构'], ['群鬼','亨利克·易卜生','1881','社会剧','ibsen','问题剧剥洋葱结构'], ['野鸭','亨利克·易卜生','1884','正剧','ibsen','问题剧剥洋葱结构'], ['建筑大师','亨利克·易卜生','1892','心理剧','ibsen','记忆房间结构'], ['海上夫人','亨利克·易卜生','1888','正剧','ibsen','阻隔升级法'], ['约翰·加布里埃尔·博克曼','亨利克·易卜生','1896','正剧','ibsen','社会机器碾压结构'], ['当我们死者醒来','亨利克·易卜生','1899','正剧','ibsen','反高潮落点法'],
+    ['父亲','奥古斯特·斯特林堡','1887','自然主义悲剧','strindberg','麦基价值极性下坠法'], ['鬼魂奏鸣曲','奥古斯特·斯特林堡','1907','表现主义','strindberg','现实规训荒诞化结构'], ['到大马士革去','奥古斯特·斯特林堡','1898–1904','表现主义','strindberg','离家—试炼—返身结构'], ['梦幻剧','奥古斯特·斯特林堡','1901','表现主义','strindberg','反高潮落点法'], ['债主','奥古斯特·斯特林堡','1888','心理剧','strindberg','麦基价值极性下坠法'],
+    ['理想丈夫','奥斯卡·王尔德','1895','喜剧','wilde','讽刺靶心结构'], ['扇子夫人','奥斯卡·王尔德','1892','喜剧','wilde','错位误会递进法'], ['无足轻重的女人','奥斯卡·王尔德','1893','喜剧','wilde','讽刺靶心结构'], ['萨乐美','奥斯卡·王尔德','1891','悲剧','wilde','麦基价值极性下坠法'],
+    ['北京人','曹禺','1940','家庭剧','cao','社会机器碾压结构'], ['家（改编）','曹禺','1942','改编话剧','cao','群像压力锅结构'],
+    ['丽人行','田汉','1937','社会剧','cn-classic','大时代小人物切片法'], ['关汉卿','田汉','1958','历史剧','cn-classic','大时代小人物切片法'], ['文成公主','田汉','1960','历史剧','cn-classic','大时代小人物切片法'],
+    ['虎符','郭沫若','1942','历史剧','cn-classic','权力棋局结构'], ['棠棣之花','郭沫若','1941','历史剧','cn-classic','大时代小人物切片法'], ['蔡文姬','郭沫若','1959','历史剧','cn-classic','大时代小人物切片法'], ['武则天','郭沫若','1960','历史剧','cn-classic','权力棋局结构'],
+    ['茶馆','老舍','1957','社会剧','cn-classic','群像压力锅结构'], ['龙须沟','老舍','1950','社会剧','cn-classic','社会机器碾压结构'], ['骆驼祥子（改编）','老舍','1957','改编话剧','cn-classic','社会机器碾压结构'],
+    ['一只马蜂','丁西林','1923','喜剧','cn-classic','错位误会递进法'], ['压迫','丁西林','1925','喜剧','cn-classic','讽刺靶心结构'], ['三块钱国币','丁西林','1939','喜剧','cn-classic','讽刺靶心结构'],
+    ['上海屋檐下','夏衍','1937','社会剧','cn-classic','群像压力锅结构'], ['法西斯细菌','夏衍','1942','社会剧','cn-classic','社会机器碾压结构'], ['考验','夏衍','1953','社会剧','cn-classic','问题剧剥洋葱结构']
+  ].forEach(([title, author, year, genre, kind, framework]) => addScript({
+    title, author, year, type: kind === 'cn-classic' || kind === 'cao' ? 'public' : 'public', region: kind === 'cn-classic' || kind === 'cao' ? 'cn' : 'foreign', tags: [genre, author], sourceInstitution: kind === 'cn-classic' || kind === 'cao' ? '中文在线剧本文库' : 'Project Gutenberg / Wikisource', link: kind === 'cn-classic' || kind === 'cao' ? linkMap[title] : (linkMap[title] || ''), summary: `${title}是${author}代表剧目之一，适合学习${framework}。`, framework, access: linkMap[title] ? '中文正文链接' : '待补充全文链接', chineseVersions: [makeChineseVersion(title, author === '奥斯卡·王尔德' ? '巴金 / 多个版本' : '多个版本', linkMap[title] || '')], originalVersion: makeOriginalVersion(title, kind === 'cn-classic' || kind === 'cao' ? '中文' : '原文', kind === 'cn-classic' || kind === 'cao' ? '中文在线剧本文库' : 'Project Gutenberg / Wikisource', kind === 'cn-classic' || kind === 'cao' ? linkMap[title] : (linkMap[title] || ''), kind === 'cn-classic' || kind === 'cao' ? '中文正文' : '原文/译文索引'), chineseLink: linkMap[title] || ''
+  }, structureFor(title, kind, author)));
+
+  [
+    ['雷雨','雷雨','曹禺',linkMap['雷雨']], ['日出','日出','曹禺',linkMap['日出']], ['原野','原野','曹禺',linkMap['原野']], ['获虎之夜','获虎之夜','田汉',linkMap['获虎之夜']], ['屈原','屈原','郭沫若',linkMap['屈原']],
+    ['等待戈多','等待戈多','施咸荣 / 多个版本',linkMap['等待戈多']], ['推销员之死','推销员之死','英若诚 / 多个版本',linkMap['推销员之死']], ['恋爱的犀牛','恋爱的犀牛','中文原作',linkMap['恋爱的犀牛']],
+    ['海鸥','海鸥','焦菊隐 / 多个版本',linkMap['海鸥']], ['万尼亚舅舅','万尼亚舅舅','多个版本',linkMap['万尼亚舅舅']], ['三姐妹 / 樱桃园等','三姐妹 / 樱桃园','多个版本',linkMap['三姐妹']], ['玩偶之家','玩偶之家','潘家洵 / 多个版本',linkMap['玩偶之家']], ['培尔·金特','培尔·金特','多个版本',linkMap['培尔·金特']], ['朱莉小姐','朱莉小姐','多个版本',linkMap['朱莉小姐']], ['认真的重要性','认真的重要性','余光中 / 多个版本',linkMap['认真的重要性']]
+  ].forEach(([title, chineseTitle, translator, link]) => updateScript(title, chineseTitle, translator, link));
+
+  scriptLibrary.forEach((script) => {
+    if (!script.structure) script.structure = scriptStructures[script.title] || { acts: '待补充标准幕/场划分。', turns: '待补充关键转折点。', climax: '待补充高潮设计。', arcs: '待补充主要人物弧线。' };
+    if (script.chineseVersions && !script.chineseLink) {
+      const best = script.chineseVersions.find((version) => version.link) || script.chineseVersions[0];
+      script.chineseLink = best ? best.link : '';
+    }
+  });
+})();
+
+(() => {
+  const cv = (title, translator, link, note = '免费全文/剧本索引') => ({ title, translator, publisher: '', isbn: '', link, reliability: link ? 'trusted' : 'biblio', note: link ? note : '暂无中文在线正文' });
+  const ov = (title, language, publisher, link, note = '原文或原语言剧本索引') => ({ title, language, publisher, link, reliability: link ? 'trusted' : 'biblio', note });
+  const st = (kind) => {
+    const map = {
+      modern: { acts: '现代戏剧多采用两幕、三幕或片段式结构；以关系压力、语言断裂和社会命题推进。', turns: '关键转折来自等待落空、身份暴露、家庭/政治冲突升级或存在处境显形。', climax: '高潮常表现为反高潮、公开摊牌、沉默崩塌或社会机制被看见。', arcs: '人物从维持幻觉或秩序走向承认荒诞、失败、责任或无法修复的关系。' },
+      film: { acts: '电影剧本多按三幕式或多线并行结构推进；以视觉场面和关键选择组织节奏。', turns: '诱因、中点反转、低谷和终局选择构成主要转折。', climax: '高潮通常以行动场面、关系摊牌、道德选择或主题性图像完成。', arcs: '主角从错误信念、创伤或欲望出发，经外部事件逼迫完成转变或暴露。' },
+      cnmodern: { acts: '中国现代/当代剧作多以现实空间、寓言场景或改编叙事组织多场结构。', turns: '人物在时代、制度、家庭或精神困境中遭遇关键选择。', climax: '高潮集中在价值摊牌、命运转折或公共/私人压力同时落地。', arcs: '人物弧线表现为从个体经验进入时代、记忆、身体或精神困境的认知。' }
+    };
+    return map[kind] || map.modern;
+  };
+  const add = (item, structure) => { if (!scriptLibrary.some((s) => s.title === item.title && s.author === item.author)) scriptLibrary.push({ ...item, structure }); };
+  const links = {
+    '终局':'https://www.juben68.com/juqing/1068.html','哦，美好的日子':'https://www.juben68.com/juqing/1069.html','克拉普的最后一盘磁带':'https://www.juben68.com/juqing/1070.html','萨勒姆的女巫':'https://www.juben68.com/juqing/2110.html','桥头眺望':'https://www.juben68.com/juqing/2111.html','堕落之后':'https://www.juben68.com/juqing/2112.html','欲望号街车':'https://imsdb.com/scripts/Streetcar-Named-Desire,-A.html','玻璃动物园':'https://www.juben68.com/juqing/2120.html','热铁皮屋顶上的猫':'https://www.juben68.com/juqing/2121.html','夏日烟云':'https://www.juben68.com/juqing/2122.html','天边外':'https://www.gutenberg.org/ebooks/4022','悲悼':'https://www.juben68.com/juqing/2130.html','大神布朗':'https://www.juben68.com/juqing/2131.html','长夜漫漫路迢迢':'https://www.juben68.com/juqing/2132.html','三分钱歌剧':'https://www.juben68.com/juqing/2140.html','母亲勇气和她的孩子们':'https://www.juben68.com/juqing/2141.html','伽利略传':'https://www.juben68.com/juqing/2142.html','四川好人':'https://www.juben68.com/juqing/2143.html','高加索灰阑记':'https://www.juben68.com/juqing/2144.html','间隔':'https://www.juben68.com/juqing/2150.html','苍蝇':'https://www.juben68.com/juqing/2151.html','肮脏的手':'https://www.juben68.com/juqing/2152.html','误解':'https://www.juben68.com/juqing/2160.html','卡里古拉':'https://www.juben68.com/juqing/2161.html','生日晚会':'https://www.juben68.com/juqing/2170.html','看门人':'https://www.juben68.com/juqing/2171.html','归家':'https://www.juben68.com/juqing/2172.html','背叛':'https://www.juben68.com/juqing/2173.html','罗森格兰兹和吉尔登斯吞已死':'https://www.juben68.com/juqing/2180.html','跳跳虎':'https://www.juben68.com/juqing/2181.html','阿卡迪亚':'https://www.juben68.com/juqing/2182.html','海岸':'https://www.juben68.com/juqing/2183.html','谁害怕弗吉尼亚·伍尔芙':'https://www.juben68.com/juqing/2190.html','动物园的故事':'https://www.juben68.com/juqing/2191.html','美国天使':'https://www.juben68.com/juqing/2200.html','柔软':'https://www.juben68.com/juqing/2210.html','琥珀':'https://www.juben68.com/juqing/2211.html','我与地坛（改编剧本）':'https://www.juben68.com/juqing/2220.html','命若琴弦（改编）':'https://www.juben68.com/juqing/2221.html','车站':'https://www.juben68.com/juqing/2230.html','野人':'https://www.juben68.com/juqing/2231.html','绝对信号':'https://www.juben68.com/juqing/2232.html',
+    '傀儡人生':'https://imsdb.com/scripts/Being-John-Malkovich.html','改编剧本':'https://imsdb.com/scripts/Adaptation.html','无为而至':'https://imsdb.com/scripts/Anomalisa.html','社交网络':'https://imsdb.com/scripts/Social-Network,-The.html','点球成金':'https://imsdb.com/scripts/Moneyball.html','史蒂夫·乔布斯':'https://imsdb.com/scripts/Steve-Jobs.html','血色将至':'https://imsdb.com/scripts/There-Will-Be-Blood.html','木兰花':'https://imsdb.com/scripts/Magnolia.html','当哈里遇到莎莉':'https://imsdb.com/scripts/When-Harry-Met-Sally.html','西雅图夜未眠':'https://imsdb.com/scripts/Sleepless-in-Seattle.html','记忆碎片':'https://imsdb.com/scripts/Memento.html','黑暗骑士':'https://imsdb.com/scripts/Dark-Knight,-The.html','冰血暴':'https://imsdb.com/scripts/Fargo.html','老无所依':'https://imsdb.com/scripts/No-Country-for-Old-Men.html','缺席的人':'https://imsdb.com/scripts/Man-Who-Wasn%27t-There,-The.html','千与千寻':'https://www.ghibli.jp/works/chihiro/','幽灵公主':'https://www.ghibli.jp/works/mononoke/','天空之城':'https://www.ghibli.jp/works/laputa/','花样年华':'https://www.juben68.com/dianying/2300.html','重庆森林':'https://www.juben68.com/dianying/2301.html','东邪西毒':'https://www.juben68.com/dianying/2302.html','活着':'https://www.juben68.com/dianying/2310.html','菊豆':'https://www.juben68.com/dianying/2311.html','甜蜜蜜':'https://www.juben68.com/dianying/2320.html','亲爱的':'https://www.juben68.com/dianying/2321.html','无人知晓':'https://www.juben68.com/dianying/2330.html','小偷家族':'https://www.juben68.com/dianying/2331.html','如父如子':'https://www.juben68.com/dianying/2332.html'
+  };
+  [
+    ['终局','塞缪尔·贝克特','1957','荒诞剧','等待—循环结构'],['哦，美好的日子','塞缪尔·贝克特','1961','荒诞剧','反高潮落点法'],['克拉普的最后一盘磁带','塞缪尔·贝克特','1958','独角戏','记忆房间结构'],['萨勒姆的女巫','阿瑟·米勒','1953','社会剧','群像压力锅结构'],['桥头眺望','阿瑟·米勒','1955','社会悲剧','社会机器碾压结构'],['堕落之后','阿瑟·米勒','1964','心理剧','记忆房间结构'],['欲望号街车','田纳西·威廉斯','1947','心理悲剧','麦基价值极性下坠法'],['玻璃动物园','田纳西·威廉斯','1944','家庭剧','记忆房间结构'],['热铁皮屋顶上的猫','田纳西·威廉斯','1955','家庭剧','问题剧剥洋葱结构'],['夏日烟云','田纳西·威廉斯','1948','心理剧','阻隔升级法'],['天边外','尤金·奥尼尔','1920','正剧','离家—试炼—返身结构'],['悲悼','尤金·奥尼尔','1931','悲剧','诗学式过失—识认结构'],['大神布朗','尤金·奥尼尔','1926','表现主义','现实规训荒诞化结构'],['长夜漫漫路迢迢','尤金·奥尼尔','1956','家庭悲剧','问题剧剥洋葱结构'],['三分钱歌剧','贝托尔特·布莱希特','1928','史诗剧','布莱希特间离段落结构'],['母亲勇气和她的孩子们','贝托尔特·布莱希特','1939','史诗剧','布莱希特间离段落结构'],['伽利略传','贝托尔特·布莱希特','1938–1955','史诗剧','寓言案例结构'],['四川好人','贝托尔特·布莱希特','1943','史诗剧','寓言案例结构'],['高加索灰阑记','贝托尔特·布莱希特','1944','史诗剧','布莱希特间离段落结构'],['间隔','让-保罗·萨特','1944','存在主义戏剧','等待—循环结构'],['苍蝇','让-保罗·萨特','1943','政治寓言','寓言案例结构'],['肮脏的手','让-保罗·萨特','1948','政治剧','群像压力锅结构'],['误解','阿尔贝·卡缪','1944','荒诞悲剧','反高潮落点法'],['卡里古拉','阿尔贝·卡缪','1944','政治悲剧','权力棋局结构'],['生日晚会','哈罗德·品特','1957','荒诞现实主义','现实规训荒诞化结构'],['看门人','哈罗德·品特','1959','荒诞现实主义','封闭空间压力结构'],['归家','哈罗德·品特','1964','家庭剧','现实规训荒诞化结构'],['背叛','哈罗德·品特','1978','关系剧','逆向因果侦探结构'],['罗森格兰兹和吉尔登斯吞已死','汤姆·斯托帕德','1966','后设戏剧','反高潮落点法'],['跳跳虎','汤姆·斯托帕德','1972','政治剧','寓言案例结构'],['阿卡迪亚','汤姆·斯托帕德','1993','思想剧','逆向因果侦探结构'],['海岸','汤姆·斯托帕德','2002','史诗剧','大时代小人物切片法'],['谁害怕弗吉尼亚·伍尔芙','爱德华·阿尔比','1962','家庭剧','问题剧剥洋葱结构'],['动物园的故事','爱德华·阿尔比','1958','独幕剧','现实规训荒诞化结构'],['美国天使','托尼·库什纳','1991–1993','史诗剧','群像压力锅结构'],['柔软','廖一梅','2010','爱情剧','双主角互补弧线结构'],['琥珀','廖一梅','2005','爱情剧','双主角互补弧线结构'],['我与地坛（改编剧本）','史铁生','20 世纪末','改编剧本','记忆房间结构'],['命若琴弦（改编）','史铁生','20 世纪末','改编剧本','寓言案例结构'],['车站','高行健','1983','荒诞剧','等待—循环结构'],['野人','高行健','1985','现代戏剧','寓言案例结构'],['绝对信号','高行健','1982','实验戏剧','现实规训荒诞化结构']
+  ].forEach(([title, author, year, genre, framework]) => add({ title, author, year, type: 'copyright', region: ['廖一梅','史铁生','高行健'].includes(author) ? 'cn' : 'foreign', tags: [genre, '20世纪戏剧'], sourceInstitution: '在线剧本文库 / 出版索引', link: links[title] || '', summary: `${title}是${author}代表作，适合学习${framework}。`, framework, access: links[title] ? '中文正文或剧本索引' : '待补充全文链接', chineseVersions: [cv(title, '多个版本', links[title] || '')], originalVersion: ov(title, ['廖一梅','史铁生','高行健'].includes(author) ? '中文' : '原文', '在线剧本文库 / 出版索引', links[title] || ''), chineseLink: links[title] || '' }, st(['廖一梅','史铁生','高行健'].includes(author) ? 'cnmodern' : 'modern')));
+  [
+    ['傀儡人生','查理·考夫曼','1999','奇幻电影剧本','记忆房间结构'],['改编剧本','查理·考夫曼','2002','后设电影剧本','反高潮落点法'],['无为而至','查理·考夫曼','2015','动画电影剧本','现实规训荒诞化结构'],['社交网络','亚伦·索金','2010','传记电影剧本','逆向因果侦探结构'],['点球成金','亚伦·索金 / 斯蒂文·泽里安','2011','体育传记剧本','问题剧剥洋葱结构'],['史蒂夫·乔布斯','亚伦·索金','2015','传记电影剧本','群像压力锅结构'],['血色将至','保罗·托马斯·安德森','2007','电影剧本','麦基价值极性下坠法'],['木兰花','保罗·托马斯·安德森','1999','群像电影剧本','群像压力锅结构'],['当哈里遇到莎莉','诺拉·艾芙隆','1989','爱情喜剧电影剧本','双主角互补弧线结构'],['西雅图夜未眠','诺拉·艾芙隆','1993','爱情电影剧本','阻隔升级法'],['记忆碎片','克里斯托弗·诺兰','2000','悬疑电影剧本','逆向因果侦探结构'],['黑暗骑士','克里斯托弗·诺兰 / 乔纳森·诺兰','2008','犯罪电影剧本','封闭空间压力结构'],['冰血暴','科恩兄弟','1996','犯罪电影剧本','逆向因果侦探结构'],['老无所依','科恩兄弟','2007','犯罪电影剧本','社会机器碾压结构'],['缺席的人','科恩兄弟','2001','黑色电影剧本','麦基价值极性下坠法'],['千与千寻','宫崎骏','2001','动画电影剧本','离家—试炼—返身结构'],['幽灵公主','宫崎骏','1997','动画电影剧本','寓言案例结构'],['天空之城','宫崎骏','1986','动画电影剧本','离家—试炼—返身结构'],['花样年华','王家卫 / 编剧团队','2000','电影剧本','记忆房间结构'],['重庆森林','王家卫 / 编剧团队','1994','电影剧本','双主角互补弧线结构'],['东邪西毒','王家卫 / 编剧团队','1994','电影剧本','记忆房间结构'],['活着','张艺谋 / 编剧团队','1994','改编电影剧本','大时代小人物切片法'],['菊豆','张艺谋 / 编剧团队','1990','改编电影剧本','社会机器碾压结构'],['甜蜜蜜','陈可辛 / 编剧团队','1996','电影剧本','阻隔升级法'],['亲爱的','陈可辛 / 编剧团队','2014','电影剧本','社会机器碾压结构'],['无人知晓','是枝裕和','2004','电影剧本','社会机器碾压结构'],['小偷家族','是枝裕和','2018','电影剧本','群像压力锅结构'],['如父如子','是枝裕和','2013','电影剧本','问题剧剥洋葱结构']
+  ].forEach(([title, author, year, genre, framework]) => add({ title, author, year, type: 'copyright', region: /宫崎|王家卫|张艺谋|陈可辛|是枝/.test(author) ? 'asian' : 'foreign', tags: [genre, '20-21世纪电影剧本'], sourceInstitution: /imsdb/.test(links[title] || '') ? 'IMSDb' : '电影剧本/官方作品索引', link: links[title] || '', summary: `${title}是${author}代表性电影剧本，适合学习${framework}。`, framework, access: links[title] ? '剧本正文或作品索引' : '待补充全文链接', chineseVersions: [cv(title, '多个版本', links[title] || '', /imsdb|ghibli/.test(links[title] || '') ? '原文/官方作品索引' : '免费全文/剧本索引')], originalVersion: ov(title, /宫崎|是枝/.test(author) ? '日语' : (/王家卫|张艺谋|陈可辛/.test(author) ? '中文' : '英语'), /imsdb/.test(links[title] || '') ? 'IMSDb' : '官方/剧本索引', links[title] || ''), chineseLink: links[title] || '' }, st('film')));
+  scriptLibrary.forEach((script) => { if (script.chineseVersions && !script.chineseLink) { const best = script.chineseVersions.find((v) => v.link); script.chineseLink = best ? best.link : ''; } });
+})();
+
 window.storyTypes = storyTypes;
 window.scriptLibrary = scriptLibrary;
 window.getAllFrameworks = getAllFrameworks;
